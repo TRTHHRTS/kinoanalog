@@ -1,0 +1,25 @@
+<h1>Listing country_records</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @country_records.each do |country_record| %>
+      <tr>
+        <td><%= link_to 'Show', country_record %></td>
+        <td><%= link_to 'Edit', edit_country_record_path(country_record) %></td>
+        <td><%= link_to 'Destroy', country_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Country record', new_country_record_path %>

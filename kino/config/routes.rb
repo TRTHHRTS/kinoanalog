@@ -1,6 +1,22 @@
 Kino::Application.routes.draw do
-  get "welcome/index"
-  root 'welcome#index'
+  resources :rating_records
+
+  resources :country_records
+
+  resources :genre_records
+
+  resources :reviews
+
+  resources :users
+
+  resources :ratings
+
+  resources :countries
+
+  resources :genres
+
+  resources :movies
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
