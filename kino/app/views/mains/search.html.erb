@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h2>Расширенный поиск</h2>
+</div>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label">Название фильма</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="inputEmail3">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Искать</button>
+    </div>
+  </div>
+</form>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Название</th>
+    <th>Год выпуска</th>
+    <th>Дата премьеры</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.year %></td>
+        <td><%= movie.release_date %></td>
+        <td><%= link_to 'Show', movie %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

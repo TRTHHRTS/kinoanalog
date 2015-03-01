@@ -6,6 +6,7 @@ Kino::Application.routes.draw do
   get 'main', to: 'mains#index'
   get 'releases', to: 'mains#releases'
   get 'random_film', to: 'mains#random'
+  get 'search', to: 'mains#search'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

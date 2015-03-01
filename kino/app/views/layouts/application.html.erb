@@ -20,7 +20,7 @@
           <input type="text" class="form-control">
         </div>
         <button type="submit" class="btn btn-default">Найти</button>
-        <button type="button" class="btn btn-link">Расширенный поиск</button>
+        <button type="button" class="btn-link"><%= link_to 'Расширенный поиск', '/search'%></button>
       </form>
     </div>
     <nav>
@@ -33,6 +33,11 @@
     <div class="content">
       <%= yield %>
     </div>
+    <footer class="panel panel-default">
+      <div class="panel-body">
+        Силаков, Сорокина, Исаев
+      </div>
+    </footer>
   </div>
 </body>
 </html>

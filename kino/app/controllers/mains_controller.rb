@@ -16,4 +16,8 @@ class MainsController < ApplicationController
   def random
     @movies = Movie.all
   end
+
+  def search
+    @movies = Movie.all
+  end
 end
