@@ -1,0 +1,30 @@
+body {
+  div.container {
+    width: 900px;
+    margin: 0.5em auto;
+  }
+  header {
+    width: 100%;
+    height: 100px;
+    div.logo {
+      width: 50%;
+      height: 100%;
+      float: left;
+    }
+    section.cabinet {
+      width: 50%;
+      height: 100%;
+      float: right;
+    }
+  }
+  div.search {
+    width: 100%;
+    height: 50px;
+  }
+  nav {
+    margin: 0.5em 0.5em;
+  }
+  div.content {
+    border: 1px solid darkgrey;
+  }
+}

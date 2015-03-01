@@ -2,10 +2,37 @@
 <html>
 <head>
   <title>KinoByte</title>
+  <%= stylesheet_link_tag "application.css" %>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div class="logo label label-info">
 
-<%= yield %>
+      </div>
+      <section class="cabinet label label-default">
 
+      </section>
+    </header>
+    <div class="search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-default">Найти</button>
+        <button type="button" class="btn btn-link">Расширенный поиск</button>
+      </form>
+    </div>
+    <nav>
+      <ul class="nav nav-pills nav-justified">
+        <li role="presentation" class="<%= action_name == 'index' ? 'active' : '' %>"><%= link_to 'Главная', '/main'%></li>
+        <li role="presentation" class="<%= action_name == 'releases' ? 'active' : '' %>"><%= link_to 'График премьер', '/releases'%></li>
+        <li role="presentation" class="<%= action_name == 'random' ? 'active' : '' %>"><%= link_to 'Случайный фильм', '/random_film'%></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

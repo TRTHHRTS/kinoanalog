@@ -7,7 +7,28 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #require 'sqlite3'
 
-Genre.create([{name: 'Драма', id: 2}, { name: 'Фантастика', id: 1}])
+Genre.create([{name:'Аниме'},
+              {name:'Биографический'},
+              {name:'Боевик'},
+              {name:'Вестерн'},
+              {name:'Военный'},
+              {name:'Детектив'},
+              {name:'Детский'},
+              {name:'Документальный'},
+              {name:'Драма'},
+              {name:'Исторический'},
+              {name:'Кинокомикс'},
+              {name:'Комедия'},
+              {name:'Криминал'},
+              {name:'Мелодрама'},
+              {name:'Приключения'},
+              {name:'Семейный'},
+              {name:'Спорт'},
+              {name:'Триллер'},
+              {name:'Ужасы'},
+              {name:'Фантастика'},
+              {name:'Фильм-нуар'},
+              {name:'Фэнтези'}])
 
 # Open a SQLite 3 database file
 #db = SQLite3::Database.new 'file.db'
