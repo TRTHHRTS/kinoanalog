@@ -8,6 +8,7 @@ class CreateMovies < ActiveRecord::Migration
       t.integer :duration
       t.text :description
       t.integer :rate_id
+      t.string :image_url
 
       t.timestamps
     end

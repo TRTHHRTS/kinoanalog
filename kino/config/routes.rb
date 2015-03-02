@@ -1,12 +1,28 @@
 Kino::Application.routes.draw do
+  resources :stars
+
+  resources :directors
+
+  resources :producers
+
+  resources :writers
+
+  resources :writer_records
+
+  resources :director_records
+
+  resources :producer_records
+
+  resources :star_records
+
   resources :mains, :country_records, :genre_records, :reviews, :users, :ratings, :countries, :genres, :movies
 
-  root 'mains#index'
+  root 'main#index'
 
-  get 'main', to: 'mains#index'
-  get 'releases', to: 'mains#releases'
-  get 'random_film', to: 'mains#random'
-  get 'search', to: 'mains#search'
+  get 'main', to: 'main#index'
+  get 'releases', to: 'main#releases'
+  get 'random_film', to: 'main#random'
+  get 'search', to: 'main#search'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

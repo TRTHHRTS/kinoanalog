@@ -8,7 +8,7 @@ class MainsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:mains)
+    assert_not_nil assigns(:main)
   end
 
   test "should get new" do

@@ -29,24 +29,23 @@ Genre.create([{name:'Аниме'},
               {name:'Фантастика'},
               {name:'Фильм-нуар'},
               {name:'Фэнтези'}])
-
-# Open a SQLite 3 database file
-#db = SQLite3::Database.new 'file.db'
-
-# Create a table
-#result = db.execute <<-SQL
-#  CREATE TABLE numbers (
-#    name VARCHAR(30),
-#    val INT
-#  );
-#SQL
-
-# Insert some data into it
-#{ 'one' => 1, 'two' => 2 }.each do |pair|
-#  db.execute 'insert into numbers values (?, ?)', pair
-#end
-
-# Find some records
-#db.execute 'SELECT * FROM numbers' do |row|
-#  p row
-#end
+Star.create([{name:'Джонни Депп'}])
+Director.create([{name:'Кристофер Нолан'}])
+Producer.create([{name:'Джерри Брукхаймер'}])
+Writer.create([{name:'Люк Бессон'}])
+Country.create([{name:'Россия'},
+                {name:'США'},
+                {name:'Германия'},
+                {name:'Австралия'},
+                {name:'Польша'},
+                {name:'Франция'},
+                {name:'Канада'},
+                {name:'Венгрия'},
+                {name:'Япония'},
+                {name:'Китай'},
+                {name:'Италия'},
+                {name:'Латвия'},
+                {name:'Литва'},
+                {name:'Испания'},
+                {name:'Великобритания'},
+                {name:'Ирландия'}])
