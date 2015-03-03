@@ -9,4 +9,5 @@ class Movie < ActiveRecord::Base
   has_many :producers, through: :producer_records
   has_many :directors, through: :director_records
   has_many :writers, through: :writer_records
+
 end

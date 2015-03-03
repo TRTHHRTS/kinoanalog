@@ -14,7 +14,7 @@ class MainController < ApplicationController
   # GET /main/releases
   # GET /main/releases.json
   def random
-    @movies = Movie.all
+    @movie = Movie.find(1)
   end
 
   def search

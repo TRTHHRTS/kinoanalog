@@ -49,3 +49,5 @@ Country.create([{name:'Россия'},
                 {name:'Испания'},
                 {name:'Великобритания'},
                 {name:'Ирландия'}])
+Movie.create([{id:1, title:'Американская История Х', orig_title:'American history X', year:1998, release_date:'1998-11-20',
+               duration:119, description:'history..', rate_id:2}])

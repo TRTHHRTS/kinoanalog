@@ -1,2 +1,17 @@
-<p id="notice"><%= notice %></p>
-<h3>Случайный фильм, опа.</h3>
+<div class="movie-details">
+  <img src="<%= '/assets/images/movies/' + @movie.id.to_s + '.jpg' %>" alt="<%= @movie.orig_title %>"
+       class="img-thumbnail" style="float: right" width="250px" height="370px">
+  <h1><strong><%= @movie.title %></strong><br>
+    <small><strong><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small></h1>
+  <p><strong>Страна:</strong> <%=  %></p>
+  <p><strong>Жанр:</strong> </p>
+  <p><strong>Дата премьеры:</strong> <%= @movie.release_date %></p>
+  <p><strong>Продолжительность:</strong> <%= @movie.duration %> мин.</p>
+  <p><strong>Ограничение:</strong> <%= @movie.rate_id %></p>
+  <p><strong>Режиссер:</strong> </p>
+  <p><strong>Продюсер:</strong> </p>
+  <p><strong>Сценарист:</strong> </p>
+  <p><strong>Актерский состав:</strong> </p>
+  <p><strong>Описание:</strong> <%= @movie.description %></p>
+  <p><strong>Пользовательский рейтинг:</strong> </p>
+</div>

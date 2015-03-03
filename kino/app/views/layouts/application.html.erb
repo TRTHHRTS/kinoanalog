@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>KinoByte</title>
+  <title>PROkino</title>
   <%= stylesheet_link_tag "application.css" %>
 </head>
 <body>
@@ -15,12 +15,16 @@
       </section>
     </header>
     <div class="search">
-      <form class="navbar-form navbar-right" role="search">
+      <form class="navbar-form navbar-right form-inline" role="search">
         <div class="form-group">
           <input type="text" class="form-control">
         </div>
         <button type="submit" class="btn btn-default">Найти</button>
-        <button type="button" class="btn-link"><%= link_to 'Расширенный поиск', '/search'%></button>
+        <div class="form-group">
+          <ul class="nav nav-pills">
+            <li role="presentation" class="<%= action_name == 'search' ? 'active' : '' %>"><%= link_to 'Расширенный поиск', '/search' %></li>
+          </ul>
+        </div>
       </form>
     </div>
     <nav>

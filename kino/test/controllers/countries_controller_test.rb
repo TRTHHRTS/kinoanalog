@@ -5,8 +5,8 @@ class CountriesControllerTest < ActionController::TestCase
     @country = countries(:one)
   end
 
-  test "should get index" do
-    get :index
+  test "should get details" do
+    get :details
     assert_response :success
     assert_not_nil assigns(:countries)
   end

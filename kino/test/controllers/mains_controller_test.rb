@@ -5,8 +5,8 @@ class MainsControllerTest < ActionController::TestCase
     @main = mains(:one)
   end
 
-  test "should get index" do
-    get :index
+  test "should get details" do
+    get :details
     assert_response :success
     assert_not_nil assigns(:main)
   end
