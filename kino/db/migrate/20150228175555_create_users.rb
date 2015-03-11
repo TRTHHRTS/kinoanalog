@@ -5,8 +5,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password
       t.integer :permission_type
       t.string :email
-
-      t.timestamps
     end
   end
 end

@@ -1,0 +1,29 @@
+<% if !@movies.empty? %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Orig title</th>
+        <th>Year</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @movies.each do |movie| %>
+          <tr style="border: 1px">
+            <td><%= movie.title %></td>
+            <td><%= movie.orig_title %></td>
+            <td><%= movie.year %></td>
+            <td><%= link_to 'Show', movie %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <div class="cntr">
+      <h2><strong>Ничего не найдено</strong><br>
+        <small><strong>Попробуйте поискать еще раз. Возможно, вы где-то опечатались</strong></small>
+      </h2>
+    </div>
+<% end %>
+<br>

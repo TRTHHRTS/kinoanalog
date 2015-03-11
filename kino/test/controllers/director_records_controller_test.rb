@@ -17,7 +17,7 @@ class DirectorRecordsControllerTest < ActionController::TestCase
   end
 
   test "should create director_record" do
-    assert_difference('DirectorRecord.count') do
+    assert_difference('DirectorsMovies.count') do
       post :create, director_record: {  }
     end
 
@@ -40,7 +40,7 @@ class DirectorRecordsControllerTest < ActionController::TestCase
   end
 
   test "should destroy director_record" do
-    assert_difference('DirectorRecord.count', -1) do
+    assert_difference('DirectorsMovies.count', -1) do
       delete :destroy, id: @director_record
     end
 

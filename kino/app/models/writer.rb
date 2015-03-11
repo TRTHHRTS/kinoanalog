@@ -1,4 +1,3 @@
 class Writer < ActiveRecord::Base
-  has_many :writer_records
-  has_many :movies, through: :writer_records
+  has_and_belongs_to_many  :movies
 end

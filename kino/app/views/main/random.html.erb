@@ -2,16 +2,34 @@
   <img src="<%= '/assets/images/movies/' + @movie.id.to_s + '.jpg' %>" alt="<%= @movie.orig_title %>"
        class="img-thumbnail" style="float: right" width="250px" height="370px">
   <h1><strong><%= @movie.title %></strong><br>
-    <small><strong><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small></h1>
-  <p><strong>Страна:</strong> <%=  %></p>
-  <p><strong>Жанр:</strong> </p>
-  <p><strong>Дата премьеры:</strong> <%= @movie.release_date %></p>
-  <p><strong>Продолжительность:</strong> <%= @movie.duration %> мин.</p>
-  <p><strong>Ограничение:</strong> <%= @movie.rate_id %></p>
-  <p><strong>Режиссер:</strong> </p>
-  <p><strong>Продюсер:</strong> </p>
-  <p><strong>Сценарист:</strong> </p>
-  <p><strong>Актерский состав:</strong> </p>
-  <p><strong>Описание:</strong> <%= @movie.description %></p>
-  <p><strong>Пользовательский рейтинг:</strong> </p>
+    <small><strong><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
+  </h1>
+  <!-- TODO запятые между словами -->
+  <p><strong>Страна:</strong><% @movie.countries.each do |c| %><%= ' ' + c.name %><% end %></p>
+  <p><strong>Жанр:</strong><% @movie.genres.each do |genre| %><%= ' ' + genre.name %><% end %></p>
+  <p><strong>Дата премьеры:</strong> <%= @movie.release_date.to_s %></p>
+  <p><strong>Продолжительность:</strong> <%= @movie.duration.to_s %> мин.</p>
+  <p><strong>Ограничение:</strong> <%= @movie.rate_id.to_s %></p>
+  <p><strong>Режиссер:</strong><% @movie.directors.each do |dir| %><%= ' ' + dir.name %><% end %></p>
+  <p><strong>Продюсер:</strong><% @movie.producers.each do |prod| %><%= ' ' + prod.name %><% end %></p>
+  <p><strong>Сценарист:</strong><% @movie.writers.each do |writer| %><%= ' ' + writer.name %><% end %></p>
+  <p><strong>Актерский состав:</strong><% @movie.stars.each do |star| %><%= ' ' + star.name %><% end %></p>
+  <p><strong>Описание:</strong><%= @movie.description %></p>
+  <p><strong>Пользовательский рейтинг:</strong> <!-- TODO отображение рейтинга и возможности поставить рейтинг
+                                                     TODO для того пользователя, который еще не поставил--></p>
+</div>
+<div class="reviews">
+  <h2 class="mb-0"><small><strong>Отзывы пользователей:</strong></small></h2>
+  <% if @movie.reviews.size == 0 then %>
+      <div class="no_reviews label label-default"><strong>ОТЗЫВОВ ЕЩЕ НЕТ</strong></div>
+  <% end %>
+  <% @movie.reviews.each do |review| %>
+      <div class="review">
+        <!-- TODO панель отзыва привести к нормальному виду -->
+        <p><%= @users.find(review.user_id).name %></p>
+        <p><%= review.title %></p>
+        <p><%= review.review_date.to_s %></p>
+        <p><%= review.content %></p>
+      </div>
+  <% end %>
 </div>

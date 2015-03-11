@@ -11,35 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150228190005) do
+ActiveRecord::Schema.define(version: 20150228175657) do
 
   create_table "countries", force: true do |t|
-    t.text "name"
+    t.string "name"
   end
 
-  create_table "country_records", force: true do |t|
+  create_table "countries_movies", id: false, force: true do |t|
     t.integer "movie_id"
     t.integer "country_id"
   end
 
-  create_table "director_records", force: true do |t|
+  add_index "countries_movies", ["country_id"], name: "index_countries_movies_on_country_id"
+  add_index "countries_movies", ["movie_id"], name: "index_countries_movies_on_movie_id"
+
+  create_table "directors", force: true do |t|
+    t.string "name"
+    t.string "url"
+  end
+
+  create_table "directors_movies", id: false, force: true do |t|
     t.integer "movie_id"
     t.integer "director_id"
   end
 
-  create_table "directors", force: true do |t|
-    t.text "name"
-    t.text "url"
+  add_index "directors_movies", ["director_id"], name: "index_directors_movies_on_director_id"
+  add_index "directors_movies", ["movie_id"], name: "index_directors_movies_on_movie_id"
+
+  create_table "genres", force: true do |t|
+    t.string "name"
   end
 
-  create_table "genre_records", force: true do |t|
+  create_table "genres_movies", id: false, force: true do |t|
     t.integer "movie_id"
     t.integer "genre_id"
   end
 
-  create_table "genres", force: true do |t|
-    t.text "name"
-  end
+  add_index "genres_movies", ["genre_id"], name: "index_genres_movies_on_genre_id"
+  add_index "genres_movies", ["movie_id"], name: "index_genres_movies_on_movie_id"
 
   create_table "movies", force: true do |t|
     t.string   "title"
@@ -54,65 +63,70 @@ ActiveRecord::Schema.define(version: 20150228190005) do
     t.datetime "updated_at"
   end
 
-  create_table "producer_records", force: true do |t|
-    t.integer "producer_id"
+  create_table "movies_producers", id: false, force: true do |t|
     t.integer "movie_id"
+    t.integer "producer_id"
   end
 
-  create_table "producers", force: true do |t|
-    t.text "name"
-    t.text "url"
-  end
+  add_index "movies_producers", ["movie_id"], name: "index_movies_producers_on_movie_id"
+  add_index "movies_producers", ["producer_id"], name: "index_movies_producers_on_producer_id"
 
-  create_table "ratings", force: true do |t|
-    t.integer "movies_id"
-    t.integer "user_id"
-    t.integer "rating"
-  end
-
-  add_index "ratings", ["movies_id"], name: "index_ratings_on_movies_id"
-  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
-
-  create_table "reviews", force: true do |t|
-    t.integer  "movies_id"
-    t.integer  "users_id"
-    t.string   "title"
-    t.datetime "review_date"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "reviews", ["movies_id"], name: "index_reviews_on_movies_id"
-  add_index "reviews", ["users_id"], name: "index_reviews_on_users_id"
-
-  create_table "star_records", force: true do |t|
+  create_table "movies_stars", id: false, force: true do |t|
     t.integer "movie_id"
     t.integer "star_id"
   end
 
-  create_table "stars", force: true do |t|
-    t.text "name"
-    t.text "url"
-  end
+  add_index "movies_stars", ["movie_id"], name: "index_movies_stars_on_movie_id"
+  add_index "movies_stars", ["star_id"], name: "index_movies_stars_on_star_id"
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "password"
-    t.integer  "permission_type"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "writer_records", force: true do |t|
+  create_table "movies_writers", id: false, force: true do |t|
     t.integer "movie_id"
     t.integer "writer_id"
   end
 
+  add_index "movies_writers", ["movie_id"], name: "index_movies_writers_on_movie_id"
+  add_index "movies_writers", ["writer_id"], name: "index_movies_writers_on_writer_id"
+
+  create_table "producers", force: true do |t|
+    t.string "name"
+    t.string "url"
+  end
+
+  create_table "ratings", force: true do |t|
+    t.integer "movie_id"
+    t.integer "user_id"
+    t.integer "rating"
+  end
+
+  add_index "ratings", ["movie_id"], name: "index_ratings_on_movie_id"
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
+
+  create_table "reviews", force: true do |t|
+    t.integer  "movie_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.datetime "review_date"
+    t.text     "content"
+  end
+
+  add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+
+  create_table "stars", force: true do |t|
+    t.string "name"
+    t.string "url"
+  end
+
+  create_table "users", force: true do |t|
+    t.string  "name"
+    t.string  "password"
+    t.integer "permission_type"
+    t.string  "email"
+  end
+
   create_table "writers", force: true do |t|
-    t.text "name"
-    t.text "url"
+    t.string "name"
+    t.string "url"
   end
 
 end

@@ -17,7 +17,7 @@ class StarRecordsControllerTest < ActionController::TestCase
   end
 
   test "should create star_record" do
-    assert_difference('StarRecord.count') do
+    assert_difference('StarsMovies.count') do
       post :create, star_record: {  }
     end
 
@@ -40,7 +40,7 @@ class StarRecordsControllerTest < ActionController::TestCase
   end
 
   test "should destroy star_record" do
-    assert_difference('StarRecord.count', -1) do
+    assert_difference('StarsMovies.count', -1) do
       delete :destroy, id: @star_record
     end
 

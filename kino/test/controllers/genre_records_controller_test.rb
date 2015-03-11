@@ -17,7 +17,7 @@ class GenreRecordsControllerTest < ActionController::TestCase
   end
 
   test "should create genre_record" do
-    assert_difference('GenreRecord.count') do
+    assert_difference('GenresMovies.count') do
       post :create, genre_record: {  }
     end
 
@@ -40,7 +40,7 @@ class GenreRecordsControllerTest < ActionController::TestCase
   end
 
   test "should destroy genre_record" do
-    assert_difference('GenreRecord.count', -1) do
+    assert_difference('GenresMovies.count', -1) do
       delete :destroy, id: @genre_record
     end
 

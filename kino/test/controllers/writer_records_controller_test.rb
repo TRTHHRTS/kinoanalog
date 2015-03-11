@@ -17,7 +17,7 @@ class WriterRecordsControllerTest < ActionController::TestCase
   end
 
   test "should create writer_record" do
-    assert_difference('WriterRecord.count') do
+    assert_difference('WritersMovies.count') do
       post :create, writer_record: {  }
     end
 
@@ -40,7 +40,7 @@ class WriterRecordsControllerTest < ActionController::TestCase
   end
 
   test "should destroy writer_record" do
-    assert_difference('WriterRecord.count', -1) do
+    assert_difference('WritersMovies.count', -1) do
       delete :destroy, id: @writer_record
     end
 

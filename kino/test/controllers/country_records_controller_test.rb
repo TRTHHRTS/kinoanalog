@@ -17,7 +17,7 @@ class CountryRecordsControllerTest < ActionController::TestCase
   end
 
   test "should create country_record" do
-    assert_difference('CountryRecord.count') do
+    assert_difference('CountriesMovies.count') do
       post :create, country_record: {  }
     end
 
@@ -40,7 +40,7 @@ class CountryRecordsControllerTest < ActionController::TestCase
   end
 
   test "should destroy country_record" do
-    assert_difference('CountryRecord.count', -1) do
+    assert_difference('CountriesMovies.count', -1) do
       delete :destroy, id: @country_record
     end
 
