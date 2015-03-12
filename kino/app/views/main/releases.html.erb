@@ -8,9 +8,8 @@
     <th></th>
   </tr>
   </thead>
-<% @date = Date.today %>
   <tbody>
-  <tr><td colspan="4"><%= @date.strftime("%B") %></tr>
+  <tr><td colspan="4"><%= Russian::strftime(Time.now, "%B") %></tr>
   <% @movies.each do |movie| %>
       <tr>
 
