@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150228175657) do
+ActiveRecord::Schema.define(version: 20150314170025) do
 
   create_table "countries", force: true do |t|
     t.string "name"
@@ -118,11 +118,11 @@ ActiveRecord::Schema.define(version: 20150228175657) do
   end
 
   create_table "users", force: true do |t|
-    t.string  "name"
-    t.string  "password"
-    t.integer "permission_type"
-    t.string  "email"
+    t.string "email",              default: "", null: false
+    t.string "encrypted_password", default: "", null: false
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
   create_table "writers", force: true do |t|
     t.string "name"

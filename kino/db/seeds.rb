@@ -29,8 +29,8 @@ Genre.create([{name:'Аниме'},
               {name:'Фантастика'},
               {name:'Фильм-нуар'},
               {name:'Фэнтези'}])
-User.create([{id:1, name:'Admin', password:'1', permission_type:0, email:'kaluganin514@gmail.com'},
-             {id:2, name:'trthhrts', password:'1', permission_type:1, email:'kaluganin514@mail.ru'}])
+#User.create([{id:1, name:'Admin', password:'1', permission_type:0, email:'kaluganin514@gmail.com'},
+#             {id:2, name:'trthhrts', password:'1', permission_type:1, email:'kaluganin514@mail.ru'}])
 Star.create([{name:'Джонни Депп'}])
 Director.create([{name:'Кристофер Нолан'}])
 Producer.create([{name:'Джерри Брукхаймер'}])

@@ -26,7 +26,7 @@
   <% @movie.reviews.each do |review| %>
       <div class="review">
         <!-- TODO панель отзыва привести к нормальному виду -->
-        <p><%= @users.find(review.user_id).name %></p>
+        <p><%= review.user_id %></p>
         <p><%= review.title %></p>
         <p><%= review.review_date.to_s %></p>
         <p><%= review.content %></p>

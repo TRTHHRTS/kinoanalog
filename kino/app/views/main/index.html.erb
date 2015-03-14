@@ -5,6 +5,10 @@
   <p>Кинемато́граф (от греч. κινημα, род. п. κινηματος — движение и греч. γραφω — писать, рисовать; то есть «записывающий движение») — отрасль человеческой деятельности, заключающаяся в создании движущихся изображений. Иногда также упоминается как синемато́граф (от фр. cinématographe, устар.) и кинематогра́фия. Кинематограф был изобретён в конце XIX века и стал крайне популярен в XX веке.</p>
   <footer><a href="https://ru.wikipedia.org/" target="_blank">Wikipedia</a></footer>
 </blockquote>
-
-
+<% if user_signed_in? %>
+    <span>Здравствуйте, <%= current_user.email %></span>
+    <%= link_to 'Выйти', destroy_user_session_path %>
+<% else %>
+    <%= link_to 'Войти', new_user_session_path %> либо <%= link_to 'Зарегистрироваться', new_user_registration_path %>
+<% end %>
 

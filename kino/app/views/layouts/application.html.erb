@@ -3,6 +3,7 @@
 <head>
   <title>PROkino</title>
   <%= stylesheet_link_tag "application.css" %>
+  <%= javascript_include_tag :defaults %>
 </head>
 <body>
   <div class="container">
@@ -11,17 +12,10 @@
 
       </div>
       <section class="cabinet ">
-        <%= form_tag('/signin', method: 'post', class: 'h100') do %>
-            <table class="login-form">
-              <tr>
-                <td><%= text_field_tag(:login, nil, {class: 'form-control', required: 'true', placeholder: 'Логин'}) %></td>
-                <td class="cntr"><%= submit_tag('Войти', {class: 'btn btn-success btn-block'}) %></td>
-              </tr>
-              <tr>
-                <td><%= text_field_tag(:password, nil, {class: 'form-control', required: 'true', type:'password', placeholder: 'Пароль'}) %></td>
-                <td class="cntr"><%= link_to 'Регистрация', '/signup', {class: 'btn btn-default btn-block'} %></td>
-              </tr>
-            </table>
+        <% if user_signed_in? %>
+            <%= render partial: 'layouts/signed_in' %>
+        <% else %>
+            <%= render partial: 'layouts/sign_in' %>
         <% end %>
       </section>
     </header>

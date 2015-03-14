@@ -1,5 +1,6 @@
 Kino::Application.routes.draw do
 
+  devise_for :users
   resources :main, :reviews, :users, :ratings, :countries, :movies
 
   root 'main#index'

@@ -1,0 +1,12 @@
+<%= form_for(User.new, url: session_path(:user), class: 'h100') do |f| %>
+    <table class="login-form">
+      <tr>
+        <td><%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Логин' %></td>
+        <td class="cntr"><%= f.submit 'Войти', {class: 'btn btn-success btn-block'} %></td>
+      </tr>
+      <tr>
+        <td><%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: 'Пароль' %></td>
+        <td class="cntr"><%= link_to 'Регистрация', new_user_registration_path , {class: 'btn btn-default btn-block'} %></td>
+      </tr>
+    </table>
+<% end %>
