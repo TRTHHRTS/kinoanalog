@@ -51,7 +51,13 @@ Country.create([{name:'Россия'},
                 {name:'Испания'},
                 {name:'Великобритания'},
                 {name:'Ирландия'}])
-Movie.create([{id:1, title:'Американская История Х', orig_title:'American history X', year:1998, release_date:'1998-11-20',
+Movie.create([{id:1, title:'Американская История Х', orig_title:'American history X', year:1998, release_date:'2015-03-20',
+               duration:119, description:'history..', rate_id:2}])
+Movie.create([{id:2, title:'Мгла', orig_title:'The mist', year:2007, release_date:'2015-04-02',
+               duration:119, description:'history..', rate_id:2}])
+Movie.create([{id:3, title:'Третье пришествие', orig_title:'Третье пришествие', year:2005, release_date:'2015-04-15',
+               duration:119, description:'history..', rate_id:2}])
+Movie.create([{id:4, title:'Очередной слоупок', orig_title:'Slowpoke', year:2010, release_date:'2015-05-19',
                duration:119, description:'history..', rate_id:2}])
 CountriesMovies.create([{id:1, movie_id:1, country_id:3},
                                 {id:2, movie_id:1, country_id:6}])

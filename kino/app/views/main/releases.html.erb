@@ -1,5 +1,5 @@
-<!-- TODO График премьер. Список фильмов на ближайшие три месяца, сгруппированные по месяцам -->
-<table class="table table-striped releases-table">
+<!-- //TODO График премьер. Рендерятся три месяца, включая текущий. Больше и не надо -->
+<table class="table table-hover releases-table">
   <thead>
   <tr>
     <th>Дата премьеры</th>
@@ -9,15 +9,18 @@
   </tr>
   </thead>
   <tbody>
-  <tr><td colspan="4"><%= Russian::strftime(Time.now, "%B") %></tr>
-  <% @movies.each do |movie| %>
-      <tr>
-
-        <td><%= movie.release_date %></td>
-        <td><%= movie.title %></td>
-        <td><%= movie.orig_title %></td>
-        <td><%= link_to 'Подробно', movie, class:'btn btn-default' %></td>
-      </tr>
+  <% curTime = Time.now %>
+  <% 3.times do |i| %>
+      <tr class="active"><td colspan="4"><%= Russian::strftime(curTime+i.month, "%B") %></tr>
+      <% @movies.each do |movie| if movie.release_date.year == curTime.year && movie.release_date.month == curTime.month+i %>
+              <tr>
+                <td><%= movie.release_date %></td>
+                <td><%= movie.title %></td>
+                <td><%= movie.orig_title %></td>
+                <td><%= link_to 'Подробно', movie, class:'btn btn-default' %></td>
+              </tr>
+          <% end %>
+      <% end %>
   <% end %>
   </tbody>
 </table>

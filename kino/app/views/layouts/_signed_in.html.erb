@@ -1,9 +1,11 @@
 <%= form_tag('/signout', method: 'post', class: 'h100') do %>
-    <table class="login-form">
+    <table class="signed-form">
       <tr>
+        <td></td>
         <td>Привет, <%= current_user.email %></td>
       </tr>
       <tr>
+        <td></td>
         <td class="cntr"><%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: 'btn btn-default btn-block' %></td>
       </tr>
     </table>

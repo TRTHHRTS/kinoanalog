@@ -28,6 +28,18 @@ body {
     table.login-form tr > td {
       padding-right: 0.5em;
     }
+    table.signed-form {
+      width: 100%;
+      height: 100%;
+    }
+    table.signed-form tr td {
+      padding: 0.2em 0.2em 0.2em 0.2em;
+      text-align: center;
+      background-color: cornsilk;
+    }
+    table.signed-form tr > td {
+      width: 1%;
+    }
   }
   div.search {
     width: 100%;
