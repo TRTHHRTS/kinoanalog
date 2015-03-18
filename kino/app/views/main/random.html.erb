@@ -23,9 +23,20 @@
   <% if @movie.reviews.size == 0 then %>
       <div class="no_reviews label label-default"><strong>ОТЗЫВОВ ЕЩЕ НЕТ</strong></div>
   <% end %>
+
+  <!-- TODO панель отзыва привести к нормальному виду -->
+  <!-- TODO в переменную $color нужно скормить наш CSS -->
+  <% $chet=false %>
   <% @movie.reviews.each do |review| %>
-      <div class="review">
-        <!-- TODO панель отзыва привести к нормальному виду -->
+      <% if $chet==true then %>
+          <% $color="list-group-item-success" %>
+          <% $chet=false %>
+      <% else%>
+          <% $color="list-group-item-danger" %>
+          <% $chet=true %>
+      <% end %>
+      <div class=<%= $color %>>
+      <!-- <div class="review"> -->
         <p><%= review.user_id %></p>
         <p><%= review.title %></p>
         <p><%= review.review_date.to_s %></p>
