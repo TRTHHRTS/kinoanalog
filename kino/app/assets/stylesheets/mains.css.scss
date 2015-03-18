@@ -4,3 +4,11 @@
 .releases-table > tbody tr td {
   vertical-align: middle !important;
 }
+
+.about-movie-table {
+  width: 100%;
+}
+.about-movie-table tbody > tr > td  div {
+  width: 600px;
+  overflow-wrap: break-word;
+}

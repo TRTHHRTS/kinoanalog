@@ -67,15 +67,14 @@ body {
 div.movie-details {
   min-height: 450px;
 }
-div.reviews {
-  text-align: center;
+table.reviews {
+  width: 100%;
   div.no_reviews{
     margin-top: 0;
   }
   div.review {
-    text-align: left;
-    border: 1px solid darkgrey;
     margin-top: 0.5em;
+    padding-left: 0.5em;
   }
 }
 h1 {

@@ -6,6 +6,7 @@ class CreateReviews < ActiveRecord::Migration
       t.string :title
       t.datetime :review_date
       t.text :content
+      t.boolean :isgood
     end
   end
 end

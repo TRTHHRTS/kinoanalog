@@ -63,8 +63,8 @@ CountriesMovies.create([{id:1, movie_id:1, country_id:3},
                                 {id:2, movie_id:1, country_id:6}])
 GenresMovies.create([{movie_id:1, genre_id:4},
                              {movie_id:1, genre_id:5}])
-Review.create([{id:1, movie_id:1, user_id:1, title:'Очень понравилсо!', content:'Такой захватывающий! От начала и до конца посмотрел!'},
-               {id:2, movie_id:1, user_id:1, title:'Среднею', content:'В целом пойдет, но книга лучше'},
-               {id:3, movie_id:1, user_id:1, title:'Очень не очень =(', content:'Даже не тратьте свое время на это..'}])
+Review.create([{id:1, movie_id:1, user_id:1, title:'Очень понравилсо!', content:'Такой захватывающий! От начала и до конца посмотрел!', isgood: true},
+               {id:2, movie_id:1, user_id:1, title:'Среднею', content:'В целом пойдет, но книга лучше', isgood: false},
+               {id:3, movie_id:1, user_id:1, title:'Очень не очень =(', content:'Даже не тратьте свое время на это..', isgood: false}])
 Rating.create([{id:1, movie_id:1, user_id:1, rating:6},
                {id:2, movie_id:1, user_id:2, rating:3}])
