@@ -14,12 +14,17 @@ class MainController < ApplicationController
     @movies = Movie.all
   end
 
-  def random
+
+  def details
 =begin
     @movie.reviews.each { |review|
       @users = User.find(review.user_id)
     }
 =end
+  end
+
+  def random
+    render 'main/details'
   end
 
   def search
@@ -32,7 +37,7 @@ class MainController < ApplicationController
 
   private
     def set_movie
-      @movie = Movie.includes(:countries, :genres, :directors, :producers, :writers, :stars).find(1)
+      @movie = Movie.find(rand(Movie.count - 1) + 1)
       @users = User.all
     end
 

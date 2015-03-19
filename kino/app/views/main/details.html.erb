@@ -26,8 +26,10 @@
         </div>
       </td>
       <td style="min-width: 250px">
-        <img src="<%= '/assets/images/movies/' + @movie.id.to_s + '.jpg' %>" alt="<%= @movie.orig_title %>"
-             class="img-thumbnail" width="250px" height="370px">
+        <% if @movie.image_url.size != 0 %>
+            <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>"
+                 class="img-thumbnail" width="250px" height="370px">
+        <% end %>
       </td>
     </tr>
     <tr>
