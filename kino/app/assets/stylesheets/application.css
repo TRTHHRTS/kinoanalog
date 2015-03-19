@@ -24,6 +24,12 @@
 .ta-right {
     text-align: right;
 }
-.h100 {
+.h100perc {
     height: 100%;
+}
+.w100perc {
+    width: 100%;
+}
+.w300 {
+    width: 300px;
 }

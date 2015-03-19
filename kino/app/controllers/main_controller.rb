@@ -14,13 +14,13 @@ class MainController < ApplicationController
     @movies = Movie.all
   end
 
+  def new_movie
+    @movie = Movie.new
+  end
 
   def details
-=begin
-    @movie.reviews.each { |review|
-      @users = User.find(review.user_id)
-    }
-=end
+    @movie = Movie.find(params[:id])
+    @users = User.all
   end
 
   def random

@@ -1,4 +1,4 @@
-<%= form_for(User.new, url: session_path(:user), class: 'h100') do |f| %>
+<%= form_for(User.new, url: session_path(:user), class: 'h100perc') do |f| %>
     <table class="login-form">
       <tr>
         <td><%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Логин' %></td>

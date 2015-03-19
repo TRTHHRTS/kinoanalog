@@ -17,7 +17,7 @@
                 <td><%= movie.release_date %></td>
                 <td><%= movie.title %></td>
                 <td><%= movie.orig_title %></td>
-                <td><%= link_to 'Подробно', movie, class:'btn btn-default' %></td>
+                <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn btn-default' %></td>
               </tr>
           <% end %>
       <% end %>

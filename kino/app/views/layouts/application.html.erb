@@ -20,6 +20,7 @@
         <% end %>
       </section>
     </header>
+    <%= link_to 'Добавить фильм', '/new_movie' %>
     <div class="search">
         <%= form_tag('/search_result', method: 'get', class: 'navbar-form navbar-right form-inline', role: 'search') do %>
             <div class="form-group">

@@ -1,16 +1,15 @@
 Kino::Application.routes.draw do
-
   devise_for :users
-  resources :main, :reviews, :users, :ratings, :countries, :movies
 
   root 'main#index'
 
   get 'main', to: 'main#index'
   get 'releases', to: 'main#releases'
   get 'random_film', to: 'main#random'
-  get 'details', to: 'main#details'
+  get 'details/:id', to: 'main#details'
   get 'search', to: 'main#search'
   get 'search_result', to: 'main#search_result'
+  get 'new_movie', to: 'main#new_movie'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
