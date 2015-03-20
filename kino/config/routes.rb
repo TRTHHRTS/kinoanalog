@@ -10,6 +10,7 @@ Kino::Application.routes.draw do
   get 'search', to: 'main#search'
   get 'search_result', to: 'main#search_result'
   get 'new_movie', to: 'main#new_movie'
+  post 'create_movie', to: 'main#create_movie'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
