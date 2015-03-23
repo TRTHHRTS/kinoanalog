@@ -13,8 +13,25 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/new
-  def new
+  def new_review
     @review = Review.new
+  end
+
+  def create_review
+    @review = Review.new(review_params)
+    @review.id=Review.last.id+1
+    @review.user_id=current_user.id
+    #@review.id=Movie.id
+
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @review }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @review.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /reviews/1/edit
@@ -69,6 +86,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:id, :title, :review_date, :content)
+      params.require(:review).permit(:id, :movie_id, :user_id, :title, :review_date, :content, :isgood)
     end
 end

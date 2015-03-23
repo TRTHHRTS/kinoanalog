@@ -21,8 +21,8 @@ class MainController < ApplicationController
   # POST /countries
   # POST /countries.json
   def create_movie
-    @movie.id = Movie.last.id + 1
     @movie = Movie.new(movie_params)
+    @movie.id = Movie.last.id + 1
 
     respond_to do |format|
       if @movie.save
