@@ -26,10 +26,9 @@
         </div>
       </td>
       <td style="min-width: 250px">
-        <% if @movie != nil %>
-            <img url='<%= @movie.image_url %>' alt="<%= @movie.orig_title %>"
-                 class="img-thumbnail" width="250px" height="370px">
-            <a href='<%= @movie.image_url %>'>ссылка</a>
+        <% if @movie.image_url.length != 0 %>
+            <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>"
+                 class="img-thumbnail" width="250" height="370">
         <% end %>
       </td>
     </tr>
@@ -45,23 +44,21 @@
     </tr>
   </table>
 
-  <table class="reviews">
-    <h2 class="mb-0"><small><strong>Отзывы пользователей:</strong></small></h2>
-    <% if @movie.reviews.size == 0 then %>
-        <div class="no_reviews label label-default"><strong>ОТЗЫВОВ ЕЩЕ НЕТ</strong></div>
-    <% end %>
-
-    <!-- TODO панель отзыва привести к нормальному виду -->
-    <% @movie.reviews.each do |review| %>
-        <tr><td>
-          <div class="review <%= review.isgood ? 'bg-success' : 'bg-danger ta-right' %>">
-            <h3 class="mb-0 mt-0"><strong><%= review.title %></strong></h3>
-            <blockquote>
-              <p><%= review.content %></p>
-              <footer><%= @users.find(review.user_id).email %>, <%= review.review_date.to_s %></footer>
-            </blockquote>
-          </div>
-        </td></tr>
-    <% end %>
-  </table>
+  <h2 class="mb-0 cntr"><small><strong>Отзывы пользователей:</strong></small></h2>
+  <% if @movie.reviews.size == 0 then %>
+      <div class="cntr"><div class="btn btn-warning disabled"><strong>ОТЗЫВОВ ЕЩЕ НЕТ</strong></div></div>
+  <% else %>
+      <table class="reviews">
+        <!-- TODO панель отзыва привести к нормальному виду -->
+        <% @movie.reviews.each do |review| %>
+            <tr><td>
+              <div class="review <%= review.isgood ? 'bg-success' : 'bg-danger ta-right' %>">
+                <h3 class="mb-0 mt-0"><strong><%= review.title %></strong></h3>
+                <h4><%= review.content %></p></h4>
+                <h5><i><%= @users.find(review.user_id).email %>, <%= review.review_date.to_s %></i></h5>
+              </div>
+            </td></tr>
+        <% end %>
+      </table>
+  <% end %>
 </div>
