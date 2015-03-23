@@ -52,6 +52,12 @@
     <% end %>
 
     <!-- TODO панель отзыва привести к нормальному виду -->
+    <p>ID<p>
+    <p><%= current_user.id %><p>
+    <p><%= current_user.email %><p>
+
+    <%= link_to 'Добавить отзыв', '/new_review' %>
+
     <% @movie.reviews.each do |review| %>
         <tr><td>
           <div class="review <%= review.isgood ? 'bg-success' : 'bg-danger ta-right' %>">
