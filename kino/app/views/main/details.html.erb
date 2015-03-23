@@ -26,9 +26,10 @@
         </div>
       </td>
       <td style="min-width: 250px">
-        <% if @movie.image_url.size != 0 %>
-            <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>"
+        <% if @movie != nil %>
+            <img url='<%= @movie.image_url %>' alt="<%= @movie.orig_title %>"
                  class="img-thumbnail" width="250px" height="370px">
+            <a href='<%= @movie.image_url %>'>ссылка</a>
         <% end %>
       </td>
     </tr>
