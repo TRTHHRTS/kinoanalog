@@ -1,0 +1,38 @@
+<!-- <h1>Редактировать отзыв<h1>-->
+<%= form_for @review, url: {action: 'update_review'}  do |f| %>
+    <% if @review.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@review.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+          <ul>
+            <% @review.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <h1 class="cntr"><small><strong>Редактировать отзыв</strong></small></h1>
+    <div class="form-group">
+      <%= f.label 'Заголовок', for: 'titleInput' %>
+      <%= f.text_field :title, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Заголовок' %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Отзыв', for: 'titleInput' %>
+      <%= f.text_field :content, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Отзыв' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'id отзыва', for: 'titleInput' %>
+      <%= f.text_field :id,  autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'id отзыва' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Понравился фильм?', for: 'titleInput' %></br>
+      <%= f.check_box :isgood %><%= f.label 'Да', for: 'titleInput' %>
+    </div>
+
+    <div class="form-group cntr">
+      <%= f.submit 'Внести изменения', class: 'btn btn-default' %>
+    </div>
+<% end %>

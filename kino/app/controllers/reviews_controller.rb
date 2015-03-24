@@ -21,7 +21,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.id=Review.last.id+1
     @review.user_id=current_user.id
-    #@review.id=Movie.id
 
     respond_to do |format|
       if @review.save
@@ -35,7 +34,9 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/1/edit
-  def edit
+  def edit_review
+    #@review = Review.find(current_user.id+1)
+    @review = Review.new
   end
 
   # POST /reviews
@@ -56,7 +57,8 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
-  def update
+  def update_review
+    @review = Review.find(review_params[:id])
     respond_to do |format|
       if @review.update(review_params)
         format.html { redirect_to @review, notice: 'Review was successfully updated.' }
@@ -68,9 +70,14 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def delete_review
+    @review = Review.new
+  end
+
   # DELETE /reviews/1
   # DELETE /reviews/1.json
-  def destroy
+  def destroy_review
+    @review = Review.find(review_params[:id])
     @review.destroy
     respond_to do |format|
       format.html { redirect_to reviews_url }
@@ -81,7 +88,7 @@ class ReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
-      @review = Review.find(params[:id])
+      @review = Review.find(review_params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
