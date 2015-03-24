@@ -26,8 +26,10 @@
         </div>
       </td>
       <td style="min-width: 250px">
+        <% if @movie.image_url != nil %>
             <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>"
                  class="img-thumbnail" width="250" height="370">
+        <% end %>
       </td>
     </tr>
     <tr>
@@ -42,17 +44,16 @@
     </tr>
   </table>
 
+  <%= link_to 'Добавить отзыв', '/create_review' %></br>
+  <%= link_to 'Редактировать отзыв', '/edit_review' %></br>
+  <%= link_to 'Удалить отзыв', '/destroy_review' %>
+
   <h2 class="mb-0 cntr"><small><strong>Отзывы пользователей:</strong></small></h2>
   <% if @movie.reviews.size == 0 then %>
       <div class="cntr"><div class="btn btn-warning disabled"><strong>ОТЗЫВОВ ЕЩЕ НЕТ</strong></div></div>
   <% else %>
       <table class="reviews">
         <!-- TODO панель отзыва привести к нормальному виду -->
-
-         <%= link_to 'Добавить отзыв', '/create_review' %></br>
-         <%= link_to 'Редактировать отзыв', '/edit_review' %></br>
-         <%= link_to 'Удалить отзыв', '/destroy_review' %>
-
 
         <!--
         Не удалять
@@ -67,7 +68,6 @@
           <%= yield %>
         </div>
         -->
-
 
         <% @movie.reviews.each do |review| %>
             <tr><td>
