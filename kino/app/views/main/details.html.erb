@@ -44,13 +44,12 @@
     </tr>
   </table>
 
-  <%= link_to 'Добавить отзыв', '/create_review' %></br>
-  <%= link_to 'Редактировать отзыв', '/edit_review' %></br>
-  <%= link_to 'Удалить отзыв', '/destroy_review' %>
+
 
   <h2 class="mb-0 cntr"><small><strong>Отзывы пользователей:</strong></small></h2>
   <% if @movie.reviews.size == 0 then %>
       <div class="cntr"><div class="btn btn-warning disabled"><strong>ОТЗЫВОВ ЕЩЕ НЕТ</strong></div></div>
+      <%= link_to 'Добавить отзыв', '/create_review/'+@movie.id.to_s %></br>
   <% else %>
       <table class="reviews">
         <!-- TODO панель отзыва привести к нормальному виду -->
@@ -67,7 +66,18 @@
         <div class="content">
           <%= yield %>
         </div>
+
+
+        <% if @movie.reviews.find_by_sql ("SELECT id FROM reviews WHERE user_id=='current_user.id' AND movie_id=='@movie.id'")  then %>
+            <p>есть</p>
+        <% else %>
+            <p>нет</p>
+            <%= link_to 'Добавить отзыв', '/create_review/'+@movie.id.to_s %></br>
+        <% end %>
         -->
+
+        <!--TODO Придумать условие для добавления лишь 1 отзыва см. выше -->
+        <%= link_to 'Добавить отзыв', '/create_review/'+@movie.id.to_s %></br>
 
         <% @movie.reviews.each do |review| %>
             <tr><td>
@@ -75,6 +85,12 @@
                 <h3 class="mb-0 mt-0"><strong><%= review.title %></strong></h3>
                 <h4><%= review.content %></p></h4>
                 <h5><i><%= @users.find(review.user_id).email %>, <%= review.review_date.to_s %></i></h5>
+                <!-- Пользователь может удалять только свой отзывы -->
+                <!-- TODO Если ты админ, то удаляй любые отзывы -->
+                <% if review.user_id==current_user.id then%>
+                    <%= link_to 'Редактировать отзыв', '/edit_review/'+review.id.to_s %></br>
+                    <%= link_to 'Удалить отзыв', '/destroy_review/'+review.id.to_s %>
+                <% end %>
               </div>
             </td></tr>
         <% end %>

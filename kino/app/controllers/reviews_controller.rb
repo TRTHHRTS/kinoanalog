@@ -14,12 +14,13 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new_review
-    @review = Review.new
+    @review = Review.new()
   end
 
   def create_review
     @review = Review.new(review_params)
     @review.id=Review.last.id+1
+    @review.movie_id=params[:movie_id]
     @review.user_id=current_user.id
 
     respond_to do |format|
@@ -42,7 +43,7 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
+    @review = Review.new(params)
 
     respond_to do |format|
       if @review.save
@@ -58,7 +59,7 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update_review
-    @review = Review.find(review_params[:id])
+    @review = Review.find(params[:id])
     respond_to do |format|
       if @review.update(review_params)
         format.html { redirect_to @review, notice: 'Review was successfully updated.' }
@@ -77,7 +78,7 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy_review
-    @review = Review.find(review_params[:id])
+    @review = Review.find(params[:id])
     @review.destroy
     respond_to do |format|
       format.html { redirect_to reviews_url }
