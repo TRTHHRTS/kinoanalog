@@ -12,8 +12,8 @@ Kino::Application.routes.draw do
   get 'new_movie', to: 'main#new_movie'
   post 'create_movie', to: 'main#create_movie'
 
-  get 'create_review/:movie_id', to: 'reviews#new_review'
-  post 'create_review/:movie_id', to: 'reviews#create_review'
+  get 'create_review', to: 'reviews#new_review', shallow: true
+  post 'create_review', to: 'reviews#create_review'
   get 'edit_review/:id', to: 'reviews#edit_review'
   post 'edit_review/:id', to: 'reviews#update_review'
   get 'destroy_review/:id', to: 'reviews#destroy_review'

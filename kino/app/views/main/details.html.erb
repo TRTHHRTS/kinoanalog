@@ -44,53 +44,38 @@
     </tr>
   </table>
 
-
-
   <h2 class="mb-0 cntr"><small><strong>Отзывы пользователей:</strong></small></h2>
   <% if @movie.reviews.size == 0 then %>
       <div class="cntr"><div class="btn btn-warning disabled"><strong>ОТЗЫВОВ ЕЩЕ НЕТ</strong></div></div>
       <%= link_to 'Добавить отзыв', '/create_review/'+@movie.id.to_s %></br>
   <% else %>
       <table class="reviews">
-        <!-- TODO панель отзыва привести к нормальному виду -->
+        <!-- TODO доработать панель отзывов. Мне не нравятся цвета панелей, зеленоватый и бледно-красный. Вообще не в тему. -->
 
-        <!--
-        Не удалять
-        <nav>
-          <ul class="nav nav-pills nav-justified">
-            <li role="presentation" class="<%= action_name == 'new_review' ? 'active' : '' %>"><%= link_to 'Добавить отзыв', 'new_review'%></li>
-            <li role="presentation" class="<%= action_name == 'edit_review' ? 'active' : '' %>"><%= link_to 'Редактировать отзыв', 'edit_review'%></li>
-            <li role="presentation" class="<%= action_name == 'destroy_review' ? 'active' : '' %>"><%= link_to 'Удалить отзыв', 'destroy_review'%></li>
-          </ul>
-        </nav>
-        <div class="content">
-          <%= yield %>
-        </div>
-
-
-        <% if @movie.reviews.find_by_sql ("SELECT id FROM reviews WHERE user_id=='current_user.id' AND movie_id=='@movie.id'")  then %>
-            <p>есть</p>
-        <% else %>
-            <p>нет</p>
-            <%= link_to 'Добавить отзыв', '/create_review/'+@movie.id.to_s %></br>
+        <% #Не нужно писать на SQL, когда у нас есть ORM. Правильный пример:  @movie.reviews.where(user_id: current_user.id) Удалить это после прочтения%>
+        <% if current_user and @movie.reviews.where(user_id: current_user.id).count == 0 %>
+            <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-success' do %>
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить отзыв
+            <% end %>
         <% end %>
-        -->
-
-        <!--TODO Придумать условие для добавления лишь 1 отзыва см. выше -->
-        <%= link_to 'Добавить отзыв', '/create_review/'+@movie.id.to_s %></br>
-
         <% @movie.reviews.each do |review| %>
             <tr><td>
               <div class="review <%= review.isgood ? 'bg-success' : 'bg-danger ta-right' %>">
+                <!-- TODO Если ты админ, то удаляй любые отзывы -->
+                <div style="float: <%= review.isgood ? 'right' : 'left' %>">
+                  <% if current_user && review.user_id==current_user.id then%>
+                      <!-- TODO кнопка редактирования не работает, я знаю. И знаю как починить. Не трогать. -->
+                      <%= link_to '/edit_review/'+review.id.to_s, :class => 'btn btn-default btn-sm' do %>
+                          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Редактировать
+                      <% end %>
+                      <%= link_to '/destroy_review/'+review.id.to_s, :class => 'btn btn-danger btn-sm' do %>
+                          <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Удалить
+                      <% end %>
+                  <% end %>
+                </div>
                 <h3 class="mb-0 mt-0"><strong><%= review.title %></strong></h3>
                 <h4><%= review.content %></p></h4>
                 <h5><i><%= @users.find(review.user_id).email %>, <%= review.review_date.to_s %></i></h5>
-                <!-- Пользователь может удалять только свой отзывы -->
-                <!-- TODO Если ты админ, то удаляй любые отзывы -->
-                <% if review.user_id==current_user.id then%>
-                    <%= link_to 'Редактировать отзыв', '/edit_review/'+review.id.to_s %></br>
-                    <%= link_to 'Удалить отзыв', '/destroy_review/'+review.id.to_s %>
-                <% end %>
               </div>
             </td></tr>
         <% end %>

@@ -11,16 +11,17 @@ body {
       height: 100%;
       float: left;
       text-align: center;
+      box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
       img {
         width: 80%;
         height: 95%;
-        box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
       }
     }
     section.cabinet {
       width: 50%;
       height: 100%;
       float: right;
+      box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
     }
     table.login-form {
       width: 100%;

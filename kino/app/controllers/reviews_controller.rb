@@ -14,18 +14,16 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new_review
-    @review = Review.new()
+    @review = Review.new(review_params)
+    @movie_title = Movie.find(@review.movie_id).title
   end
 
   def create_review
     @review = Review.new(review_params)
     @review.id=Review.last.id+1
-    @review.movie_id=params[:movie_id]
-    @review.user_id=current_user.id
-
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        format.html { redirect_to '/details/'+@review.movie_id.to_s, notice: 'Review was successfully created.' }
         format.json { render action: 'show', status: :created, location: @review }
       else
         format.html { render action: 'new' }
@@ -36,21 +34,13 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit_review
-    #@review = Review.find(current_user.id+1)
-    @review = Review.new
-  end
-
-  # POST /reviews
-  # POST /reviews.json
-  def create
-    @review = Review.new(params)
-
+    @review = Review.find(params[:id])
     respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @review }
+      if @review.update(review_params)
+        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        format.json { head :no_content }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'edit' }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
@@ -81,7 +71,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to reviews_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

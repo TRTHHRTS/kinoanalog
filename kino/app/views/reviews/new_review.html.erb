@@ -11,15 +11,17 @@
             </ul>
           </div>
       <% end %>
-
-     <h1 class="cntr"><small><strong>Добавить отзыв</strong></small></h1>
+     <%= f.hidden_field :movie_id, { :value => @review.movie_id } %>
+     <%= f.hidden_field :user_id, { :value => @review.user_id } %>
+     <%= f.hidden_field :review_date, { :value => Time.now } %>
+     <h1 class="cntr"><small><strong>Добавить отзыв к фильму "<%= @movie_title %>"</strong></small></h1>
      <div class="form-group">
        <%= f.label 'Заголовок', for: 'titleInput' %>
        <%= f.text_field :title, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Заголовок' %>
      </div>
      <div class="form-group">
        <%= f.label 'Отзыв', for: 'titleInput' %>
-       <%= f.text_field :content, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Отзыв' %>
+       <%= f.text_area :content, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Отзыв' %>
      </div>
 
      <div class="form-group">
