@@ -20,18 +20,12 @@
         <% end %>
       </section>
     </header>
-    <%= link_to 'Добавить фильм', '/new_movie' %>
     <div class="search">
-        <%= form_tag('/search_result', method: 'get', class: 'navbar-form navbar-right form-inline', role: 'search') do %>
+        <%= form_tag(search_result_path(:query => :query), class: 'navbar-form navbar-right form-inline', role: 'search') do %>
             <div class="form-group">
               <%= text_field_tag(:query, nil, {class: 'form-control', required: 'true'}) %>
             </div>
             <%= submit_tag('Найти', {class: 'btn btn-default'}) %>
-            <div class="form-group">
-              <ul class="nav nav-pills">
-                <li role="presentation" class="<%= action_name == 'search' ? 'active' : '' %>"><%= link_to 'Расширенный поиск', '/search' %></li>
-              </ul>
-            </div>
         <% end %>
     </div>
     <nav>
@@ -39,6 +33,8 @@
         <li role="presentation" class="<%= action_name == 'index' ? 'active' : '' %>"><%= link_to 'Главная', '/main'%></li>
         <li role="presentation" class="<%= action_name == 'releases' ? 'active' : '' %>"><%= link_to 'График премьер', '/releases'%></li>
         <li role="presentation" class="<%= action_name == 'random' ? 'active' : '' %>"><%= link_to 'Случайный фильм', '/random_film'%></li>
+        <li role="presentation" class="<%= action_name == 'search' ? 'active' : '' %>"><%= link_to 'Расширенный поиск', '/search' %></li>
+        <li role="presentation" class="<%= action_name == 'new_movie' ? 'active' : '' %>"><%= link_to 'Добавить фильм', '/new_movie' %></li>
       </ul>
     </nav>
     <div class="content">
