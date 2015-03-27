@@ -15,7 +15,7 @@ Kino::Application.routes.draw do
   get 'create_review', to: 'reviews#new_review', shallow: true
   post 'create_review', to: 'reviews#create_review'
   get 'edit_review/:id', to: 'reviews#edit_review'
-  post 'edit_review/:id', to: 'reviews#update_review'
+  patch 'edit_review/:id', to: 'reviews#update_review'
   get 'destroy_review/:id', to: 'reviews#destroy_review'
   post 'destroy_review', to: 'reviews#destroy_review'
   # The priority is based upon order of creation: first created -> highest priority.
