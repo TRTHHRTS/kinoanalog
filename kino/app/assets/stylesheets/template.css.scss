@@ -87,3 +87,14 @@ table.reviews {
 h1 {
   margin-top: 5px;
 }
+
+.review_good {
+  color: #104E8B;
+  background-color: #BCEE68;
+}
+
+.review_bad {
+  color: #8B1A1A;
+  background-color: #DDA0DD;
+  text-align: right;
+}

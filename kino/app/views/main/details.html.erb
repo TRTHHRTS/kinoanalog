@@ -50,7 +50,6 @@
       <%= link_to 'Добавить отзыв', '/create_review/'+@movie.id.to_s %></br>
   <% else %>
       <table class="reviews">
-        <!-- TODO Согласен доработать панель отзывов. Нам не нравятся цвета панелей, зеленоватый и бледно-красный. Вообще не в тему. -->
         <% if current_user and @movie.reviews.where(user_id: current_user.id).count == 0 %>
             <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-success' do %>
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Добавить отзыв
@@ -58,7 +57,7 @@
         <% end %>
         <% @movie.reviews.each do |review| %>
             <tr><td>
-              <div class="review <%= review.isgood ? 'bg-success' : 'bg-danger ta-right' %>">
+              <div class="review <%= review.isgood ? 'review_good' : 'review_bad' %>">
                 <!-- TODO Если ты админ, то удаляй любые отзывы -->
                 <div style="float: <%= review.isgood ? 'right' : 'left' %>">
                   <% if current_user && review.user_id==current_user.id then%>
@@ -71,7 +70,7 @@
                   <% end %>
                 </div>
                 <h3 class="mb-0 mt-0"><strong><%= review.title %></strong></h3>
-                <h4><%= review.content %></p></h4>
+                <h4><%= review.content %></h4>
                 <h5><i><%= @users.find(review.user_id).email %>, <%= review.review_date.to_s %></i></h5>
               </div>
             </td></tr>
