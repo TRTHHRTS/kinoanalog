@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new_review
     @review = Review.new(review_params)
-    #@movie_title = Movie.find(@review.movie_id).title
+    @movie_title = Movie.find(@review.movie_id).title
   end
 
   def create_review
@@ -71,6 +71,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:id, :movie_id, :user_id, :title, :review_date, :content, :isgood)
+      params.require(:review).permit(:id, :movie_id, :user_id, :title, :review_date, :content, :isgood, :mark)
     end
 end

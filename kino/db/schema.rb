@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20150314170025) do
     t.datetime "review_date"
     t.text     "content"
     t.boolean  "isgood"
+    t.integer  "mark"
   end
 
   add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id"

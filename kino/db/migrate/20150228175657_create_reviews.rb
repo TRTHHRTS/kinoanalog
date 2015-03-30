@@ -7,6 +7,7 @@ class CreateReviews < ActiveRecord::Migration
       t.datetime :review_date
       t.text :content
       t.boolean :isgood
+      t.integer :mark
     end
   end
 end
