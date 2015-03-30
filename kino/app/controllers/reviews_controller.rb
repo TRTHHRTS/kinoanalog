@@ -24,10 +24,8 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.html { redirect_to '/details/'+@review.movie_id.to_s, notice: 'Review was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @review }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        format.html { render action: 'new_review' }
       end
     end
   end

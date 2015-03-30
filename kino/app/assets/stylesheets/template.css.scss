@@ -95,10 +95,18 @@ h1 {
   color: #104E8B;
   background-color: #BCEE68;
   text-align: left;
+  a {
+    margin-left: 0.5em;
+    float: right;
+  }
 }
 
 .review_bad {
   color: #8B1A1A;
   background-color: #DDA0DD;
   text-align: right;
+  a {
+    margin-left: 0.5em;
+    float: left;
+  }
 }

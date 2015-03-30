@@ -16,10 +16,6 @@
      <%= f.hidden_field :review_date, { :value => Time.now } %>
      <h1 class="cntr"><small><strong>Добавить отзыв к фильму "<%= @movie_title %>"</strong></small></h1>
      <div class="form-group">
-       <%= f.label 'Оценка', for: 'titleInput' %>
-       <%= f.text_field :mark, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Оценка' %>
-     </div>
-     <div class="form-group">
        <%= f.label 'Заголовок', for: 'titleInput' %>
        <%= f.text_field :title, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Заголовок' %>
      </div>
@@ -27,12 +23,6 @@
        <%= f.label 'Отзыв', for: 'titleInput' %>
        <%= f.text_area :content, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Отзыв' %>
      </div>
-
-     <div class="form-group">
-       <%= f.label 'Понравился фильм?', for: 'titleInput' %></br>
-       <%= f.check_box :isgood %><%= f.label 'Да', for: 'titleInput' %>
-     </div>
-
     <div class="form-group cntr">
       <%= f.submit 'Добавить отзыв', class: 'btn btn-default' %>
     </div>
