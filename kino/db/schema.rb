@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20150314170025) do
   create_table "ratings", force: true do |t|
     t.integer "movie_id"
     t.integer "user_id"
-    t.integer "rating"
+    t.integer "value"
   end
 
   add_index "ratings", ["movie_id"], name: "index_ratings_on_movie_id"
@@ -107,8 +107,6 @@ ActiveRecord::Schema.define(version: 20150314170025) do
     t.string   "title"
     t.datetime "review_date"
     t.text     "content"
-    t.boolean  "isgood"
-    t.integer  "mark"
   end
 
   add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id"
@@ -120,8 +118,9 @@ ActiveRecord::Schema.define(version: 20150314170025) do
   end
 
   create_table "users", force: true do |t|
-    t.string "email",              default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string  "email",              default: "", null: false
+    t.string  "encrypted_password", default: "", null: false
+    t.integer "permission",         default: 2,  null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

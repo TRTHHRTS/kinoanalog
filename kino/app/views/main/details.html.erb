@@ -47,10 +47,10 @@
           <% if @movie.reviews.count == 0 %>
               еще никто не проголосовал
           <% else %>
-              <%= @movie.reviews.average(:mark).round(2)%>
+              <%= @movie.ratings.average(:value).round(2)%>
           <% end %>
         </p>
-        <p><strong>Число голосов: </strong> <%= @movie.reviews.count %> </p>
+        <p><strong>Число голосов: </strong> <%= @movie.ratings.count %> </p>
       </td>
     </tr>
   </table>
@@ -69,7 +69,7 @@
         <% @movie.reviews.each do |review| %>
             <tr>
               <td>
-                <div class="review <%= review.isgood ? 'review_good' : 'review_bad' %>">
+                <div class="review review_good">
                   <!-- TODO Если ты админ, то удаляй любые отзывы -->
                   <% if current_user && review.user_id==current_user.id then%>
                       <%= link_to '/edit_review/'+review.id.to_s, :class => 'btn btn-default btn-sm' do %>
@@ -79,7 +79,7 @@
                       <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Удалить
                   <% end %>
                   <% end %>
-                  <h3 class="mb-0 mt-0"><strong><%= review.mark %>, <%= review.title %></strong></h3>
+                  <h3 class="mb-0 mt-0"><strong><%= review.title %></strong></h3>
                   <h4><%= review.content %></h4>
                   <h5><i><%= @users.find(review.user_id).email %>, <%= review.review_date.to_s %></i></h5>
                 </div>

@@ -7,6 +7,19 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #require 'sqlite3'
 
+#Создание главного админа с id=1. Который впоследствие сможет наделять правами админа всех остальных юзеров.
+admin = User.new(
+    :email => 'admin@mail.ru',
+    :password => '123456',
+    :permission => 1
+)
+admin.save!(:validate => false)
+user = User.new(
+    :email => 'user@mail.ru',
+    :password => '123456',
+    :permission => 2
+)
+user.save!(:validate => false)
 Genre.create([{name:'Аниме'},
               {name:'Биографический'},
               {name:'Боевик'},
@@ -29,8 +42,6 @@ Genre.create([{name:'Аниме'},
               {name:'Фантастика'},
               {name:'Фильм-нуар'},
               {name:'Фэнтези'}])
-#User.create([{id:1, name:'Admin', password:'1', permission_type:0, email:'kaluganin514@gmail.com'},
-#             {id:2, name:'trthhrts', password:'1', permission_type:1, email:'kaluganin514@mail.ru'}])
 Star.create([{name:'Джонни Депп'}])
 Director.create([{name:'Кристофер Нолан'}])
 Producer.create([{name:'Джерри Брукхаймер'}])
@@ -63,8 +74,8 @@ CountriesMovies.create([{id:1, movie_id:1, country_id:3},
                                 {id:2, movie_id:1, country_id:6}])
 GenresMovies.create([{movie_id:1, genre_id:4},
                              {movie_id:1, genre_id:5}])
-Review.create([{id:1, movie_id:1, user_id:1, title:'Очень понравилсо!', content:'Такой захватывающий! От начала и до конца посмотрел!', isgood: true, mark: 5},
-               {id:2, movie_id:1, user_id:1, title:'Средне', content:'В целом пойдет, но книга лучше', isgood: false, mark: 4},
-               {id:3, movie_id:1, user_id:1, title:'Очень не очень =(', content:'Даже не тратьте свое время на это..', isgood: false, mark: 5}])
-Rating.create([{id:1, movie_id:1, user_id:1, rating:6},
-               {id:2, movie_id:1, user_id:2, rating:3}])
+Review.create([{id:1, movie_id:1, user_id:1, title:'Очень понравилсо!', content:'Такой захватывающий! От начала и до конца посмотрел!'},
+               {id:2, movie_id:1, user_id:2, title:'Средне', content:'В целом пойдет, но книга лучше'},
+               {id:3, movie_id:1, user_id:1, title:'Очень не очень =(', content:'Даже не тратьте свое время на это..'}])
+Rating.create([{id:1, movie_id:1, user_id:1, value:6},
+               {id:2, movie_id:1, user_id:2, value:3}])

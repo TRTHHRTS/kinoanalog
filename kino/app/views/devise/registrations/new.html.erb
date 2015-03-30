@@ -4,20 +4,20 @@
       <%= devise_error_messages! %>
 
       <div  class="form-group">
-        <%= f.label :email, for: 'emailInput' %>
+        <%= f.label 'E-mail', for: 'emailInput' %>
         <%= f.email_field :email, autofocus: true, class: 'form-control', id: 'emailInput' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password, for: 'passInput' %>
+        <%= f.label 'Пароль', for: 'passInput' %>
         <% if @validatable %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <em>(минимум  <%= @minimum_password_length %> символов)</em>
         <% end %>
         <%= f.password_field :password, autocomplete: "off", class: 'form-control', id: 'passInput' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password_confirmation, for: 'passConfInput' %>
+        <%= f.label 'Подтвердите пароль', for: 'passConfInput' %>
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', id: 'passConfInput' %>
       </div>
 

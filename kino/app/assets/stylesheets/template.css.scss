@@ -5,13 +5,12 @@ body {
   }
   header {
     width: 100%;
-    height: 85px;
+    height: 40px;
     div.logo {
       width: 50%;
       height: 100%;
       float: left;
       text-align: center;
-      box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
       img {
         width: 80%;
         height: 95%;
@@ -21,7 +20,7 @@ body {
       width: 50%;
       height: 100%;
       float: right;
-      box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+      box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.2);
     }
     table.login-form {
       width: 100%;
@@ -29,23 +28,26 @@ body {
 
     }
     table.login-form tr td {
-      padding: 0.2em 0 0 0.2em;
-    }
-    table.login-form tr > td {
-      padding-right: 0.5em;
+      width: 40%;
+      padding: 0.2em 0.2em 0.2em 0.2em;
     }
     table.signed-form {
       width: 100%;
       height: 100%;
     }
-    table.signed-form tr td {
+    table.signed-form tr > td {
       text-align: center;
     }
+    table.signed-form tr > td:nth-child(2) {
+      text-align: right;
+      padding-right: 0.2em;
+    }
   }
-  div.search {
+  table.search {
     margin-top: 1em;
-    width: 100%;
-    height: 50px;
+    tr > td:nth-child(2) {
+      padding-left: 0.2em;
+    }
   }
   nav {
     margin: 0.5em 0.5em;

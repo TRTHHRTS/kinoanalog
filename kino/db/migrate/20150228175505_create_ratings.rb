@@ -3,7 +3,7 @@ class CreateRatings < ActiveRecord::Migration
     create_table :ratings do |t|
       t.belongs_to :movie, index:true
       t.belongs_to :user, index:true
-      t.integer :rating
+      t.integer :value
     end
   end
 end

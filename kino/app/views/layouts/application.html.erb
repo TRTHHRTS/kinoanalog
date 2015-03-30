@@ -10,7 +10,6 @@
   <div class="container">
     <header>
       <div class="logo">
-тут лого =)
       </div>
       <section class="cabinet ">
         <% if user_signed_in? %>
@@ -20,13 +19,15 @@
         <% end %>
       </section>
     </header>
-    <div class="search">
-        <%= form_tag(search_result_path(:query => :query), class: 'navbar-form navbar-right form-inline', role: 'search') do %>
-            <div class="form-group">
-              <%= text_field_tag(:query, nil, {class: 'form-control', required: 'true'}) %>
-            </div>
-            <%= submit_tag('Найти', {class: 'btn btn-default'}) %>
-        <% end %>
+    <div>
+      <%= form_tag(search_result_path(:query => :query), class: '', role: 'search') do %>
+      <table class="search w100perc">
+        <tr>
+          <td><%= text_field_tag(:query, nil, {class: 'form-control', required: 'true'}) %></td>
+          <td><%= submit_tag('Найти', {class: 'btn btn-default btn-block'}) %></td>
+        </tr>
+      </table>
+      <% end %>
     </div>
     <nav>
       <ul class="nav nav-pills nav-justified">
@@ -34,8 +35,12 @@
         <li role="presentation" class="<%= action_name == 'releases' ? 'active' : '' %>"><%= link_to 'График премьер', '/releases'%></li>
         <li role="presentation" class="<%= action_name == 'random' ? 'active' : '' %>"><%= link_to 'Случайный фильм', '/random_film'%></li>
         <li role="presentation" class="<%= action_name == 'search' ? 'active' : '' %>"><%= link_to 'Расширенный поиск', '/search' %></li>
-        <li role="presentation" class="<%= action_name == 'new_movie' ? 'active' : '' %>"><%= link_to 'Добавить фильм', '/new_movie' %></li>
       </ul>
+      <% if user_signed_in? && current_user.permission == 1 %>
+          <ul class="nav nav-pills nav-justified mt-5">
+            <li role="presentation" class="<%= action_name == 'new_movie' ? 'active' : '' %>"><%= link_to 'Добавить фильм', '/new_movie' %></li>
+          </ul>
+      <% end %>
     </nav>
     <div class="content">
       <%= yield %>
