@@ -2,22 +2,24 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:edit, :update, :destroy]
 
   # GET /movies/new
-  def new
+  def new_movie
     @movie = Movie.new
   end
 
   # GET /movies/1/edit
-  def edit
+  def edit_movie
+    @movie = Movie.find(params[:id])
   end
 
   # POST /movies
   # POST /movies.json
-  def create
+  def create_movie
     @movie = Movie.new(movie_params)
+    @movie.id = Movie.last.id + 1
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
+        format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Movie was successfully created.' }
         format.json { render action: 'show', status: :created, location: @movie }
       else
         format.html { render action: 'new' }
@@ -28,10 +30,11 @@ class MoviesController < ApplicationController
 
   # PATCH/PUT /movies/1
   # PATCH/PUT /movies/1.json
-  def update
+  def update_movie
+    @movie = Movie.find(params[:id])
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
+        format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Movie was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -42,10 +45,11 @@ class MoviesController < ApplicationController
 
   # DELETE /movies/1
   # DELETE /movies/1.json
-  def destroy
+  def destroy_movie
+    @movie = Movie.find(params[:id])
     @movie.destroy
     respond_to do |format|
-      format.html { redirect_to movies_url }
+      format.html { redirect_to releases_path }
       format.json { head :no_content }
     end
   end
@@ -56,4 +60,7 @@ class MoviesController < ApplicationController
       @movie = Movie.find(params[:id])
     end
 
+  def movie_params
+    params.require(:movie).permit(:id, :title, :orig_title, :year, :release_date, :duration, :description, :rate_id)
+  end
 end

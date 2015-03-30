@@ -1,4 +1,5 @@
-<%= form_for @movie, url: {action: 'create_movie'}  do |f| %>
+<!-- <h1>Редактировать фильм<h1>-->
+<%= form_for @movie, url: {action: 'update_movie'}  do |f| %>
     <% if @movie.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>

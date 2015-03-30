@@ -14,25 +14,8 @@ class MainController < ApplicationController
     @movies = Movie.all
   end
 
-  def new_movie
+  def new
     @movie = Movie.new
-  end
-
-  # POST /countries
-  # POST /countries.json
-  def create_movie
-    @movie = Movie.new(movie_params)
-    @movie.id = Movie.last.id + 1
-
-    respond_to do |format|
-      if @movie.save
-        format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Movie was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @movie }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def details
