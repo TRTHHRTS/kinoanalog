@@ -24,7 +24,7 @@ class MainController < ApplicationController
   end
 
   def random
-    render 'main/details'
+    render 'main/details/'
   end
 
   def search
@@ -37,7 +37,7 @@ class MainController < ApplicationController
 
   private
     def set_movie
-      @movie = Movie.find(rand(Movie.count - 1) + 1)
+      @movie = Movie.all[rand(0..Movie.count-1)]
       @users = User.all
     end
 
