@@ -11,6 +11,7 @@
             <dt>Страна:</dt><dd><%= list[0, list.length-2] %></dd>
             <% list = ''; @movie.genres.each do |item| list += item.name + ', ' end; %>
             <dt>Жанр:</dt><dd><%= list[0, list.length-2] %></dd>
+
             <dt>Дата премьеры:</dt><dd><%= @movie.release_date.to_s %></dd>
             <dt>Продолжительность:</dt><dd><%= @movie.duration.to_s %> мин.</dd>
             <dt>Ограничение:</dt><dd><%= @movie.rate_id.to_s %></dd>
