@@ -35,6 +35,22 @@ class MainController < ApplicationController
   def search_result
   end
 
+  def users
+    @users = User.all
+  end
+
+  def promote
+    @user = User.find(params[:id])
+    @user.permission = 2
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to :back, notice: 'Ранг пользователя повышен' }
+      else
+        format.html { redirect_to :back, notice: 'Ошибка, не удалось повысить пользователя' }
+      end
+    end
+  end
+
   private
     def set_movie
       @movie = Movie.all[rand(0..Movie.count-1)]

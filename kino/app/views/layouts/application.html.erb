@@ -39,6 +39,7 @@
       <% if user_signed_in? && current_user.permission == 1 %>
           <ul class="nav nav-pills nav-justified mt-5">
             <li role="presentation" class="<%= action_name == 'new_movie' ? 'active' : '' %>"><%= link_to 'Добавить фильм', '/new_movie' %></li>
+            <li role="presentation" class="<%= action_name == 'users' ? 'active' : '' %>"><%= link_to 'Пользователи', '/users' %></li>
           </ul>
       <% end %>
     </nav>

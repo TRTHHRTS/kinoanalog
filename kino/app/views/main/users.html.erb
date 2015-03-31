@@ -1,0 +1,22 @@
+<table class="table table-condensed">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>E-mail</th>
+    <th>Ранг</th>
+    <th>Действие</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.email %></td>
+    <td><%= 'Администратор' if user.permission == 1 %>
+        <%= 'Пользователь' if user.permission == 2 %></td>
+    <td><%= link_to 'Повысить до администратора', '/promote/' + user.id.to_s, class:'btn-sm btn-info' if user.permission == 2 %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
