@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:show]
 
   # GET /reviews
   # GET /reviews.json
@@ -36,28 +36,23 @@ class ReviewsController < ApplicationController
   end
 
   # PATCH/PUT /reviews/1
-  # PATCH/PUT /reviews/1.json
   def update_review
     @review = Review.find(params[:id])
     respond_to do |format|
       if @review.update(review_params)
         format.html { redirect_to '/details/'+@review.movie_id.to_s, notice: 'Review was successfully updated.' }
-        format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        format.html { render action: 'edit_review' }
       end
     end
   end
 
   # DELETE /reviews/1
-  # DELETE /reviews/1.json
   def destroy_review
     @review = Review.find(params[:id])
     @review.destroy
     respond_to do |format|
       format.html { redirect_to :back }
-      format.json { head :no_content }
     end
   end
 
@@ -69,6 +64,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:id, :movie_id, :user_id, :title, :review_date, :content, :recommended, :mark)
+      params.require(:review).permit(:id, :movie_id, :user_id, :title, :review_date, :content, :recommended)
     end
 end
