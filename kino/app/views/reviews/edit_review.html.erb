@@ -14,10 +14,6 @@
 
     <h1 class="cntr"><small><strong>Редактировать отзыв</strong></small></h1>
     <div class="form-group">
-      <%= f.label 'Оценка', for: 'titleInput' %>
-      <%= f.text_field :mark, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Оценка' %>
-    </div>
-    <div class="form-group">
       <%= f.label 'Заголовок', for: 'titleInput' %>
       <%= f.text_field :title, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Заголовок' %>
     </div>
@@ -25,10 +21,9 @@
       <%= f.label 'Отзыв', for: 'titleInput' %>
       <%= f.text_field :content, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Отзыв' %>
     </div>
-
     <div class="form-group">
-      <%= f.label 'Понравился фильм?', for: 'titleInput' %></br>
-      <%= f.check_box :isgood %><%= f.label 'Да', for: 'titleInput' %>
+      <%= f.label 'Рекоммендовать фильм?', for: 'titleInput' %></br>
+      <%= f.check_box :recommended %><%= f.label 'Да', for: 'titleInput' %>
     </div>
 
     <div class="form-group cntr">

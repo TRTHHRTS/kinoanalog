@@ -38,7 +38,7 @@
           <p><%= @movie.description %></p>
         </blockquote>
         <p><strong>Пользовательский рейтинг: </strong>
-          <% if @movie.reviews.count == 0 %>
+          <% if @movie.ratings.count == 0 %>
               еще никто не проголосовал
           <% else %>
               <%= @movie.ratings.average(:value).round(2)%>

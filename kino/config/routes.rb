@@ -9,6 +9,7 @@ Kino::Application.routes.draw do
   get 'details/:id', to: 'main#details'
   get 'search', to: 'main#search'
   get 'search_result', to: 'main#search_result'
+  post 'search_result', to: 'main#search_result'
 
   get 'new_movie', to: 'movies#new_movie'
   post 'create_movie', to: 'movies#create_movie'

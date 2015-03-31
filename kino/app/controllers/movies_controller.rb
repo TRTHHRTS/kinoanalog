@@ -49,7 +49,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @movie.destroy
     respond_to do |format|
-      format.html { redirect_to releases_path }
+      format.html { redirect_to main_path }
       format.json { head :no_content }
     end
   end
