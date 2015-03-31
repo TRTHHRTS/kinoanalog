@@ -20,7 +20,7 @@
       </section>
     </header>
     <div>
-      <%= form_tag(search_result_path(:query => @guery), class: '', role: 'search') do %>
+      <%= form_tag(search_result_path(:query => @guery), role: 'search') do %>
       <table class="search w100perc">
         <tr>
           <td><%= text_field_tag('query', nil, {class: 'form-control', required: 'true', placeholder: 'Введите название фильма'}) %></td>
