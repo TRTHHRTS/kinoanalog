@@ -8,7 +8,8 @@
 </head>
 <body>
   <div class="container">
-    <header>
+    <footer class="panel panel-default">
+    <header class="panel-header">
       <div class="logo">
       </div>
       <section class="cabinet ">
@@ -19,7 +20,8 @@
         <% end %>
       </section>
     </header>
-    <div>
+
+    <div class="panel-header">
       <%= form_tag(search_result_path(:query => @guery), role: 'search') do %>
       <table class="search w100perc">
         <tr>
@@ -29,6 +31,7 @@
       </table>
       <% end %>
     </div>
+    </footer>
     <nav>
       <ul class="nav nav-pills nav-justified">
         <li role="presentation" class="<%= action_name == 'index' ? 'active' : '' %>"><%= link_to 'Главная', '/main'%></li>
