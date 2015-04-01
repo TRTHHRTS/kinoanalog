@@ -20,7 +20,6 @@ body {
       width: 50%;
       height: 100%;
       float: right;
-      box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.2);
     }
     table.login-form {
       width: 100%;
@@ -49,18 +48,14 @@ body {
       padding-left: 0.2em;
     }
   }
-  nav {
-    margin: 0.5em 0.5em;
-  }
+
   div.content {
     padding: 0.5em 0.5em 0.5em 0.5em;
-  }
-  footer {
-    margin-top: 0.5em;
   }
   footer.panel {
     background-color: #eee;
     text-align: right;
+    margin-bottom: 0;
     h4 {
       margin: 0;
       padding: 0;
@@ -110,23 +105,75 @@ h1 {
     float: left;
   }
 }
-.button_header{
-  color: #D5E9F7;
-  background-color: #175886;
+.btn-nav-size {
   width: 206px;
   height: 34px;
 }
 
-.film_title{
+.title {
   color: #A61753;
 
 }
-.film_orig_title{
+.smaller-title {
   color: #B74474;
 
 }
 
-.film_review{
+.film-review {
   color: #8CC148;
 
+}
+
+.btn-header-color {
+  color: #D5E9F7;
+  background-color: #175886;
+}
+.btn-header-color:hover {
+  color: #D5E9F7;
+  background-color: #327FB6;
+}
+.btn-nav-color {
+  background-color: #CEFD91;
+}
+.btn-nav-color:hover {
+  background-color: #6EAF19;
+}
+.btn-search-color {
+   color: #175886;
+   background-color: #D5E9F7;
+ }
+.btn-search-color:hover {
+  color: #D5E9F7;
+  background-color: #327FB6;
+}
+
+.btn-no-review-exit-color {
+  color: #ffeed9;
+  background-color: #f5ca8c;
+  font-weight: bold;
+}
+
+.btn-no-review-exit-color:hover {
+  color: #ffeed9;
+  background-color: #ffa93a;
+  font-weight: bold;
+}
+.nav-justified {
+  padding-left: 0;
+  li a {
+    color: #6EAF19;
+    text-decoration: none;
+  }
+  li:hover a {
+    display: block;
+    color: #EDFDD7;
+    text-decoration: none;
+  }
+}
+.active:hover {
+  color: #EDFDD7;
+  background-color: #6EAF19;
+}
+.panel-header {
+  padding: .5em .5em .5em .5em;
 }

@@ -3,8 +3,8 @@
     <tr>
       <td>
         <div>
-          <h1><strong class="film_title"><%= @movie.title %></strong><br>
-            <small><strong class="film_orig_title"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
+          <h1><strong class="title"><%= @movie.title %></strong><br>
+            <small><strong class="smaller-title"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
           </h1>
           <dl class="dl-horizontal">
             <% list = ''; @movie.countries.each do |item| list += item.name + ', ' end; %>
@@ -52,14 +52,14 @@
       <%= link_to 'Редактировать данные', '/edit_movie/'+@movie.id.to_s, :class => 'btn btn-link' %>
       <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, :class => 'btn btn-link' %>
   <% end %>
-  <h2 class="mb-0 cntr"><small><strong class="film_review">Отзывы пользователей:</strong></small></h2>
+  <h2 class="mb-0 cntr"><small><strong class="film-review">Отзывы пользователей:</strong></small></h2>
   <% if user_signed_in? && @movie.reviews.where(user_id: current_user.id).count == 0 %>
       <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-success' do %>
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить отзыв
       <% end %>
   <% end %>
   <% if @movie.reviews.size == 0 then %>
-      <div class="cntr"><div class="btn btn-warning disabled"><strong>ОТЗЫВОВ ЕЩЕ НЕТ</strong></div></div>
+      <div class="cntr"><div class="btn btn-warning disabled btn-nav-size btn-no-review-color"><strong>ОТЗЫВОВ ЕЩЕ НЕТ</strong></div></div>
   <% else %>
       <table class="reviews">
         <% @movie.reviews.each do |review| %>

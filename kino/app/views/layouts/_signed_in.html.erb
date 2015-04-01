@@ -1,8 +1,8 @@
 <%= form_tag('/signout', method: 'post', class: 'h100perc') do %>
     <table class="signed-form">
       <tr>
-        <td>Привет, <%= current_user.email %>!</td>
-        <td class="cntr"><%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: 'btn btn-danger' %></td>
+        <td class="title"><strong>Привет, <%= current_user.email %>!</strong></td>
+        <td class="cntr"><%= link_to 'ВЫЙТИ', destroy_user_session_path, :method => :delete, class: 'btn btn-no-review-exit-color ' %></td>
       </tr>
     </table>
 <% end %>
