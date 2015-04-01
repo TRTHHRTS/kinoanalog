@@ -4,10 +4,13 @@
       <%= devise_error_messages! %>
 
       <div  class="form-group">
-        <%= f.label 'E-mail', for: 'emailInput' %>
+        <%= f.label 'Логин', for: 'loginInput' %>
+        <%= f.text_field :login, autofocus: true, class: 'form-control', id: 'loginInput' %>
+      </div>
+      <div  class="form-group">
+        <%= f.label 'Почтовый ящик', for: 'emailInput' %>
         <%= f.email_field :email, autofocus: true, class: 'form-control', id: 'emailInput' %>
       </div>
-
       <div class="form-group">
         <%= f.label 'Пароль', for: 'passInput' %>
         <% if @validatable %>
@@ -15,12 +18,24 @@
         <% end %>
         <%= f.password_field :password, autocomplete: "off", class: 'form-control', id: 'passInput' %>
       </div>
-
       <div class="form-group">
         <%= f.label 'Подтвердите пароль', for: 'passConfInput' %>
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', id: 'passConfInput' %>
       </div>
-
+      <!-- При прочтении удалить коммент. Бутсраповские radio button-ы работают по нажатию на текст -->
+      <!-- TODO поля логин и пол записываются в таблицу пустыми -->
+      <div  class="form-group">
+        <%= f.label 'Пол', for: 'sexInput' %> <br>
+        <label class="btn-sm btn-success">
+            <%= radio_button_tag(:sex, "Неизвестно", checked=true) %> Неизвестно
+        </label>
+        <label class="btn-sm btn-primary">
+            <%= radio_button_tag(:sex, "Мужской") %> Мужской
+        </label>
+        <label class="btn-sm btn-danger">
+          <%= radio_button_tag(:sex, "Женский") %> Женский
+        </label>
+      </div>
       <div class="form-group">
         <%= f.submit 'Зарегистрироваться', class: 'btn btn-default' %>
       </div>

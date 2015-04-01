@@ -2,7 +2,9 @@
   <thead>
   <tr>
     <th>Id</th>
-    <th>E-mail</th>
+    <th>Логин</th>
+    <th>Почтовый ящик</th>
+    <th>Пол</th>
     <th>Ранг</th>
     <th>Действие</th>
     <th></th>
@@ -12,7 +14,9 @@
   <% @users.each do |user| %>
   <tr>
     <td><%= user.id %></td>
+    <td><%= user.login %></td>
     <td><%= user.email %></td>
+    <td><%= user.sex %></td>
     <td><%= 'Администратор' if user.permission == 1 %>
         <%= 'Пользователь' if user.permission == 2 %></td>
     <td><%= link_to 'Повысить до администратора', '/promote/' + user.id.to_s, class:'btn-sm btn-info' if user.permission == 2 %></td>

@@ -9,14 +9,18 @@
 
 #Создание главного админа с id=1. Который впоследствие сможет наделять правами админа всех остальных юзеров.
 admin = User.new(
-    :email => 'admin@mail.ru',
+    :login => 'admin',
     :password => '123456',
+    :email => 'admin@mail.ru',
+    :sex => 'Мужской',
     :permission => 1
 )
 admin.save!(:validate => false)
 user = User.new(
+    :login => 'user',
     :email => 'user@mail.ru',
     :password => '123456',
+    :sex => 'Женский',
     :permission => 2
 )
 user.save!(:validate => false)

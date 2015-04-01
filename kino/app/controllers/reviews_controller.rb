@@ -33,6 +33,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/1/edit
   def edit_review
     @review = Review.find(params[:id])
+    @movie_title = Movie.find(@review.movie_id).title
   end
 
   # PATCH/PUT /reviews/1

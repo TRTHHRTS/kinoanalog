@@ -39,11 +39,10 @@ class MainController < ApplicationController
     @users = User.all
   end
 
-  def promote
+  def update_promote
     @user = User.find(params[:id])
-    @user.permission = 2
     respond_to do |format|
-      if @user.save
+      if @user.update(permission: 1)
         format.html { redirect_to :back, notice: 'Ранг пользователя повышен' }
       else
         format.html { redirect_to :back, notice: 'Ошибка, не удалось повысить пользователя' }
