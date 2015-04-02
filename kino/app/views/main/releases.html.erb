@@ -1,5 +1,5 @@
 <!-- //TODO График премьер. Рендерятся три месяца, включая текущий. Больше и не надо -->
-<table class="table table-hover releases-table">
+<table class="table releases-table">
   <thead>
   <tr class="title cntr">
     <th>Дата премьеры</th>
@@ -11,7 +11,7 @@
   <tbody>
   <% curTime = Time.now %>
   <% 3.times do |i| %>
-      <tr class="active"><td colspan="4"><%= Russian::strftime(curTime+i.month, "%B") %></tr>
+      <tr class="btn-search-color"><td colspan="4"><%= Russian::strftime(curTime+i.month, "%B") %></tr>
       <% @movies.each do |movie| if movie.release_date.year == curTime.year && movie.release_date.month == curTime.month+i %>
               <tr>
                 <td><%= movie.release_date %></td>
