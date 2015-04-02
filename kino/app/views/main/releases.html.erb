@@ -1,7 +1,7 @@
 <!-- //TODO График премьер. Рендерятся три месяца, включая текущий. Больше и не надо -->
 <table class="table table-hover releases-table">
   <thead>
-  <tr>
+  <tr class="title cntr">
     <th>Дата премьеры</th>
     <th>Название</th>
     <th>Оригинальное название</th>
@@ -17,7 +17,7 @@
                 <td><%= movie.release_date %></td>
                 <td><%= movie.title %></td>
                 <td><%= movie.orig_title %></td>
-                <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn btn-default' %></td>
+                <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn btn-exit-color' %></td>
               </tr>
           <% end %>
       <% end %>

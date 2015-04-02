@@ -40,9 +40,9 @@
         <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'search' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Расширенный поиск', '/search' %></li>
       </ul>
       <% if user_signed_in? && current_user.permission == 1 %>
-          <ul class="nav nav-pills nav-justified mt-5">
-            <li role="presentation" class="btn btn-nav-size <%= action_name == 'new_movie' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Добавить фильм', '/new_movie' %></li>
-            <li role="presentation" class="btn btn-nav-size <%= action_name == 'users' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Пользователи', '/users' %></li>
+          <ul class="nav-justified mt-5">
+            <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'new_movie' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Добавить фильм', '/new_movie' %></li>
+            <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'users' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Пользователи', '/users' %></li>
           </ul>
       <% end %>
     </nav>

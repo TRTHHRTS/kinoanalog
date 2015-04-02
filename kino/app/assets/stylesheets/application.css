@@ -21,6 +21,12 @@
 .mt-5 {
     margin-top: 0.5em;
 }
+.mr-5 {
+    margin-right: 0.5em;
+}
+.ml-5 {
+    margin-left: 0.5em;
+}
 .cntr {
     text-align: center;
 }

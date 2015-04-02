@@ -147,17 +147,35 @@ h1 {
   background-color: #327FB6;
 }
 
-.btn-no-review-exit-color {
+.btn-no-review-color {
   color: #ffeed9;
   background-color: #f5ca8c;
+}
+
+.text-bold {
   font-weight: bold;
 }
 
-.btn-no-review-exit-color:hover {
+.btn-exit-color {
   color: #ffeed9;
   background-color: #ffa93a;
-  font-weight: bold;
 }
+
+.btn-exit-color:hover {
+  color: #ffa93a;
+  background-color: #ffeed9;
+}
+
+.btn-enter-color {
+  color: #EDFDD7;
+  background-color: #6EAF19;
+}
+
+.btn-enter-color:hover {
+  color: #6EAF19;
+  background-color: #CEFD91;
+}
+
 .nav-justified {
   padding-left: 0;
   li a {
@@ -176,4 +194,8 @@ h1 {
 }
 .panel-header {
   padding: .5em .5em .5em .5em;
+}
+
+.text-color-orange {
+  color: #ffa93a;
 }
