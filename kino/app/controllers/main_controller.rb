@@ -39,6 +39,19 @@ class MainController < ApplicationController
     @users = User.all
   end
 
+  def profile
+    @user = User.find(params[:id])
+  end
+
+  # DELETE /main/1
+  def destroy_profile
+    @user = User.find(params[:id])
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to :main }
+    end
+  end
+
   def update_promote
     @user = User.find(params[:id])
     respond_to do |format|

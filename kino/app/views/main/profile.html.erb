@@ -1,0 +1,18 @@
+<h1>Профиль <%= 'администратора' if @user.permission == 1 %>
+  <%= 'пользователя' if @user.permission == 2 %></h1>
+
+<table>
+  <tr>
+    <th>Логин: </th><td><%= @user.login %></td>
+
+  </tr>
+  <tr>
+    <th>Почтовый ящик: </th><td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <th>Пол: </th><td><%= @user.sex %></td>
+  </tr>
+  <tr>
+    <%= link_to 'Удалить профиль', '/destroy_profile/'+@user.id.to_s, :class => 'btn btn-link' %>
+  </tr>
+</table>

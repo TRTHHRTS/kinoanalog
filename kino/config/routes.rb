@@ -11,6 +11,9 @@ Kino::Application.routes.draw do
   get 'search_result', to: 'main#search_result'
   post 'search_result', to: 'main#search_result'
 
+  get 'profile/:id', to: 'main#profile'
+  get 'destroy_profile/:id', to: 'main#destroy_profile'
+
   get 'new_movie', to: 'movies#new_movie'
   post 'create_movie', to: 'movies#create_movie'
   get 'edit_movie/:id', to: 'movies#edit_movie'
