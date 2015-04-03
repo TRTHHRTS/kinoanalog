@@ -8,30 +8,28 @@
 </head>
 <body>
   <div class="container">
-    <footer class="panel panel-default">
-    <header class="panel-header">
-      <div class="logo">
-      </div>
-      <section class="cabinet ">
-        <% if user_signed_in? %>
-            <%= render partial: 'layouts/signed_in' %>
-        <% else %>
-            <%= render partial: 'layouts/sign_in' %>
-        <% end %>
-      </section>
-    </header>
-
-    <div class="panel-header">
-      <%= form_tag(search_result_path(:query => @guery), role: 'search') do %>
-      <table class="search w100perc">
+    <header>
+      <table class="header-table">
         <tr>
-          <td><%= text_field_tag('query', nil, {class: 'form-control', required: 'true', placeholder: 'Введите название фильма'}) %></td>
-          <td><%= submit_tag('Найти', {class: 'btn btn-block btn-search-color btn-nav-size', "name" => "search"}) %></td>
+          <td></td>
+          <% if user_signed_in? %>
+              <%= render partial: 'layouts/signed_in' %>
+          <% else %>
+              <%= render partial: 'layouts/sign_in' %>
+          <% end %>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <%= form_tag(search_result_path(:query => @guery), role: 'search') do %>
+                <%= text_field_tag('query', nil, {class: 'form-control', required: 'true', placeholder: 'Введите название фильма'}) %>
+                </td>
+                <td>
+                  <%= submit_tag('Найти', {class: 'btn btn-block btn-search-color', "name" => "search"}) %>
+            <% end %>
+            </td>
         </tr>
       </table>
-      <% end %>
-    </div>
-    </footer>
+    </header>
     <nav>
       <ul class="nav-justified">
         <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'index' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Главная', '/main'%></li>

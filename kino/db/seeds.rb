@@ -66,8 +66,8 @@ Country.create([{name:'Россия'},
                 {name:'Испания'},
                 {name:'Великобритания'},
                 {name:'Ирландия'}])
-Movie.create([{id:1, title:'Американская История Х', orig_title:'American history X', image_url:'/assets/images/movies/1.jpg', year:1998, release_date:'2015-03-20',
-               duration:119, description:'history..', rate_id:2}])
+Movie.create([{id:1, title:'Американская История Х', orig_title:'American history X', image_url:'/assets/images/movies/1.jpg',
+               year:1998, release_date:'2015-04-01', duration:119, description:'history..', rate_id:2}])
 Movie.create([{id:2, title:'Мгла', orig_title:'The mist', year:2007, release_date:'2015-04-02',
                duration:119, description:'history..', rate_id:2}])
 Movie.create([{id:3, title:'Третье пришествие', orig_title:'Третье пришествие', year:2005, release_date:'2015-04-15',
