@@ -3,8 +3,6 @@
 <head>
   <title>PROkino</title>
   <%= stylesheet_link_tag "application.css" %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
 </head>
 <body>
   <div class="container">
@@ -44,6 +42,7 @@
           </ul>
       <% end %>
     </nav>
+    <p id="notice"><%= notice %></p>
     <div class="content">
       <%= yield %>
     </div>

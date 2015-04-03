@@ -27,7 +27,7 @@ Kino::Application.routes.draw do
   get 'destroy_review/:id', to: 'reviews#destroy_review'
 
   get 'users', to: 'main#users'
-  get 'promote/:id', to: 'main#update_promote'
+  get 'rights', to: 'main#change_rights'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

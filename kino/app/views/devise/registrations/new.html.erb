@@ -22,8 +22,6 @@
         <%= f.label 'Подтвердите пароль', for: 'passConfInput' %>
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', id: 'passConfInput' %>
       </div>
-      <!-- При прочтении удалить коммент. Бутсраповские radio button-ы работают по нажатию на текст -->
-      <!-- TODO поля логин и пол записываются в таблицу пустыми -->
       <div  class="form-group">
         <%= f.label 'Пол', for: 'sexInput' %> <br>
         <label class="btn-sm btn-success btn-unknown">
@@ -36,8 +34,8 @@
           <%= radio_button_tag(:sex, "Женский") %> Женский
         </label>
       </div>
-      <div class="form-group ">
-        <%= f.submit 'Зарегистрироваться', class: 'btn btn-block btn btn-header-color btn-nav-size' %>
+      <div class="form-group cntr">
+        <%= f.submit 'Зарегистрироваться', class: 'btn btn btn-header-color btn-nav-size' %>
       </div>
   <% end %>
 </div>
