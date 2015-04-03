@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h2>Расширенный поиск</h2>
+  <h2 class="title">Расширенный поиск</h2>
 </div>
 <form class="form-horizontal">
   <div class="form-group">
@@ -33,13 +33,13 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Искать</button>
+      <button type="submit" class="btn btn-block btn-header-color btn-nav-size">Искать</button>
     </div>
   </div>
 </form>
 <table class="table table-hover">
   <thead>
-  <tr>
+  <tr class="title">
     <th>Название</th>
     <th>Год выпуска</th>
     <th>Дата премьеры</th>
@@ -48,11 +48,11 @@
   </thead>
   <tbody>
   <% @movies.each do |movie| %>
-      <tr>
+      <tr class="table-tr">
         <td><%= movie.title %></td>
         <td><%= movie.year %></td>
         <td><%= movie.release_date %></td>
-        <td><%= link_to 'О фильме', '/details/' + movie.id.to_s, class:'btn btn-default' %></td>
+        <td><%= link_to 'О фильме', '/details/' + movie.id.to_s, class:'btn table-more-inf' %></td>
       </tr>
   <% end %>
   </tbody>

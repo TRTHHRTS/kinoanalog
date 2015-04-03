@@ -11,13 +11,13 @@
   <tbody>
   <% curTime = Time.now %>
   <% 3.times do |i| %>
-      <tr class="btn-search-color"><td colspan="4"><%= Russian::strftime(curTime+i.month, "%B") %></tr>
+      <tr class="table-movie-month"><td colspan="4"><%= Russian::strftime(curTime+i.month, "%B") %></tr>
       <% @movies.each do |movie| if movie.release_date.year == curTime.year && movie.release_date.month == curTime.month+i %>
-              <tr>
+              <tr class="table-tr">
                 <td><%= movie.release_date %></td>
                 <td><%= movie.title %></td>
                 <td><%= movie.orig_title %></td>
-                <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn btn-exit-color' %></td>
+                <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn table-more-inf' %></td>
               </tr>
           <% end %>
       <% end %>
