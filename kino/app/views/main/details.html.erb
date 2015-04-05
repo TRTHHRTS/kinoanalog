@@ -1,42 +1,61 @@
 <div class="movie-details">
+  <h1><strong class="title"><%= @movie.title %></strong><br>
+    <small><strong class="smaller-title"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
+  </h1>
+  <% if @movie.image_url != nil %>
+      <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>"
+           class="img-thumbnail" style="float: right" width="30%" height="420">
+  <% end %>
   <table class="about-movie-table">
     <tr>
-      <td>
-        <div>
-          <h1><strong class="title"><%= @movie.title %></strong><br>
-            <small><strong class="smaller-title"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
-          </h1>
-          <dl class="dl-horizontal">
-            <% list = ''; @movie.countries.each do |item| list += item.name + ', ' end; %>
-            <dt>Страна:</dt><dd><%= list[0, list.length-2] %></dd>
-            <% list = ''; @movie.genres.each do |item| list += item.name + ', ' end; %>
-            <dt>Жанр:</dt><dd><%= list[0, list.length-2] %></dd>
-            <dt>Дата премьеры:</dt><dd><%= @movie.release_date.to_s %></dd>
-            <dt>Продолжительность:</dt><dd><%= @movie.duration.to_s %> мин.</dd>
-            <dt>Ограничение:</dt><dd><%= @movie.rate_id.to_s %></dd>
-            <% list = ''; @movie.directors.each do |item| list += item.name + ', ' end; %>
-            <dt>Режиссер:</dt><dd><span><%= list[0, list.length-2] %></span></dd>
-            <% list = ''; @movie.producers.each do |item| list += item.name + ', ' end; %>
-            <dt>Продюсер:</dt><dd><%= list[0, list.length-2] %></dd>
-            <% list = ''; @movie.writers.each do |item| list += item.name + ', ' end; %>
-            <dt>Сценарист:</dt><dd><%= list[0, list.length-2] %></dd>
-            <% list = ''; @movie.stars.each do |item| list += item.name + ', ' end; %>
-            <dt>Актерский состав:</dt><dd><%= list[0, list.length-2] %></dd>
-          </dl>
-        </div>
-      </td>
-      <td style="min-width: 250px">
-        <% if @movie.image_url != nil %>
-            <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>"
-                 class="img-thumbnail" width="250" height="370">
-        <% end %>
-      </td>
+      <% list = ''; @movie.countries.each do |item| list += item.name + ', ' end; %>
+      <td>Страна:</td>
+      <td><%=  list[0, list.length-2] %></td>
+
     </tr>
     <tr>
-      <td colspan="2">
-        <blockquote>
-          <p><%= @movie.description %></p>
-        </blockquote>
+      <% list = ''; @movie.genres.each do |item| list += item.name + ', ' end; %><% list = ''; @movie.directors.each do |item| list += item.name + ', ' end; %>
+      <td>Жанр:</td>
+      <td><%= list[0, list.length-2] %></td>
+    </tr>
+    <tr>
+      <td>Дата премьеры:</td>
+      <td><%= @movie.release_date.to_s %></td>
+    </tr>
+    <tr>
+      <td>Продолжительность:</td>
+      <td><%= @movie.duration.to_s %> мин.</td>
+    </tr>
+    <tr>
+      <td>Ограничение:</td>
+      <td><%= @movie.rate_id.to_s %></td>
+    </tr>
+    <tr>
+      <% list = ''; @movie.directors.each do |item| list += item.name + ', ' end; %>
+      <td>Режиссер:</td>
+      <td><%= list[0, list.length-2] %></td>
+    </tr>
+    <tr>
+      <% list = ''; @movie.producers.each do |item| list += item.name + ', ' end; %>
+      <td>Продюсер:</td>
+      <td><%= list[0, list.length-2] %></td>
+    </tr>
+    <tr>
+      <% list = ''; @movie.writers.each do |item| list += item.name + ', ' end; %>
+      <td>Сценарист:</td>
+      <td><%= list[0, list.length-2] %></td>
+    </tr>
+    <tr>
+      <% list = ''; @movie.stars.each do |item| list += item.name + ', ' end; %>
+      <td>Актерский состав:</td>
+      <td><%= list[0, list.length-2] %></td>
+    </tr>
+</table>
+
+  <table>
+    <tr>
+      <td>
+          <%= @movie.description %>
         <p><strong>Пользовательский рейтинг: </strong>
           <% if @movie.ratings.count == 0 %>
               еще никто не проголосовал
@@ -74,9 +93,9 @@
                           <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                       <% end %>
                   <% end %>
-                  <h3 class="mb-0 mt-0"><strong><%= review.title %></strong></h3>
-                  <h4><%= review.content %></h4>
-                  <h5><i><%= @users.find(review.user_id).email %>, <%= review.review_date.to_s %></i></h5>
+                  <h4 class="mb-0 mt-0"><strong><%= review.title %></strong></h4>
+                  <p class="mb-0 mt-0"><%= review.content %></p>
+                  <i><%= @users.find(review.user_id).email %>, <%= review.review_date.to_s %></i>
                 </div>
               </td>
             </tr>

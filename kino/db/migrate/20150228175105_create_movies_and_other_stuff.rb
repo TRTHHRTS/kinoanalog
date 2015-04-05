@@ -48,15 +48,15 @@ class CreateMoviesAndOtherStuff < ActiveRecord::Migration
       t.belongs_to :movie, index: true
       t.belongs_to :director, index: true
     end
-    create_table :movies_producers, id: false do |t|
+    create_table :producers_movies, id: false do |t|
       t.belongs_to :movie, index: true
       t.belongs_to :producer, index: true
     end
-    create_table :movies_writers, id: false do |t|
+    create_table :writers_movies, id: false do |t|
       t.belongs_to :movie, index: true
       t.belongs_to :writer, index: true
     end
-    create_table :movies_stars, id: false do |t|
+    create_table :stars_movies, id: false do |t|
       t.belongs_to :movie, index: true
       t.belongs_to :star, index: true
     end

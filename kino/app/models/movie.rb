@@ -1,10 +1,10 @@
 class Movie < ActiveRecord::Base
   has_many :reviews
   has_many :ratings
-  has_and_belongs_to_many :countries
-  has_and_belongs_to_many :genres
-  has_and_belongs_to_many :stars
-  has_and_belongs_to_many :producers
-  has_and_belongs_to_many :directors
-  has_and_belongs_to_many :writers
+  has_and_belongs_to_many :countries, join_table: 'countries_movies'
+  has_and_belongs_to_many :genres, join_table: 'genres_movies'
+  has_and_belongs_to_many :stars, join_table: 'stars_movies'
+  has_and_belongs_to_many :producers, join_table: 'producers_movies'
+  has_and_belongs_to_many :directors, join_table: 'directors_movies'
+  has_and_belongs_to_many :writers, join_table: 'writers_movies'
 end

@@ -63,34 +63,18 @@ ActiveRecord::Schema.define(version: 20150314170025) do
     t.datetime "updated_at"
   end
 
-  create_table "movies_producers", id: false, force: true do |t|
-    t.integer "movie_id"
-    t.integer "producer_id"
-  end
-
-  add_index "movies_producers", ["movie_id"], name: "index_movies_producers_on_movie_id"
-  add_index "movies_producers", ["producer_id"], name: "index_movies_producers_on_producer_id"
-
-  create_table "movies_stars", id: false, force: true do |t|
-    t.integer "movie_id"
-    t.integer "star_id"
-  end
-
-  add_index "movies_stars", ["movie_id"], name: "index_movies_stars_on_movie_id"
-  add_index "movies_stars", ["star_id"], name: "index_movies_stars_on_star_id"
-
-  create_table "movies_writers", id: false, force: true do |t|
-    t.integer "movie_id"
-    t.integer "writer_id"
-  end
-
-  add_index "movies_writers", ["movie_id"], name: "index_movies_writers_on_movie_id"
-  add_index "movies_writers", ["writer_id"], name: "index_movies_writers_on_writer_id"
-
   create_table "producers", force: true do |t|
     t.string "name"
     t.string "url"
   end
+
+  create_table "producers_movies", id: false, force: true do |t|
+    t.integer "movie_id"
+    t.integer "producer_id"
+  end
+
+  add_index "producers_movies", ["movie_id"], name: "index_producers_movies_on_movie_id"
+  add_index "producers_movies", ["producer_id"], name: "index_producers_movies_on_producer_id"
 
   create_table "ratings", force: true do |t|
     t.integer "movie_id"
@@ -118,6 +102,14 @@ ActiveRecord::Schema.define(version: 20150314170025) do
     t.string "url"
   end
 
+  create_table "stars_movies", id: false, force: true do |t|
+    t.integer "movie_id"
+    t.integer "star_id"
+  end
+
+  add_index "stars_movies", ["movie_id"], name: "index_stars_movies_on_movie_id"
+  add_index "stars_movies", ["star_id"], name: "index_stars_movies_on_star_id"
+
   create_table "users", force: true do |t|
     t.string  "login",              default: "",           null: false
     t.string  "encrypted_password", default: "",           null: false
@@ -133,5 +125,13 @@ ActiveRecord::Schema.define(version: 20150314170025) do
     t.string "name"
     t.string "url"
   end
+
+  create_table "writers_movies", id: false, force: true do |t|
+    t.integer "movie_id"
+    t.integer "writer_id"
+  end
+
+  add_index "writers_movies", ["movie_id"], name: "index_writers_movies_on_movie_id"
+  add_index "writers_movies", ["writer_id"], name: "index_writers_movies_on_writer_id"
 
 end
