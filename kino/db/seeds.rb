@@ -9,7 +9,7 @@
 
 #Создание главного админа с id=1. Который впоследствие сможет наделять правами админа всех остальных юзеров.
 admin = User.new(
-    :login => 'admin',
+    :name => 'admin',
     :password => '123456',
     :email => 'admin@mail.ru',
     :sex => 'Мужской',
@@ -17,11 +17,11 @@ admin = User.new(
 )
 admin.save!(:validate => false)
 user = User.new(
-    :login => 'user',
+    :name => 'user',
     :email => 'user@mail.ru',
     :password => '123456',
     :sex => 'Женский',
-    :permission => 2
+    :permission => 3
 )
 user.save!(:validate => false)
 Genre.create([{name:'Аниме'},

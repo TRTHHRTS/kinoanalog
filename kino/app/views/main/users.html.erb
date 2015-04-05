@@ -17,11 +17,12 @@
   <% @users.each do |user| next if user.id == current_user.id %>
       <tr>
         <td><%= user.id %></td>
-        <td><%= user.login %></td>
+        <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.sex %></td>
         <td><%= 'Администратор' if user.permission == 1 %>
-          <%= 'Пользователь' if user.permission == 2 %></td>
+          <%= 'Редактор' if user.permission == 2 %>
+          <%= 'Пользователь' if user.permission == 3 %></td>
         <% if current_user.permission == 1 %>
             <td><%= link_to 'Сделать администратором', '/rights/?id=' + user.id.to_s + '&change_to=1', class:'btn btn-default btn-sm' if user.permission != 1 %>
               <%= link_to 'Сделать пользователем', '/rights/?id=' + user.id.to_s + '&change_to=3', class:'btn btn-default btn-sm' if user.permission != 3 %>
