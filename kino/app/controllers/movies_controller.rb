@@ -20,10 +20,8 @@ class MoviesController < ApplicationController
     respond_to do |format|
       if @movie.save
         format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Movie was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @movie }
       else
         format.html { render action: 'new' }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -35,10 +33,8 @@ class MoviesController < ApplicationController
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Movie was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -50,7 +46,6 @@ class MoviesController < ApplicationController
     @movie.destroy
     respond_to do |format|
       format.html { redirect_to main_path }
-      format.json { head :no_content }
     end
   end
 
