@@ -16,12 +16,15 @@ body {
           width: 50%;
         }
         td:last-child {
-          width: 25%;
+          width: 12.5%;
         }
       }
       > tbody > tr {
         td:nth-child(2) {
           width: 25%;
+        }
+        td:nth-child(3) {
+          width: 12.5%;
         }
       }
     }
@@ -94,22 +97,34 @@ h1 {
   margin-top: 5px;
 }
 
-.review_good {
-  color: #175886;
-  background-color: #94cef7;
+.review-title-user-good {
+  color: #a61753;
+  background-color: #fcd6e6;
   text-align: left;
-  border: 1px solid #175886;
+  border: 1px solid #a61753;
   a {
     margin-left: 0.5em;
     float: right;
   }
 }
 
-.review_bad {
-  color: #BC761A;
-  background-color: #FFd092;
+.review-text-good {
+  color: black;
+  background-color: #fcd6e6;
+  text-align: left;
+}
+
+.review-text-bad {
+  color: black;
+  background-color: #d5e9f7;
+  text-align: left;
+}
+
+.review-title-user-bad {
+  color: #175886;
+  background-color: #d5e9f7;
   text-align: right;
-  border: 1px solid #BC761A;
+  border: 1px solid #175886;
   a {
     margin-left: 0.5em;
     float: left;
@@ -121,22 +136,22 @@ h1 {
 }
 
 .title {
-  color: #A61753;
+  color: #327fb6;
 
 }
 .smaller-title {
-  color: #B74474;
+  color: #327fb6;
 
 }
 
 .film-review {
-  color: #8CC148;
+  color: black;
 
 }
 
 .btn-header-color {
-  color: #D5E9F7;
-  background-color: #175886;
+  color: #327FB6;
+  background-color: #D5E9F7;
 }
 .btn-header-color:hover {
   color: #D5E9F7;
@@ -149,12 +164,12 @@ h1 {
   background-color: #6EAF19;
 }
 .btn-search-color {
-   color: #175886;
-   background-color: #D5E9F7;
- }
-.btn-search-color:hover {
   color: #D5E9F7;
   background-color: #327FB6;
+ }
+.btn-search-color:hover {
+  color: #327FB6;
+  background-color: #D5E9F7;
 }
 
 .btn-no-review-color {
@@ -210,8 +225,8 @@ h1 {
   background-color: #6EAF19;
 }
 
-.text-color-orange {
-  color: #ffa93a;
+.text-color-dark-green {
+  color: #6EAF19;
 }
 
 .btn-female:hover {
@@ -234,21 +249,30 @@ h1 {
   background-color: #fcd6e6;
 }
 
+.btn-male {
+  color: #175886;
+  background-color: #d5e9f7;
+}
+
+.btn-male:hover {
+  color: #d5e9ee;
+  background-color: #327fb6;
+}
+
 
 .authors-title
 {
   margin-top: 1em;
-  color: #EDFDD7;
-  background-color: #8cc148;
+  padding-top: 5px;
+  padding-right: 15px;
+  color: #175886;
+  background-color: #94cef7;
+  height: 35px;
+  vertical-align: middle;
 }
 
 .table-movie-month {
   background-color: #ffeed9;
-  color: #B74474;
-}
-
-.table-movie-month:hover {
-  background-color: #ffa93a;
   color: #B74474;
 }
 
@@ -271,3 +295,4 @@ h1 {
   color: black;
   background-color: #f5f5f5;
 }
+

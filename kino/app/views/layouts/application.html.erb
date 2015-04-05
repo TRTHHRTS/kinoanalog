@@ -17,7 +17,7 @@
           <% end %>
         </tr>
         <tr>
-          <td colspan="2">
+          <td colspan="3">
             <%= form_tag(search_result_path(:query => @guery), role: 'search') do %>
                 <%= text_field_tag('query', nil, {class: 'form-control', required: 'true', placeholder: 'Введите название фильма'}) %>
                 </td>
@@ -47,9 +47,9 @@
       <%= yield %>
     </div>
     <footer class="panel authors-title">
-      <div class="panel-body">
-        <h4>Силаков, Сорокина, Исаев</h4>
-      </div>
+
+        Силаков, Сорокина, Исаев - 2015
+
     </footer>
   </div>
 </body>
