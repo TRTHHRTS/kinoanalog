@@ -2,10 +2,12 @@
   <h1><strong class="title"><%= @movie.title %></strong><br>
     <small><strong class="smaller-title"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
   </h1>
-  <% if @movie.image_url != nil %>
-      <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>"
-           class="img-thumbnail" style="float: right" width="30%" height="420">
-  <% end %>
+<% if @movie.image_url == nil
+     imgPath = String.new('/assets/images/movies/noposter.png')
+     else
+     imgPath = @movie.image_url
+     end %>
+     <img src="<%= imgPath %>" alt="<%= @movie.orig_title %>" class="img-thumbnail poster">
   <table class="about-movie-table">
     <tr>
       <% list = ''; @movie.countries.each do |item| list += item.name + ', ' end; %>
@@ -71,6 +73,8 @@
       <%= link_to 'Редактировать данные', '/edit_movie/'+@movie.id.to_s, :class => 'btn btn-link' %>
       <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, :class => 'btn btn-link' %>
   <% end %>
+</div>
+<div class="panel-review">
   <h2 class="mb-0 cntr"><small><strong class="film-review">Отзывы пользователей:</strong></small></h2>
   <% if user_signed_in? && @movie.reviews.where(user_id: current_user.id).count == 0 %>
       <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-success' do %>

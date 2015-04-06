@@ -74,7 +74,17 @@ body {
 }
 div.movie-details {
   min-height: 450px;
+  .poster {
+    float: right;
+    width: 250px;
+    height: 350px;
+  }
 }
+
+.panel-review {
+
+}
+
 div.no_reviews {
   width: 200px;
   height: 50px;
