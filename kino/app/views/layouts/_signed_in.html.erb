@@ -1,4 +1,4 @@
 <%= form_tag('/signout', method: 'post', class: 'h100perc') do %>
-<td class="title ta-right"><strong>Привет, <%= link_to current_user.name, '/profile/'+current_user.id.to_s %>!</strong></td>
+<td colspan="2" class="title ta-right"><strong>Привет, <%= link_to current_user.name, '/profile/'+current_user.id.to_s %>!</strong></td>
 <td class="cntr ta-right"><%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: 'btn btn-exit-color' %></td>
 <% end %>
