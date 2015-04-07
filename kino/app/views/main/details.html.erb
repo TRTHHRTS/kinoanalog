@@ -77,7 +77,7 @@
 <div class="panel-review">
   <h2 class="mb-0 cntr"><small><strong class="title font-comic-sans-MS">Отзывы пользователей:</strong></small></h2>
   <% if user_signed_in? && @movie.reviews.where(user_id: current_user.id).count == 0 %>
-      <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-success' do %>
+      <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-enter-color' do %>
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить отзыв
       <% end %>
   <% end %>
