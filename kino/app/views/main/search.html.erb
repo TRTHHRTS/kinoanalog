@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h2 class="title">Расширенный поиск</h2>
+  <h2 class="title font-comic-sans-MS">Расширенный поиск</h2>
 </div>
 <form class="form-horizontal">
   <div class="form-group">
@@ -39,16 +39,16 @@
 </form>
 <table class="table table-hover">
   <thead>
-  <tr>
-    <th>Название</th>
-    <th>Год выпуска</th>
-    <th>Дата премьеры</th>
+  <tr class="font-comic-sans-MS title font-size-18 cntr">
+    <th class="cntr">Название</th>
+    <th class="cntr">Год выпуска</th>
+    <th class="cntr">Дата премьеры</th>
     <th></th>
   </tr>
   </thead>
   <tbody>
   <% @movies.each do |movie| %>
-      <tr class="table-tr">
+      <tr class="table-tr font-georgia cntr">
         <td><%= movie.title %></td>
         <td><%= movie.year %></td>
         <td><%= movie.release_date %></td>

@@ -155,7 +155,7 @@ h1 {
 }
 
 .film-review {
-  color: black;
+  color: 327fb6;
 
 }
 
@@ -168,10 +168,10 @@ h1 {
   background-color: #327FB6;
 }
 .btn-nav-color {
-  background-color: #CEFD91;
+  background-color: #D5E9F7;
 }
 .btn-nav-color:hover {
-  background-color: #6EAF19;
+  background-color: #327FB6;
 }
 .btn-search-color {
   color: #D5E9F7;
@@ -220,19 +220,19 @@ h1 {
     padding-top: 0.3em;
     display: block;
     height: 100%;
-    color: #6EAF19;
+    color: #327FB6;
     text-decoration: none;
   }
   li:hover a {
     display: block;
-    color: #EDFDD7;
+    color: #D5E9F7;
     text-decoration: none;
   }
 }
 
 .active:hover {
-  color: #EDFDD7;
-  background-color: #6EAF19;
+  color: #D5E9F7;
+  background-color: #327FB6;
 }
 
 .text-color-dark-green {
@@ -241,7 +241,7 @@ h1 {
 
 .btn-female:hover {
   color: #fcd6e6;
-  background-color: #e1337c;
+  background-color: #fc90be;
 }
 
 .btn-unknown {
@@ -306,3 +306,34 @@ h1 {
   background-color: #f5f5f5;
 }
 
+.font-georgia {
+   font-family: Georgia;
+ }
+
+.font-comic-sans-MS {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+.font-size-18 {
+  font-size: 18px;
+}
+
+.font-size-14 {
+  font-size: 14px;
+}
+
+.font-size-13 {
+  font-size: 13px;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
