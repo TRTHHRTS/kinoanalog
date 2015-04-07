@@ -1,3 +1,8 @@
+// ЦВЕТОВАЯ СХЕМА
+$softblue: #94cef7;
+$darkmagenta: #a61753;
+
+
 div.container {
   width: 900px;
   margin: 0.5em auto;
@@ -6,7 +11,7 @@ header {
   width: 100%;
   .header-table {
     border-radius: 4px;
-    background-color: #94cef7;
+    background-color: $softblue;
     width: 100%;
     border-collapse: separate;
     border-spacing: 5px;
@@ -263,4 +268,13 @@ footer {
     margin: 0;
     padding: 0;
   }
+}
+
+/* COLORS */
+
+.font-black {
+  color: black;
+}
+.font-dark-magenta {
+  color: $darkmagenta;
 }

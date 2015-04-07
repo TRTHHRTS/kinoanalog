@@ -11,7 +11,6 @@
  *= require_self
  *= require_tree
  */
-
 .mb-0 {
     margin-bottom: 0;
 }
@@ -77,10 +76,4 @@
 
 .font-size-12 {
     font-size: 12px;
-}
-
-/* COLORS */
-
-.font-black {
-    color: black;
 }
