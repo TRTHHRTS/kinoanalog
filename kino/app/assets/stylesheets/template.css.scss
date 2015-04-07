@@ -140,65 +140,20 @@ h1 {
     float: left;
   }
 }
+
 .btn-nav-size {
   width: 206px;
   height: 35px;
 }
 
-.title {
-  color: #327fb6;
-
-}
-.smaller-title {
-  color: #327fb6;
-
-}
-
-.film-review {
-  color: 327fb6;
-
-}
-
 .btn-header-color {
-  color: #327FB6;
-  background-color: #D5E9F7;
-}
-.btn-header-color:hover {
-  color: #D5E9F7;
-  background-color: #327FB6;
-}
-.btn-nav-color {
-  background-color: #D5E9F7;
-}
-.btn-nav-color:hover {
-  background-color: #327FB6;
-}
-.btn-search-color {
-  color: #D5E9F7;
-  background-color: #327FB6;
+   color: #D5E9F7;
+   background-color: #327FB6;
  }
-.btn-search-color:hover {
+
+.btn-header-color:hover {
   color: #327FB6;
   background-color: #D5E9F7;
-}
-
-.btn-no-review-color {
-  color: #ffeed9;
-  background-color: #f5ca8c;
-}
-
-.text-bold {
-  font-weight: bold;
-}
-
-.btn-exit-color {
-  color: #ffeed9;
-  background-color: #ffa93a;
-}
-
-.btn-exit-color:hover {
-  color: #ffa93a;
-  background-color: #ffeed9;
 }
 
 .btn-enter-color {
@@ -209,6 +164,15 @@ h1 {
 .btn-enter-color:hover {
   color: #6EAF19;
   background-color: #CEFD91;
+}
+
+
+.btn-nav-color {
+  background-color: #D5E9F7;
+}
+
+.btn-nav-color:hover {
+  background-color: #327FB6;
 }
 
 .nav-justified {
@@ -235,13 +199,27 @@ h1 {
   background-color: #327FB6;
 }
 
-.text-color-dark-green {
-  color: #6EAF19;
+.title {
+  color: #327fb6;
 }
 
-.btn-female:hover {
-  color: #fcd6e6;
-  background-color: #fc90be;
+.btn-no-review-color {
+  color: #ffeed9;
+  background-color: #f5ca8c;
+}
+
+.btn-exit-color {
+  color: #ffeed9;
+  background-color: #ffa93a;
+}
+
+.btn-exit-color:hover {
+  color: #ffa93a;
+  background-color: #ffeed9;
+}
+
+.text-color-dark-green {
+  color: #6EAF19;
 }
 
 .btn-unknown {
@@ -259,6 +237,11 @@ h1 {
   background-color: #fcd6e6;
 }
 
+.btn-female:hover {
+  color: #fcd6e6;
+  background-color: #fc90be;
+}
+
 .btn-male {
   color: #175886;
   background-color: #d5e9f7;
@@ -268,7 +251,6 @@ h1 {
   color: #d5e9ee;
   background-color: #327fb6;
 }
-
 
 .authors-title
 {
@@ -306,34 +288,3 @@ h1 {
   background-color: #f5f5f5;
 }
 
-.font-georgia {
-   font-family: Georgia;
- }
-
-.font-comic-sans-MS {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-}
-
-.font-italic {
-  font-style: italic;
-}
-
-.font-size-16 {
-  font-size: 16px;
-}
-
-.font-size-18 {
-  font-size: 18px;
-}
-
-.font-size-14 {
-  font-size: 14px;
-}
-
-.font-size-13 {
-  font-size: 13px;
-}
-
-.font-size-12 {
-  font-size: 12px;
-}

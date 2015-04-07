@@ -1,6 +1,6 @@
 <div class="movie-details">
   <h1><strong class="title font-comic-sans-MS"><%= @movie.title %></strong><br>
-    <small><strong class="smaller-title font-comic-sans-MS"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
+    <small><strong class="title font-comic-sans-MS"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
   </h1>
 <% if @movie.image_url == nil
      imgPath = String.new('/assets/images/movies/noposter.png')
@@ -75,7 +75,7 @@
   <% end %>
 </div>
 <div class="panel-review">
-  <h2 class="mb-0 cntr"><small><strong class="film-review title font-comic-sans-MS">Отзывы пользователей:</strong></small></h2>
+  <h2 class="mb-0 cntr"><small><strong class="title font-comic-sans-MS">Отзывы пользователей:</strong></small></h2>
   <% if user_signed_in? && @movie.reviews.where(user_id: current_user.id).count == 0 %>
       <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-success' do %>
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить отзыв
