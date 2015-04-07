@@ -17,14 +17,14 @@
           <% end %>
         </tr>
         <tr>
+          <%= form_tag(search_result_path(:query => @guery), role: 'search') do %>
           <td colspan="3">
-            <%= form_tag(search_result_path(:query => @guery), role: 'search') do %>
-                <%= text_field_tag('query', nil, {class: 'form-control', required: 'true', placeholder: 'Введите название фильма'}) %>
-                </td>
-                <td>
-                  <%= submit_tag('Найти', {class: 'btn btn-block btn-header-color', name: 'search'}) %>
-            <% end %>
-            </td>
+            <%= text_field_tag('query', nil, {class: 'form-control', required: 'true', placeholder: 'Введите название фильма'}) %>
+          </td>
+          <td>
+            <%= submit_tag('Найти', {class: 'btn btn-block btn-header-color', name: 'search'}) %>
+          </td>
+          <% end %>
         </tr>
       </table>
     </header>

@@ -74,16 +74,22 @@
       <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, :class => 'btn btn-link' %>
   <% end %>
 </div>
+<% if @movie.reviews.count == 0
+     reviewString = 'Отзывов еще нет'
+     if user_signed_in?
+       reviewString += ', но вы можете оставить свой!'
+     end
+   else
+     reviewString = 'Отзывы пользователей:'
+   end %>
 <div class="panel-review">
-  <h2 class="mb-0 cntr"><small><strong class="title font-comic-sans-MS">Отзывы пользователей:</strong></small></h2>
+  <h2 class="mb-0 cntr"><small><strong class="title font-comic-sans-MS"><%= reviewString %></strong></small></h2>
   <% if user_signed_in? && @movie.reviews.where(user_id: current_user.id).count == 0 %>
       <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-enter-color' do %>
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить отзыв
       <% end %>
   <% end %>
-  <% if @movie.reviews.size == 0 then %>
-      <div class="cntr"><div class="btn btn-warning disabled btn-nav-size btn-no-review-color"><strong>ОТЗЫВОВ ЕЩЕ НЕТ</strong></div></div>
-  <% else %>
+  <% if @movie.reviews.size > 0 %>
       <table class="reviews">
         <% @movie.reviews.each do |review| %>
             <tr>
