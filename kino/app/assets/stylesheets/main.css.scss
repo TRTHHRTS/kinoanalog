@@ -8,9 +8,7 @@
 .about-movie-table {
   width: 68%;
   margin-bottom: 1em;
-}
-
-.about-movie-table tbody > tr > td  div {
-  width: 600px;
-  overflow-wrap: break-word;
+  > tbody tr > td:nth-child(2) {
+    width: 70%;
+  }
 }
