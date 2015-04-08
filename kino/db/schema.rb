@@ -13,6 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20150314170025) do
 
+  create_table "ages", force: true do |t|
+    t.string "name"
+  end
+
   create_table "countries", force: true do |t|
     t.string "name"
   end
@@ -57,7 +61,7 @@ ActiveRecord::Schema.define(version: 20150314170025) do
     t.date     "release_date"
     t.integer  "duration"
     t.text     "description"
-    t.integer  "rate_id"
+    t.integer  "age_id"
     t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -7,13 +7,16 @@ class CreateMoviesAndOtherStuff < ActiveRecord::Migration
       t.date :release_date
       t.integer :duration
       t.text :description
-      t.integer :rate_id
+      t.integer :age_id
       t.string :image_url
 
       t.timestamps
     end
 
     create_table :genres do |t|
+      t.string :name
+    end
+    create_table :ages do |t|
       t.string :name
     end
     create_table :countries do |t|

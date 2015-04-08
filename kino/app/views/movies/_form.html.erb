@@ -25,7 +25,7 @@
       <%= f.number_field :year, class: 'form-control', id: 'yearInput', value: Time.now.year, in: 1900...Time.now.year+5 %>
     </div>
     <div class="form-group">
-      <%= f.label :release_date, for: 'dateInput' %>
+      <%= f.label 'Дата выпуска', for: 'dateInput' %>
       <%= f.date_field  :release_date, id: 'dateInput', class: 'form-control datepicker' %>
     </div>
     <div class="form-group">
@@ -33,11 +33,11 @@
       <%= f.number_field :duration, class: 'form-control', id: 'durationInput' %>
     </div>
     <div class="form-group">
-      <%= f.label :description, for: 'descInput' %>
+      <%= f.label 'Описание фильма', for: 'descInput' %>
       <%= f.text_area :description, id: 'descInput', class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :rate_id %>
+      <%= f.label 'Возрастное ограничение' %>
       <%= f.number_field :rate_id, class: 'form-control' %>
     </div>
     <div class="form-group cntr">

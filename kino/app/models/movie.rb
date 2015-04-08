@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+  belongs_to  :age
   has_many :reviews
   has_many :ratings
   has_and_belongs_to_many :countries, join_table: 'countries_movies'
