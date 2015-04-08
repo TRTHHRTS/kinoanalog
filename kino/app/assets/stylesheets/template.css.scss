@@ -89,16 +89,6 @@ div.movie-details {
 .panel-review {
 }
 
-div.no_reviews {
-  width: 200px;
-  height: 50px;
-  margin-top: 0;
-  background-color: #6f5499;
-  text-align: center;
-  color: white;
-  box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.4);
-}
-
 .reviews {
   width: 100%;
   .review {
@@ -108,9 +98,9 @@ div.no_reviews {
     box-shadow: 0.3em 0.3em 5px rgba(122,122,122,0.4);
   }
   .review-title-user-bad {
-    color: #a61753;
-    border: 1px solid #a61753;
-    background-color: #fcd6e6;
+    color: $darkpink;
+    border: 1px solid $darkpink;
+    background-color: $lightpink;
     text-align: left;
     a {
       margin-left: 0.5em;
@@ -119,20 +109,20 @@ div.no_reviews {
   }
   .review-text-bad {
     color: black;
-    background-color: #fcd6e6;
+    background-color: $lightpink;
     text-align: left;
   }
 
   .review-text-good {
     color: black;
-    background-color: #d5e9f7;
+    background-color: $lightblue;
     text-align: left;
   }
 
   .review-title-user-good {
-    color: #175886;
-    border: 1px solid #175886;
-    background-color: #d5e9f7;
+    color: $darkblue;
+    border: 1px solid $darkblue;
+    background-color: $lightblue;
     text-align: right;
     a {
       margin-left: 0.5em;
@@ -147,29 +137,29 @@ div.no_reviews {
 }
 
 .btn-header-color {
-   color: #D5E9F7;
-   background-color: #327FB6;
+   color: $lightblue;
+   background-color: $richblue;
   &:hover {
-    color: #327FB6;
-    background-color: #D5E9F7;
-    border: 1px solid #327FB6;
+    color: $richblue;
+    background-color: $lightblue;
+    border: 1px solid $richblue;
   }
  }
 
 .btn-enter-color {
-  color: #EDFDD7;
-  background-color: #6EAF19;
+  color: $lightgreen;
+  background-color: $darkgreen;
   &:hover {
-    color: #6EAF19;
-    background-color: #EDFDD7;
-    border: 1px solid #6EAF19;
+    color: $darkgreen;
+    background-color: $lightgreen;
+    border: 1px solid $darkgreen;
   }
 }
 
 .btn-nav-color {
-  background-color: #D5E9F7;
+  background-color: $lightblue;
   &:hover {
-    background-color: #327FB6;
+    background-color: $richblue;
   }
 }
 
@@ -181,80 +171,80 @@ div.no_reviews {
       padding-top: 0.3em;
       display: block;
       height: 100%;
-      color: #327FB6;
+      color: $richblue;
       text-decoration: none;
     }
   }
   li:hover a {
     display: block;
-    color: #D5E9F7;
+    color: $lightblue;
     text-decoration: none;
   }
 }
 
 .active:hover {
-  color: #D5E9F7;
-  background-color: #327FB6;
+  color: $lightblue;
+  background-color: $richblue;
 }
 
 .title {
-  color: #327fb6;
+  color: $richblue;
 }
 
 .btn-no-review-color {
-  color: #ffeed9;
+  color: $lightorange;
   background-color: #f5ca8c;
 }
 
 .btn-exit-color {
-  color: #ffeed9;
-  background-color: #ffa93a;
+  color: $lightorange;
+  background-color: $richorange;
   &:hover {
-    color: #ffa93a;
-    background-color: #ffeed9;
-    border: 1px solid #ffa93a;
+    color: $richorange;
+    background-color: $lightorange;
+    border: 1px solid $richorange;
   }
 }
 
 .btn-unknown {
-  color: #8cc148;
-  background-color: #EDFDD7;
+  color: $dirtygreen;
+  background-color: $lightgreen;
   &:hover {
-    color: #EDFDD7;
-    background-color: #8cc148;
+    color: $lightgreen;
+    background-color: $dirtygreen;
   }
 }
 
 .btn-female {
-  color: #e1337c;
-  background-color: #fcd6e6;
+  color: $richpink;
+  background-color: $lightpink;
   &:hover {
-    color: #fcd6e6;
-    background-color: #fc90be;
+    color: $lightpink;
+    background-color: $softpink;
   }
 }
 
 .btn-male {
-  color: #175886;
-  background-color: #d5e9f7;
+  color: $darkblue;
+  background-color: $lightblue;
   &:hover {
     color: #d5e9ee;
-    background-color: #327fb6;
+    background-color: $richblue;
   }
 }
 
 .table-movie-month {
-  background-color: #ffeed9;
-  color: #B74474;
+  background-color: $lightorange;
+  color: $dirtypink;
 }
 
 .table-more-inf {
-  color: #327FB6;
-  background-color: #D5E9F7;
-  border: 1px solid #327FB6;
+  color: $richblue;
+  background-color: $lightblue;
+  border: 1px solid $richblue;
   &:hover {
-    color: #D5E9F7;
-    background-color: #327FB6;
+    color: $lightblue;
+    background-color: $richblue;
   }
 }
 
@@ -268,16 +258,16 @@ div.no_reviews {
 }
 
 .font-dark-blue {
-  color: #175886;
+  color: $darkblue;
 }
 
 .font-dark-green {
-  color: #6EAF19;
+  color: $darkgreen;
 }
 
 footer {
-  color: #175886;
-  background-color: #94cef7;
+  color: $darkblue;
+  background-color: $softblue;
   margin: 1em 0 0 0;
   padding: 7px 15px 0 0;
   height: 35px;
@@ -290,13 +280,6 @@ footer {
 
 /* COLORS */
 
-.font-black {
-  color: black;
-}
-.font-dark-pink {
-  color: $darkpink;
-}
-
-.font-dark-magenta {
-  color: #a61753;
-}
+.font-black         { color: black; }
+.font-dark-pink     { color: $darkpink; }
+.font-dark-magenta  { color: $darkpink; }

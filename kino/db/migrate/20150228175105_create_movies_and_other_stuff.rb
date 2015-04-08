@@ -18,6 +18,7 @@ class CreateMoviesAndOtherStuff < ActiveRecord::Migration
     end
     create_table :ages do |t|
       t.string :name
+      t.string :image_url
     end
     create_table :countries do |t|
       t.string :name
