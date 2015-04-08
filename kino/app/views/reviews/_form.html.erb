@@ -17,11 +17,11 @@
     <h2><strong class="font-broadway title">Добавить отзыв к фильму </strong><strong class="font-broadway font-dark-green"><%= @movie_title %></strong></h2>
     <div class="form-group">
       <%= f.label 'Заголовок', for: 'titleInput' %>
-      <%= f.text_field :title, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Заголовок' %>
+      <%= f.text_field :title, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Заголовок', required: 'true' %>
     </div>
     <div class="form-group">
       <%= f.label 'Отзыв', for: 'titleInput' %>
-      <%= f.text_area :content, autofocus: true, class: 'form-control', :size => "30x10", id: 'titleInput', placeholder: 'Отзыв' %>
+      <%= f.text_area :content, autofocus: true, class: 'form-control', size: '30x10', id: 'titleInput', placeholder: 'Отзыв', required: 'true' %>
     </div>
     <div class="form-group font-dark-green">
       <%= f.label :recommended, class: 'titleInput' do %>

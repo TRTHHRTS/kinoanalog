@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20150314170025) do
 
   create_table "ages", force: true do |t|
     t.string "name"
+    t.string "image_url"
   end
 
   create_table "countries", force: true do |t|
@@ -63,6 +64,10 @@ ActiveRecord::Schema.define(version: 20150314170025) do
     t.text     "description"
     t.integer  "age_id"
     t.string   "image_url"
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

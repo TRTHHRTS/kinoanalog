@@ -9,6 +9,7 @@ class CreateMoviesAndOtherStuff < ActiveRecord::Migration
       t.text :description
       t.integer :age_id
       t.string :image_url
+      t.attachment :poster
 
       t.timestamps
     end
