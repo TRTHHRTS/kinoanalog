@@ -1,7 +1,24 @@
 // ЦВЕТОВАЯ СХЕМА
+$lightblue: #D5E9F7;
 $softblue: #94cef7;
-$darkmagenta: #a61753;
-
+$richblue: #327FB6;
+$dirtyblue: #3D7094;
+$darkblue: #175886;
+$lightgreen: #EDFDD7;
+$softgreen: #CEFD91;
+$richgreen: #9DED36;
+$dirtygreen: #8CC148;
+$darkgreen: #6EAF19;
+$lightpink: #FCD6E6;
+$softpink: #FC90BE;
+$richpink: #E1337C;
+$dirtypink: #B74474;
+$darkpink: #A61753;
+$lightorange: #FFEED9;
+$softorange: #FFD092;
+$richorange: #FFA93A;
+$dirtyorange: #CF964D;
+$darkorange: #BC761A;
 
 div.container {
   width: 900px;
@@ -90,7 +107,7 @@ div.no_reviews {
     border-radius: 4px;
     box-shadow: 0.3em 0.3em 5px rgba(122,122,122,0.4);
   }
-  .review-title-user-good {
+  .review-title-user-bad {
     color: #a61753;
     border: 1px solid #a61753;
     background-color: #fcd6e6;
@@ -100,19 +117,19 @@ div.no_reviews {
       float: right;
     }
   }
-  .review-text-good {
+  .review-text-bad {
     color: black;
     background-color: #fcd6e6;
     text-align: left;
   }
 
-  .review-text-bad {
+  .review-text-good {
     color: black;
     background-color: #d5e9f7;
     text-align: left;
   }
 
-  .review-title-user-bad {
+  .review-title-user-good {
     color: #175886;
     border: 1px solid #175886;
     background-color: #d5e9f7;
@@ -195,6 +212,7 @@ div.no_reviews {
   &:hover {
     color: #ffa93a;
     background-color: #ffeed9;
+    border: 1px solid #ffa93a;
   }
 }
 
@@ -275,6 +293,10 @@ footer {
 .font-black {
   color: black;
 }
+.font-dark-pink {
+  color: $darkpink;
+}
+
 .font-dark-magenta {
-  color: $darkmagenta;
+  color: #a61753;
 }

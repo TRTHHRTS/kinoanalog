@@ -26,6 +26,12 @@
 .ml-5 {
     margin-left: 0.5em;
 }
+.mb-10 {
+    margin-bottom: 10px;
+}
+.mt-10 {
+    margin-top: 10px;
+}
 .cntr {
     text-align: center;
 }
@@ -46,8 +52,9 @@
     font-family: Georgia;
 }
 
-.font-comic-sans-MS {
-    font-family: "Comic Sans MS", cursive, sans-serif;
+.font-broadway {
+    font-family: Broadway;
+
 }
 
 .font-italic {
@@ -76,4 +83,8 @@
 
 .font-size-12 {
     font-size: 12px;
+}
+
+.font-size-24 {
+    font-size: 24px;
 }

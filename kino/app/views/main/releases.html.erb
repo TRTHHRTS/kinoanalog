@@ -1,6 +1,6 @@
 <table class="table releases-table">
   <thead>
-  <tr class="cntr font-comic-sans-MS font-size-18 title">
+  <tr class="cntr font-broadway font-size-18 title">
     <th class="cntr">Дата</th>
     <th class="cntr">Название</th>
     <th class="cntr">Оригинальное название</th>
@@ -10,10 +10,10 @@
   <tbody>
   <% curTime = Time.now %>
   <% 3.times do |i| %>
-      <tr class="table-movie-month"><td colspan="4"><%= Russian::strftime(curTime+i.month, "%B") + ' - ' + curTime.year.to_s %></tr>
+      <tr class="table-movie-month text-bold font-italic"><td colspan="4"><%= Russian::strftime(curTime+i.month, "%B") + ' - ' + curTime.year.to_s %></tr>
       <% @movies.each do |movie| if movie.release_date.year == curTime.year && movie.release_date.month == curTime.month+i %>
               <tr class="table-tr cntr font-georgia">
-                <td><%= movie.release_date.day %></td>
+                <td class="font-size-24"><%= movie.release_date.day %></td>
                 <td><%= movie.title %></td>
                 <td><%= movie.orig_title %></td>
                 <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn table-more-inf' %></td>

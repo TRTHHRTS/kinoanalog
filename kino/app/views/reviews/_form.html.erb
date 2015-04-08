@@ -14,7 +14,7 @@
     <%= f.hidden_field :movie_id, { :value => @review.movie_id } %>
     <%= f.hidden_field :user_id, { :value => @review.user_id } %>
     <%= f.hidden_field :review_date, { :value => Time.now } %>
-    <h2><strong class="font-comic-sans-MS title">Добавить отзыв к фильму </strong><strong class="font-comic-sans-MS font-dark-green"><%= @movie_title %></strong></h2>
+    <h2><strong class="font-broadway title">Добавить отзыв к фильму </strong><strong class="font-broadway font-dark-green"><%= @movie_title %></strong></h2>
     <div class="form-group">
       <%= f.label 'Заголовок', for: 'titleInput' %>
       <%= f.text_field :title, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Заголовок' %>

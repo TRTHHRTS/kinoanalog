@@ -1,6 +1,6 @@
 <div class="movie-details">
-  <h1><strong class="title font-comic-sans-MS"><%= @movie.title %></strong><br>
-    <small><strong class="title font-comic-sans-MS"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
+  <h1><strong class="title font-broadway"><%= @movie.title %></strong><br>
+    <small><strong class="title font-broadway"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
   </h1>
 <% if @movie.image_url == nil
      imgPath = String.new('/assets/images/movies/noposter.png')
@@ -83,7 +83,7 @@
      reviewString = 'Отзывы пользователей:'
    end %>
 <div class="panel-review">
-  <h2 class="mb-0 cntr"><small><strong class="title font-comic-sans-MS"><%= reviewString %></strong></small></h2>
+  <h2 class="mb-0 cntr"><small><strong class="title font-broadway"><%= reviewString %></strong></small></h2>
   <% if user_signed_in? && @movie.reviews.where(user_id: current_user.id).count == 0 %>
       <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-enter-color' do %>
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить отзыв
@@ -103,7 +103,7 @@
                           <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                       <% end %>
                   <% end %>
-                  <h4 class="mb-0 mt-0 font-size-16"><strong><%= review.title %></strong></h4>
+                  <h4 class="mb-10 mt-10 font-size-16"><strong><%= review.title %></strong></h4>
                   <p class="mb-0 mt-0 font-georgia font-size-13 <%= review.recommended ? 'review-text-good' : 'review-text-bad' %>"><%= review.content %></p>
                   <i class="font-size-12"><%= @users.find(review.user_id).email %>, <%= review.review_date.to_s %></i>
                 </div>
