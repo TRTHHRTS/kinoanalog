@@ -21,7 +21,7 @@ class MoviesController < ApplicationController
       if @movie.save
         format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Movie was successfully created.' }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new_movie' }
       end
     end
   end
@@ -34,7 +34,7 @@ class MoviesController < ApplicationController
       if @movie.update(movie_params)
         format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Movie was successfully updated.' }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'edit_movie' }
       end
     end
   end

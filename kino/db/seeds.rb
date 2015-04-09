@@ -67,6 +67,7 @@ Country.create([{name:'Россия'},
                 {name:'Великобритания'},
                 {name:'Ирландия'}])
 Age.create([{name:'0+'},
+            {name:'6+'},
             {name:'12+'},
             {name:'16+'},
             {name:'18+'}])

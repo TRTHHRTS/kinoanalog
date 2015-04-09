@@ -9,7 +9,9 @@ class CreateMoviesAndOtherStuff < ActiveRecord::Migration
       t.text :description
       t.integer :age_id
       t.string :image_url
-      t.attachment :poster
+      t.datetime :created_at
+      t.datetime :updated_at
+      t.has_attached_file :poster
 
       t.timestamps
     end
@@ -65,6 +67,5 @@ class CreateMoviesAndOtherStuff < ActiveRecord::Migration
       t.belongs_to :movie, index: true
       t.belongs_to :star, index: true
     end
-
   end
 end

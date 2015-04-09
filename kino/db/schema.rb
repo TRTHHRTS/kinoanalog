@@ -64,12 +64,12 @@ ActiveRecord::Schema.define(version: 20150314170025) do
     t.text     "description"
     t.integer  "age_id"
     t.string   "image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
     t.datetime "poster_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "producers", force: true do |t|
