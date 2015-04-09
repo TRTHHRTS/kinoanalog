@@ -70,6 +70,7 @@ class MainController < ApplicationController
 
   def find_movies
     @movies = Movie.where("lower(title) LIKE lower(?)", "%#{params[:query]}%")
+    @str_search = params[:query]
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
