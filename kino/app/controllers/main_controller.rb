@@ -69,7 +69,7 @@ class MainController < ApplicationController
   end
 
   def find_movies
-    @movies = Movie.where("lower(title) LIKE lower(?)", "%#{params[:query]}%")
+    @movies = Movie.where('lower(title) LIKE lower(?)', "%#{params[:query]}%")
     @str_search = params[:query]
   end
 

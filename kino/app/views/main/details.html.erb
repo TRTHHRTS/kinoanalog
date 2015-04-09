@@ -2,16 +2,12 @@
   <h1><strong class="title font-broadway"><%= @movie.title %></strong><br>
     <small><strong class="title font-broadway"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
   </h1>
-  <% if @movie.poster_file_name == nil %>
-      <% if @movie.image_url == nil
-           imgPath = String.new('/assets/images/movies/noposter.png')
-         else
-           imgPath = @movie.image_url
-         end %>
-      <img src="<%= imgPath %>" alt="<%= @movie.orig_title %>" class="img-thumbnail poster">
-  <% else %>
-      <img src="<%= @movie.poster.url %>" alt="<%= @movie.orig_title %>" class="img-thumbnail poster">
-  <% end %>
+  <% if @movie.image_url == nil
+       imgPath = String.new('/assets/images/movies/noposter.png')
+     else
+       imgPath = @movie.image_url
+     end %>
+  <img src="<%= imgPath %>" alt="<%= @movie.orig_title %>" class="img-thumbnail poster">
   <table class="about-movie-table">
     <tr>
       <% list = ''; @movie.countries.each do |item| list += item.name + ', ' end; %>

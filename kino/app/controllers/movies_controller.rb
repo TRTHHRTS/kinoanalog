@@ -1,21 +1,35 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:edit, :update, :destroy]
 
-  # GET /movies/new
+  # GET
   def new_movie
     @movie = Movie.new
   end
 
-  # GET /movies/1/edit
+  # GET
   def edit_movie
     @movie = Movie.find(params[:id])
   end
 
-  # POST /movies
-  # POST /movies.json
+  # POST
   def create_movie
-    @movie = Movie.new(movie_params)
+    @movie = Movie.new
+
     @movie.id = Movie.last.id + 1
+    @movie.title = params[:movie][:title]
+    @movie.orig_title = params[:movie][:orig_title]
+    @movie.year = params[:movie][:year]
+    @movie.release_date = params[:movie][:release_date]
+    @movie.duration = params[:movie][:duration]
+    @movie.description = params[:movie][:description]
+    @movie.age_id = params[:movie][:age_id]
+
+    extension = params[:movie][:poster].original_filename.split('.').last
+    directory = '/assets/images/movies'
+    path = File.join(directory, @movie.id.to_s + '.' + extension)
+    File.open('public'+path, 'wb') { |f| f.write(params[:movie][:poster].read) }
+
+    @movie.image_url = path
 
     respond_to do |format|
       if @movie.save
@@ -26,8 +40,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /movies/1
-  # PATCH/PUT /movies/1.json
+  # PATCH/PUT
   def update_movie
     @movie = Movie.find(params[:id])
     respond_to do |format|
