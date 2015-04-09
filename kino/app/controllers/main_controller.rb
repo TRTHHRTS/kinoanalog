@@ -10,7 +10,8 @@ class MainController < ApplicationController
 
   # GET /main/releases
   def releases
-    @movies = Movie.all
+    date = Date.today - Date.today.day + 1.day
+    @movies = Movie.where("release_date >= ? AND release_date < ?", date, date + 3.month).order(:release_date)
   end
 
   def new

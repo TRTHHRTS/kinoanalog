@@ -24,12 +24,18 @@ class MoviesController < ApplicationController
     @movie.description = params[:movie][:description]
     @movie.age_id = params[:movie][:age_id]
 
-    extension = params[:movie][:poster].original_filename.split('.').last
-    directory = '/assets/images/movies'
-    path = File.join(directory, @movie.id.to_s + '.' + extension)
-    File.open('public'+path, 'wb') { |f| f.write(params[:movie][:poster].read) }
+    uploadedFile = params[:movie][:poster]
+    if uploadedFile.nil?
+      @movie.image_url = '/assets/images/movies/noposter.png'
+    else
+      extension = uploadedFile.original_filename.split('.').last
+      directory = '/assets/images/movies'
+      path = File.join(directory, @movie.id.to_s + '.' + extension)
+      File.open('public'+path, 'wb') { |f| f.write(uploadedFile.read) }
 
-    @movie.image_url = path
+      @movie.image_url = path
+    end
+
 
     respond_to do |format|
       if @movie.save
