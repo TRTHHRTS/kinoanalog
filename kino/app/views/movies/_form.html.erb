@@ -1,51 +1,63 @@
-<div style="width: 70%">
-  <%= form_for @movie, url: {action: url_link}  do |f| %>
-      <% if @movie.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+<table class="edit-new-film-form">
+  <tr>
+    <td>
+      <%= form_for @movie, url: {action: url_link}  do |f| %>
+          <% if @movie.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
 
-            <ul>
-              <% @movie.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-              <% end %>
-            </ul>
+                <ul>
+                  <% @movie.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+          <div class="form-group">
+            <%= f.label 'Название на русском языке', for: 'titleInput' %>
+            <%= f.text_field :title, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Название на русском языке', required: 'true' %>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Название на родном языке', for: 'titleOrigInput' %>
+            <%= f.text_field :orig_title, class: 'form-control', id: 'titleOrigInput', placeholder: 'Название на родном языке', required: 'true'  %>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Год выпуска', for: 'yearInput' %>
+            <%= f.number_field :year, class: 'form-control', id: 'yearInput', value: @movie.year==nil ? Time.now.year : @movie.year, in: 1910...2100, required: 'true' %>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Дата выпуска', for: 'dateInput' %>
+            <%= f.date_field  :release_date, id: 'dateInput', class: 'form-control datepicker', required: 'true' %>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Продолжительность (в минутах)', for: 'durationInput' %>
+            <%= f.number_field :duration, class: 'form-control', id: 'durationInput', in: 0...300, required: 'true' %>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Описание фильма', for: 'descInput' %>
+            <%= f.text_area :description, id: 'descInput', class: 'form-control', size: '30x10', required: 'true' %>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Возрастное ограничение' %>
+            <%= f.collection_select :age_id, Age.all, :id, :name, {}, class: 'form-control', required: 'true' %>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Постер' %>
+            <%= f.file_field :poster, accept: 'image/png,image/gif,image/jpeg' %>
+          </div>
+          <div class="form-group cntr">
+            <%= f.submit 'Сохранить', class: 'btn btn-default' %>
+          </div>
+          <div class="form-group cntr">
+            <%= link_to 'Отмена', :back %>
           </div>
       <% end %>
-      <h1 class="cntr"><small><strong>Добавление фильма</strong></small></h1>
-      <div class="form-group">
-        <%= f.label 'Название на русском языке', for: 'titleInput' %>
-        <%= f.text_field :title, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Название на русском языке', required: 'true' %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Название на родном языке', for: 'titleOrigInput' %>
-        <%= f.text_field :orig_title, class: 'form-control', id: 'titleOrigInput', placeholder: 'Название на родном языке', required: 'true'  %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Год выпуска', for: 'yearInput' %>
-        <%= f.number_field :year, class: 'form-control', id: 'yearInput', value: @movie.year==nil ? Time.now.year : @movie.year, in: 1910...2100, required: 'true' %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Дата выпуска', for: 'dateInput' %>
-        <%= f.date_field  :release_date, id: 'dateInput', class: 'form-control datepicker', required: 'true' %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Продолжительность (в минутах)', for: 'durationInput' %>
-        <%= f.number_field :duration, class: 'form-control', id: 'durationInput', in: 0...300, required: 'true' %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Описание фильма', for: 'descInput' %>
-        <%= f.text_area :description, id: 'descInput', class: 'form-control', size: '30x10', required: 'true' %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Возрастное ограничение' %>
-        <%= f.collection_select :age_id, Age.all, :id, :name, {}, class: 'form-control', required: 'true' %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Постер' %>
-        <%= f.file_field :poster, accept: 'image/png,image/gif,image/jpeg' %>
-      </div>
-      <div class="form-group cntr">
-        <%= f.submit 'Сохранить', class: 'btn btn-default' %>
-      </div>
-  <% end %>
-</div>
+    </td>
+    <td>
+      <% if !@movie.image_url.nil? %>
+          <p>Текущий постер:</p>
+          <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>" class="img-thumbnail poster">
+      <% end %>
+    </td>
+  </tr>
+</table>

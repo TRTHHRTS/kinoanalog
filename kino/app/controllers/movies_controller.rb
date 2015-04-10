@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:edit, :update, :destroy]
+  before_action :set_movie, only: [:edit_movie]
+  before_action :movie_params, only: [:create_movie, :update_movie]
 
   # GET
   def new_movie
@@ -8,7 +9,6 @@ class MoviesController < ApplicationController
 
   # GET
   def edit_movie
-    @movie = Movie.find(params[:id])
   end
 
   # POST
@@ -49,6 +49,17 @@ class MoviesController < ApplicationController
   # PATCH/PUT
   def update_movie
     @movie = Movie.find(params[:id])
+
+    uploadedFile = params[:movie][:poster]
+    unless uploadedFile.nil?
+      File.delete('public' + @movie.image_url)
+      extension = uploadedFile.original_filename.split('.').last
+      directory = '/assets/images/movies'
+      path = File.join(directory, @movie.id.to_s + '.' + extension)
+      File.open('public'+path, 'wb') { |f| f.write(uploadedFile.read) }
+      params[:movie][:image_url] = path
+    end
+    params[:movie].delete(:poster)
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Movie was successfully updated.' }
@@ -58,8 +69,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  # DELETE /movies/1
-  # DELETE /movies/1.json
+  # DELETE
   def destroy_movie
     @movie = Movie.find(params[:id])
     @movie.destroy
@@ -69,12 +79,11 @@ class MoviesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_movie
       @movie = Movie.find(params[:id])
     end
 
   def movie_params
-    params.require(:movie).permit(:id, :title, :orig_title, :year, :release_date, :duration, :description, :age_id, :poster)
+    params.require(:movie).permit(:id, :title, :orig_title, :year, :release_date, :duration, :description, :age_id, :poster, :image_url)
   end
 end

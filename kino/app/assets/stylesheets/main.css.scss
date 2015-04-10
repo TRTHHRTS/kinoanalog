@@ -12,3 +12,14 @@
     width: 70%;
   }
 }
+
+.edit-new-film-form {
+  width: 100%;
+  tr > td {
+    width: 60%;
+  }
+  tr td:nth-child(2) {
+    text-align: center;
+    padding-left: 1em;
+  }
+}
