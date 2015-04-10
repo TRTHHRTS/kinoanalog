@@ -51,7 +51,9 @@ class MoviesController < ApplicationController
 
     uploadedFile = params[:movie][:poster]
     unless uploadedFile.nil?
-      File.delete('public' + @movie.image_url)
+      unless @movie.image_url.split('/').include? 'noposter.png'
+        File.delete('public' + @movie.image_url)
+      end
       extension = uploadedFile.original_filename.split('.').last
       directory = '/assets/images/movies'
       path = File.join(directory, @movie.id.to_s + '.' + extension)
