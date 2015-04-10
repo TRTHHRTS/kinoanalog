@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:edit_movie]
   before_action :movie_params, only: [:create_movie, :update_movie]
-
+  before_action :check_only_admin_moder, only: [:new_movie, :create_movie, :edit_movie, :update_movie, :destroy_movie]
   # GET
   def new_movie
     @movie = Movie.new
@@ -85,4 +85,19 @@ class MoviesController < ApplicationController
   def movie_params
     params.require(:movie).permit(:id, :title, :orig_title, :year, :release_date, :duration, :description, :age_id, :poster, :image_url)
   end
+
+  def check_only_admin_moder
+    if !user_signed_in? || current_user.permission > 2
+      render_404
+    end
+  end
+
+  def render_404
+    respond_to do |format|
+      format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+      format.xml  { head :not_found }
+      format.any  { head :not_found }
+    end
+  end
+
 end

@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show]
+  before_action :check_only_admin_user, only: [:edit_review, :update_review, :destroy_review]
+  before_action :check_only_registered, only: [:new_review, :create_review]
 
   # GET
   def show
@@ -59,4 +61,26 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:id, :movie_id, :user_id, :title, :review_date, :content, :recommended)
     end
+
+  def check_only_admin_user
+    userId = Review.find(params[:id]).user_id
+    if !user_signed_in? || (current_user.permission != 1 && current_user.id != userId )
+      render_404
+    end
+  end
+
+  def check_only_registered
+    unless user_signed_in?
+      render_404
+    end
+  end
+
+  def render_404
+    respond_to do |format|
+      format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+      format.xml  { head :not_found }
+      format.any  { head :not_found }
+    end
+  end
+
 end

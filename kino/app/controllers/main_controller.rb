@@ -1,7 +1,8 @@
 class MainController < ApplicationController
   before_action :set_movie, only: [:random]
   before_action :find_movies, only: [:search_result]
-  before_action :check_rights, only: [:users]
+  before_action :check_only_admin_moder, only: [:users, :destroy_profile]
+  before_action :check_only_admin, only: [:change_rights]
 
   # GET /main
   def index
@@ -39,7 +40,7 @@ class MainController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # DELETE /main/1
+  # DELETE
   def destroy_profile
     @user = User.find(params[:id])
     @user.destroy
@@ -74,14 +75,27 @@ class MainController < ApplicationController
     @str_search = params[:query]
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def movie_params
     params.require(:movie).permit(:id, :title, :orig_title, :year, :release_date, :duration, :description, :rate_id)
   end
 
-  def check_rights
-    if current_user.permission > 1
-      redirect_to main_path, notice: 'Отсутствуют права'
+  def check_only_admin_moder
+    if !user_signed_in? || current_user.permission > 2
+      render_404
+    end
+  end
+
+  def check_only_admin
+    if !user_signed_in? || current_user.permission != 1
+      render_404
+    end
+  end
+
+  def render_404
+    respond_to do |format|
+      format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+      format.xml  { head :not_found }
+      format.any  { head :not_found }
     end
   end
 
@@ -89,3 +103,4 @@ class MainController < ApplicationController
     params.require(:movie).permit(:id)
   end
 end
+
