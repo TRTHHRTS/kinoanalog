@@ -3,7 +3,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-    <%= f.hidden_field :permission, { :value => 3 } %>
+    <%= f.hidden_field :permission, { value: 3 } %>
 
     <div  class="form-group">
       <%= f.label 'Имя', for: 'loginInput' %>

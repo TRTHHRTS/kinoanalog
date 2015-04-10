@@ -52,8 +52,18 @@
     font-family: Georgia;
 }
 
+@font-face {
+    font-family: Broadway; /* Гарнитура шрифта */
+    src: url(fonts/Broadway_Normal.ttf); /* Путь к файлу со шрифтом */
+}
+
 .font-broadway {
     font-family: Broadway;
+
+}
+
+.font-cambria {
+    font-family: Cambria;
 
 }
 

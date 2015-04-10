@@ -36,7 +36,6 @@ class MoviesController < ApplicationController
       @movie.image_url = path
     end
 
-
     respond_to do |format|
       if @movie.save
         format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Movie was successfully created.' }

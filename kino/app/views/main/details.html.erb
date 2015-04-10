@@ -1,6 +1,6 @@
 <div class="movie-details">
-  <h1><strong class="title font-broadway"><%= @movie.title %></strong><br>
-    <small><strong class="title font-broadway"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
+  <h1><strong class="title font-cambria"><%= @movie.title %></strong><br>
+    <small><strong class="title font-cambria"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
   </h1>
   <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>" class="img-thumbnail poster">
   <table class="about-movie-table">
@@ -78,7 +78,7 @@
      reviewString = 'Отзывы пользователей:'
    end %>
 <div class="panel-review">
-  <h2 class="mb-0 cntr"><small><strong class="title font-broadway"><%= reviewString %></strong></small></h2>
+  <h2 class="mb-0 cntr"><small><strong class="title font-cambria"><%= reviewString %></strong></small></h2>
   <% if user_signed_in? && @movie.reviews.where(user_id: current_user.id).count == 0 %>
       <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-enter-color' do %>
           <img src="<%= image_path 'plus.png' %>" class="image-size"> Добавить отзыв
