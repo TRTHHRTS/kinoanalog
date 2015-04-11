@@ -7,7 +7,8 @@ Kino::Application.routes.draw do
   get 'releases', to: 'main#releases'
   get 'random_film', to: 'main#random'
   get 'details/:id', to: 'main#details'
-  get 'search', to: 'main#search'
+  get 'extended_search', to: 'main#extended_search'
+  post 'extended_search', to: 'main#extended_search_result'
   get 'search_result', to: 'main#search_result'
   post 'search_result', to: 'main#search_result'
 

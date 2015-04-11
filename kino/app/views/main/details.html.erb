@@ -45,7 +45,7 @@
   <table>
     <tr>
       <td>
-          <p class="font-georgia"><%= @movie.description %></p>
+          <p class="font-georgia" style="padding-right: 1em"><%= @movie.description %></p>
         <p><strong>Пользовательский рейтинг: </strong>
           <% if @movie.ratings.count == 0 %>
               еще никто не проголосовал
@@ -82,20 +82,21 @@
         <% @movie.reviews.each do |review| %>
             <tr>
               <td>
-                <div class="review <%= review.recommended ? 'review-title-user-good' : 'review-title-user-bad' %>">
+                <div class="review <%= review.recommended ? 'review-good' : 'review-bad' %>">
                   <% if user_signed_in? && (review.user_id==current_user.id || current_user.permission == 1 ) then%>
                      <span>
+                       <%= link_to '/destroy_review/'+review.id.to_s, :class => 'btn btn-danger btn-sm', confirm: 'Удалить этот отзыв?' do %>
+                          <img src="<%= image_path 'remove.png' %>" class="image-size">
+                      <% end %>
                        <%= link_to '/edit_review/'+review.id.to_s, :class => 'btn btn-default btn-sm' do %>
                           <img src="<%= image_path 'pencil.png' %>" class="image-size">
-                      <% end %>
-                      <%= link_to '/destroy_review/'+review.id.to_s, :class => 'btn btn-danger btn-sm', confirm: 'Удалить этот отзыв?' do %>
-                          <img src="<%= image_path 'remove.png' %>" class="image-size">
                       <% end %>
                      </span>
                   <% end %>
                   <h4 class="mb-10 mt-10 font-size-16"><strong><%= review.title %></strong></h4>
-                  <p class="mb-0 mt-0 font-georgia font-size-13 <%= review.recommended ? 'review-text-good' : 'review-text-bad' %>"><%= review.content %></p>
-                  <i class="font-size-12"><%= @users.find(review.user_id).name %>, <%= review.review_date.to_s %></i>
+                  <p class="mb-0 mt-0 font-georgia font-size-13"><%= review.content %></p>
+                  <i class="font-size-12"><%= @users.find(review.user_id).name %>
+                  <% unless review.review_date.nil? %>, <%= Russian::strftime(review.review_date , "%d-%m-%Y %H:%M")%><% end %></i>
                 </div>
               </td>
             </tr>

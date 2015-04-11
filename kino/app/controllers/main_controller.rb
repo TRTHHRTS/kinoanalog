@@ -28,11 +28,17 @@ class MainController < ApplicationController
     render 'main/details/'
   end
 
-  def search
-    @movies = Movie.all
+  #GET переход к расширенному поиску
+  def extended_search
+    @movies = Movie.all.limit(100)
   end
 
-  # GET /main/search_result
+  #POST расширенный поиск
+  def extended_search_result
+    @movies = Movie.all.limit(100)
+  end
+
+  # GET обычный поиск
   def search_result
   end
 

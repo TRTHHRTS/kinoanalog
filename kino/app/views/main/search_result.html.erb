@@ -13,8 +13,8 @@
           <tr style="border: 1px">
             <td><%= movie.title %></td>
             <td><%= movie.orig_title %></td>
-            <td><%= movie.year %></td>
-            <td><%= link_to 'О фильме', '/details/' + movie.id.to_s, class:'btn btn-default' %></td>
+            <td><%= movie.release_date.year %></td>
+            <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn btn-default' %></td>
           </tr>
       <% end %>
       </tbody>

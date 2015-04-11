@@ -4,8 +4,7 @@
       <%= form_for @movie, url: {action: url_link}  do |f| %>
           <% if @movie.errors.any? %>
               <div id="error_explanation">
-                <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
-
+                <h2><%= Russian::pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
                 <ul>
                   <% @movie.errors.full_messages.each do |msg| %>
                       <li><%= msg %></li>

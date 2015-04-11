@@ -38,6 +38,9 @@
 .ta-right {
     text-align: right;
 }
+.ta-left{
+    text-align: left;
+}
 .h100perc {
     height: 100%;
 }

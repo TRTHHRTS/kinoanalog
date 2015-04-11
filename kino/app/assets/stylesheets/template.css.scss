@@ -91,43 +91,29 @@ div.movie-details {
 
 .reviews {
   width: 100%;
+  p{
+    color: black;
+  }
+  a {
+    margin-left: 0.5em;
+    float: right;
+  }
   .review {
     margin-top: 1em;
     padding: 0.5em 2em 0.5em 2em;
     border-radius: 4px;
     box-shadow: 0.3em 0.3em 5px rgba(122,122,122,0.4);
+
   }
-  .review-title-user-bad {
+  .review-bad {
     color: $darkpink;
     border: 1px solid $darkpink;
     background-color: $lightpink;
-    text-align: left;
-    a {
-      margin-left: 0.5em;
-      float: right;
-    }
   }
-  .review-text-bad {
-    color: black;
-    background-color: $lightpink;
-    text-align: left;
-  }
-
-  .review-text-good {
-    color: black;
-    background-color: $lightblue;
-    text-align: left;
-  }
-
-  .review-title-user-good {
+  .review-good {
     color: $darkblue;
     border: 1px solid $darkblue;
     background-color: $lightblue;
-    text-align: right;
-    a {
-      margin-left: 0.5em;
-      float: left;
-    }
   }
 }
 

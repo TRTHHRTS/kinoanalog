@@ -1,7 +1,7 @@
 <%= form_for @review, url: {action: url_link} do |f| %>
     <% if @review.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@review.errors.count, "error") %> prohibited this movie from being saved:</h2>
+          <h2><%= Russian::pluralize(@review.errors.count, "error") %> prohibited this movie from being saved:</h2>
 
           <ul>
             <% @review.errors.full_messages.each do |msg| %>
@@ -28,7 +28,6 @@
           <%= f.check_box :recommended %> Советуешь посмотреть этот фильм?
       <% end %>
     </div>
-
     <div class="form-group cntr">
       <%= f.submit 'Отправить', class: 'btn btn-header-color' %>
     </div>

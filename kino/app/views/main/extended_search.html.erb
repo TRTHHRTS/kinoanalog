@@ -1,0 +1,49 @@
+<h2 class="title font-cambria">Расширенный поиск</h2>
+<%= form_for extended_search_path, html: { class: 'form-horizontal'} do |f| %>
+    <div class="form-group">
+      <%= f.label 'Название фильма', class: 'col-sm-4 control-label', for: 'titleInput' %>
+      <div class="col-sm-4">
+        <%= f.text_field :title, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Оригинальное или локализованное' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Год', class: 'col-sm-4 control-label', for: 'yearInput' %>
+      <div class="col-sm-4">
+        <%= f.number_field :year, class: 'form-control', id: 'yearInput' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Жанр', class: 'col-sm-4 control-label', for: 'genreInput' %>
+      <div class="col-sm-4">
+        <%= f.collection_select(:post, Genre.all, :id, :name, {include_blank: 'Все'}, {class: 'form-control'}) %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Имя актера или создателя фильма', class: 'col-sm-4 control-label', for: 'humanNameInput' %>
+      <div class="col-sm-4">
+        <%= f.text_field :human_name, class: 'form-control', id: 'humanNameInput' %>
+      </div>
+    </div>
+    <div class="form-group cntr">
+      <%= f.submit 'Искать', class: 'btn btn-header-color' %>
+    </div>
+<% end %>
+
+<table class="table table-hover">
+  <thead>
+  <tr class="font-cambria title font-size-18 cntr">
+    <th class="cntr">Название</th>
+    <th class="cntr">Дата премьеры</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @movies.each do |movie| %>
+      <tr class="table-tr font-georgia cntr">
+        <td><%= movie.title %></td>
+        <td><%= movie.release_date %></td>
+        <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn table-more-inf' %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
