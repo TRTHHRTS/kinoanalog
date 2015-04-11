@@ -12,7 +12,7 @@ class MainController < ApplicationController
   # GET /main/releases
   def releases
     date = Date.today - Date.today.day + 1.day
-    @movies = Movie.where("release_date >= ? AND release_date < ?", date, date + 3.month).order(:release_date)
+    @movies = Movie.where('release_date >= ? AND release_date < ?', date, date + 3.month).order(:release_date)
   end
 
   def new
@@ -35,7 +35,9 @@ class MainController < ApplicationController
 
   #POST расширенный поиск
   def extended_search_result
-    @movies = Movie.all.limit(100)
+    @movies = Movie.all
+    #TODO и как найти все записи, удовлетворяющие условиям?
+    redirect_to :back, notice: params
   end
 
   # GET обычный поиск

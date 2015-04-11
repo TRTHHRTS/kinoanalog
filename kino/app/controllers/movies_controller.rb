@@ -37,7 +37,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Movie was successfully created.' }
+        format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Фильм успешно создан' }
       else
         format.html { render action: 'new_movie' }
       end
@@ -62,7 +62,7 @@ class MoviesController < ApplicationController
     params[:movie].delete(:poster)
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Movie was successfully updated.' }
+        format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Информация о фильме успешно изменена' }
       else
         format.html { render action: 'edit_movie' }
       end
