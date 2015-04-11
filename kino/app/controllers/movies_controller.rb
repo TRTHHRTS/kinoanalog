@@ -18,7 +18,6 @@ class MoviesController < ApplicationController
     @movie.id = Movie.last.id + 1
     @movie.title = params[:movie][:title]
     @movie.orig_title = params[:movie][:orig_title]
-    @movie.year = params[:movie][:year]
     @movie.release_date = params[:movie][:release_date]
     @movie.duration = params[:movie][:duration]
     @movie.description = params[:movie][:description]
@@ -85,7 +84,7 @@ class MoviesController < ApplicationController
     end
 
   def movie_params
-    params.require(:movie).permit(:id, :title, :orig_title, :year, :release_date, :duration, :description, :age_id, :poster, :image_url)
+    params.require(:movie).permit(:id, :title, :orig_title, :release_date, :duration, :description, :age_id, :poster, :image_url)
   end
 
   def check_only_admin_moder

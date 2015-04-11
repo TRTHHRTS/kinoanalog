@@ -1,0 +1,8 @@
+<% list_url.each do |item| %>
+    <% if !item.url.nil? && item.url.size > 0  %>
+        <%= link_to item.name, item.url, target: '_blank' %>
+    <% else %>
+        <span><%= item.name %></span>
+    <% end %>
+    <%= ', ' unless item == list_url.last %>
+<% end %>

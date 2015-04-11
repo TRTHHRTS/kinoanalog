@@ -72,13 +72,13 @@ Age.create([{name:'0+'},
             {name:'16+'},
             {name:'18+'}])
 Movie.create([{id:1, title:'Американская История Х', orig_title:'American history X', image_url:'/assets/images/movies/1.jpg',
-               year:1998, release_date:'2015-04-01', duration:119, description:"Лидер местной банды скинхедов Дерек Виньярд прочно удерживает авторитет в своём районе. Убеждённый в своей правоте, он беспощадно расправляется с теми, кто имеет не белый цвет кожи. Независимость и смелость Дерека вызывают восхищение у его младшего брата Дэнни, который уже тоже сделал свой выбор.\n
+               release_date:'2015-04-01', duration:119, description:"Лидер местной банды скинхедов Дерек Виньярд прочно удерживает авторитет в своём районе. Убеждённый в своей правоте, он беспощадно расправляется с теми, кто имеет не белый цвет кожи. Независимость и смелость Дерека вызывают восхищение у его младшего брата Дэнни, который уже тоже сделал свой выбор.\n
 Но зверское убийство двух чернокожих парней, совершённое Дереком, разделяет дороги братьев: Дерек оказывается в тюрьме, где существует свой расклад сил, а Дэнни на свободе успешно продолжает дело брата. До тех пор, пока их пути не пересеклись вновь…", age_id:1}])
-Movie.create([{id:2, title:'Мгла', orig_title:'The mist', year:2007, release_date:'2015-04-02',
+Movie.create([{id:2, title:'Мгла', orig_title:'The mist', release_date:'2015-04-02',
                duration:119, description:'history..', age_id:2, image_url:'/assets/images/movies/noposter.png'}])
-Movie.create([{id:3, title:'Третье пришествие', orig_title:'Третье пришествие', year:2005, release_date:'2015-04-15',
+Movie.create([{id:3, title:'Третье пришествие', orig_title:'Третье пришествие', release_date:'2015-04-15',
                duration:119, description:'history..', age_id:3, image_url:'/assets/images/movies/noposter.png'}])
-Movie.create([{id:4, title:'Очередной слоупок', orig_title:'Slowpoke', year:2010, release_date:'2015-05-19',
+Movie.create([{id:4, title:'Очередной слоупок', orig_title:'Slowpoke', release_date:'2015-05-19',
                duration:119, description:'history..', age_id:4, image_url:'/assets/images/movies/noposter.png'}])
 CountriesMovies.create([{movie_id:1, country_id:2}])
 GenresMovies.create([{movie_id:1, genre_id:9},{movie_id:1, genre_id:13}])

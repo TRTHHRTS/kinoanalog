@@ -1,19 +1,16 @@
 <div class="movie-details">
   <h1><strong class="title font-cambria"><%= @movie.title %></strong><br>
-    <small><strong class="title font-cambria"><%= @movie.orig_title + ' (' + @movie.year.to_s + ')' %></strong></small>
+    <small><strong class="title font-cambria"><%= @movie.orig_title + ' (' + @movie.release_date.year.to_s + ')' %></strong></small>
   </h1>
   <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>" class="img-thumbnail poster">
   <table class="about-movie-table">
     <tr>
-      <% list = ''; @movie.countries.each do |item| list += item.name + ', ' end; %>
       <td>Страна:</td>
-      <td><%=  list[0, list.length-2] %></td>
-
+      <td><%= render partial: 'list', object: @movie.countries %></td>
     </tr>
     <tr>
-      <% list = ''; @movie.genres.each do |item| list += item.name + ', ' end; %><% list = ''; @movie.directors.each do |item| list += item.name + ', ' end; %>
       <td>Жанр:</td>
-      <td><%= list[0, list.length-2] %></td>
+      <td><%= render partial: 'list', object: @movie.genres %></td>
     </tr>
     <tr>
       <td>Дата премьеры:</td>
@@ -28,24 +25,20 @@
       <td><%= @movie.age.name %></td>
     </tr>
     <tr>
-      <% list = ''; @movie.directors.each do |item| list += item.name + ', ' end; %>
       <td>Режиссер:</td>
-      <td><%= list[0, list.length-2] %></td>
+      <td><%= render partial: 'list_url', object: @movie.directors %></td>
     </tr>
     <tr>
-      <% list = ''; @movie.producers.each do |item| list += item.name + ', ' end; %>
       <td>Продюсер:</td>
-      <td><%= list[0, list.length-2] %></td>
+      <td><%= render partial: 'list_url', object: @movie.producers %></td>
     </tr>
     <tr>
-      <% list = ''; @movie.writers.each do |item| list += item.name + ', ' end; %>
       <td>Сценарист:</td>
-      <td><%= list[0, list.length-2] %></td>
+      <td><%= render partial: 'list_url', object: @movie.writers %></td>
     </tr>
     <tr>
-      <% list = ''; @movie.stars.each do |item| list += item.name + ', ' end; %>
       <td>Актерский состав:</td>
-      <td><%= list[0, list.length-2] %></td>
+      <td><%= render partial: 'list_url', object: @movie.stars %></td>
     </tr>
 </table>
 
@@ -81,7 +74,7 @@
   <h2 class="mb-0 cntr"><small><strong class="title font-cambria"><%= reviewString %></strong></small></h2>
   <% if user_signed_in? && @movie.reviews.where(user_id: current_user.id).count == 0 %>
       <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-enter-color' do %>
-          <img src="<%= image_path 'plus.png' %>" class="image-size"> Добавить отзыв
+          + Добавить отзыв
       <% end %>
   <% end %>
   <% if @movie.reviews.size > 0 %>

@@ -22,10 +22,6 @@
             <%= f.text_field :orig_title, class: 'form-control', id: 'titleOrigInput', placeholder: 'Название на языке оригинала', required: 'true'  %>
           </div>
           <div class="form-group">
-            <%= f.label 'Год выпуска', for: 'yearInput' %>
-            <%= f.number_field :year, class: 'form-control', id: 'yearInput', value: @movie.year==nil ? Time.now.year : @movie.year, in: 1910...2100, required: 'true' %>
-          </div>
-          <div class="form-group">
             <%= f.label 'Дата выпуска', for: 'dateInput' %>
             <%= f.date_field  :release_date, id: 'dateInput', class: 'form-control datepicker', required: 'true' %>
           </div>
