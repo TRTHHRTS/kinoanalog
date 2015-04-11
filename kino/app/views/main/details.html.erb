@@ -59,7 +59,7 @@
   </table>
   <% if user_signed_in? && current_user.permission == 1 %>
       <%= link_to 'Редактировать данные', '/edit_movie/'+@movie.id.to_s, :class => 'btn btn-link' %>
-      <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, :class => 'btn btn-link' %>
+      <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, :class => 'btn btn-link', confirm: 'Удалить этот фильм?' %>
   <% end %>
 </div>
 <% if @movie.reviews.count == 0
@@ -88,7 +88,7 @@
                        <%= link_to '/edit_review/'+review.id.to_s, :class => 'btn btn-default btn-sm' do %>
                           <img src="<%= image_path 'pencil.png' %>" class="image-size">
                       <% end %>
-                      <%= link_to '/destroy_review/'+review.id.to_s, :class => 'btn btn-danger btn-sm' do %>
+                      <%= link_to '/destroy_review/'+review.id.to_s, :class => 'btn btn-danger btn-sm', confirm: 'Удалить этот отзыв?' do %>
                           <img src="<%= image_path 'remove.png' %>" class="image-size">
                       <% end %>
                      </span>
