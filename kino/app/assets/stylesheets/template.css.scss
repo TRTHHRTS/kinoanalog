@@ -152,6 +152,16 @@ div.movie-details {
   }
 }
 
+.btn-users {
+  color: $richorange;
+  background-color: $lightorange;
+  &:hover {
+    color: $lightorange;
+    background-color:  $richorange;
+    border: 1px solid $lightorange;
+  }
+}
+
 .btn-nav-color {
   background-color: $lightblue;
   &:hover {

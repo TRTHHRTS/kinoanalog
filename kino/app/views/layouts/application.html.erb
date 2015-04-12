@@ -36,7 +36,7 @@
         <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'random' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Случайный фильм', random_film_path%></li>
         <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'extended_search' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Расширенный поиск', extended_search_path %></li>
         <% if user_signed_in? && current_user.permission == 1 %>
-            <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'users' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Пользователи', users_path %></li>
+            <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'users' ? 'active' : 'btn-users' %>"><%= link_to 'Пользователи', users_path %></li>
             <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'new_movie' ? 'active-new-film' : 'btn-add-new-film' %>"><%= link_to 'Добавить фильм', new_movie_path %></li>
       <% end %>
       </ul>
