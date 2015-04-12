@@ -57,12 +57,16 @@
 
 @font-face {
     font-family: Broadway; /* Гарнитура шрифта */
-    src: url(fonts/Broadway_Normal.ttf); /* Путь к файлу со шрифтом */
+    src: url(../fonts/Broadway_Normal.ttf); /* Путь к файлу со шрифтом */
 }
 
 .font-broadway {
     font-family: Broadway;
 
+}
+
+.font-numbers {
+    font-family: "Modern No. 20";
 }
 
 .font-cambria {
