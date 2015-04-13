@@ -29,6 +29,28 @@
             <%= f.number_field :duration, class: 'form-control', id: 'durationInput', in: 0...300, required: 'true' %>
           </div>
           <div class="form-group">
+            <%= f.label 'Cтраны' %>
+            <div class="input-group">
+              <%= collection_select(:movie_countries, :c_id, Country.all, :id, :name, {}, {id: 'country_select', class: 'form-control'}) %>
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="button" onclick="addCountry()">Добавить выбранную страну</button>
+              </div>
+            </div>
+            <div id="selected_countries" class="w100perc" style="height: 30px"></div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label 'Актеры' %>
+            <div class="input-group">
+              <input id="star_select" type="text" class="form-control" placeholder="Введите полное имя актера">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" onclick="addStar()">Добавить</button>
+              </span>
+            </div>
+            <ul id="selected_stars"></ul>
+          </div>
+
+          <div class="form-group">
             <%= f.label 'Описание фильма', for: 'descInput' %>
             <%= f.text_area :description, id: 'descInput', class: 'form-control', size: '30x10', required: 'true' %>
           </div>

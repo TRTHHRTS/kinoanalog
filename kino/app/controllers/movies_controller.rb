@@ -38,6 +38,7 @@ class MoviesController < ApplicationController
     respond_to do |format|
       if @movie.save
         format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Фильм успешно создан' }
+        format.js {}
       else
         format.html { render action: 'new_movie' }
       end

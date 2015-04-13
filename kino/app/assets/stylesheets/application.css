@@ -11,6 +11,12 @@
  *= require_self
  *= require_tree
  */
+.float-l {
+    float: left;
+}
+.float-r {
+    float: right;
+}
 .mb-0 {
     margin-bottom: 0;
 }
