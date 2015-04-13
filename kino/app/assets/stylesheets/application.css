@@ -55,15 +55,7 @@
     font-family: Georgia;
 }
 
-@font-face {
-    font-family: Broadway; /* Гарнитура шрифта */
-    src: asset-url('../fonts/broadw__.ttf', font)  format('truetype'); /* Путь к файлу со шрифтом */
-}
 
-.font-broadway {
-    font-family: Broadway;
-
-}
 
 .font-numbers {
     font-family: "Modern No. 20";
