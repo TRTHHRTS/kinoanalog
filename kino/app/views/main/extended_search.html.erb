@@ -1,15 +1,17 @@
 <h2 class="title font-cambria">Расширенный поиск</h2>
-<%= form_tag({ action: :extended_search_result, controller: main_path}, { class: 'form-horizontal'}) do %>
+<%= form_tag({ action: :extended_search, controller: main_path}, { class: 'form-horizontal'}) do %>
+<!--%= form_tag(extended_search_path(:title => @title), role: 'search',  class: 'form-horizontal') do %-->
     <div class="form-group">
-      <%= label_tag 'Название фильма', nil, { class: 'col-sm-4 control-label', for: 'titleInput'} %>
+      <%= label_tag 'Название фильма', nil, { class: 'col-sm-4 control-label', for: 'title'} %>
       <div class="col-sm-4">
-        <%= text_field_tag :title, nil, { autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Оригинальное или локализованное' } %>
+        <%= text_field_tag 'title', params[:title], { autofocus: true, class: 'form-control', id: 'title', placeholder: 'Оригинальное или локализованное' } %>
       </div>
     </div>
     <div class="form-group">
       <%= label_tag 'Год', nil, { class: 'col-sm-4 control-label', for: 'yearInput' } %>
       <div class="col-sm-4">
-        <%= number_field_tag :year, nil, { class: 'form-control', id: 'yearInput' } %>
+        <!--%= number_field_tag :year, nil, { class: 'form-control', id: 'yearInput' } %-->
+        <%= date_field_tag :year, nil, { class: 'form-control', id: 'yearInput' } %>
       </div>
     </div>
     <div class="form-group">
@@ -25,7 +27,7 @@
       </div>
     </div>
     <div class="form-group cntr">
-      <%= submit_tag 'Искать', { class: 'btn btn-header-color' } %>
+      <%= submit_tag 'Искать', { class: 'btn btn-header-color', name: 'search' } %>
     </div>
 <% end %>
 
@@ -38,12 +40,14 @@
   </tr>
   </thead>
   <tbody>
-  <% @movies.each do |movie| %>
-      <tr class="table-tr font-georgia cntr">
-        <td><%= movie.title %></td>
-        <td><%= movie.release_date %></td>
-        <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn table-more-inf' %></td>
-      </tr>
+  <% if @movies !=nil %>
+      <% @movies.each do |movie| %>
+          <tr class="table-tr font-georgia cntr">
+            <td><%= movie.title %></td>
+            <td><%= movie.release_date %></td>
+            <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn table-more-inf' %></td>
+          </tr>
+      <% end %>
   <% end %>
   </tbody>
 </table>

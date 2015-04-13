@@ -35,9 +35,11 @@ class MainController < ApplicationController
 
   #POST расширенный поиск
   def extended_search_result
-    @movies = Movie.all
     #TODO и как найти все записи, удовлетворяющие условиям?
-    redirect_to :back, notice: params
+    #<!-- TODO написать поиск по году в запросе-->
+    #@movies = Movie.where('lower(title) LIKE lower(?)', "%#{params[:title]}%").find_all_by_release_date(params[:year])
+    @movies = Movie.where('lower(title) LIKE lower(?) and release_date LIKE ?', "%#{params[:title]}%", "%#{params[:year]}%")
+    render 'main/extended_search', notice: params
   end
 
   # GET обычный поиск

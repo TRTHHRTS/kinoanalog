@@ -8,7 +8,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
     add_index :users, :email, unique: true
 
-    add_column :users, :name, :string, null: false
+    # TODO если убрать default: '' см ниже, то rake:migrate выдает ошибку на эту строчку
+    add_column :users, :name, :string, null: false, default: ''
     add_column :users, :sex, :string, null: false, default: 'Неизвестно'
     add_column :users, :permission, :integer, null:false, default: 3
   end
