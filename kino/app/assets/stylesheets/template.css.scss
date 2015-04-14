@@ -79,13 +79,11 @@ div.content {
 
 div.movie-details {
   min-height: 450px;
-  .poster {
-    float: right;
-    width: 250px;
-    height: 350px;
-  }
 }
-
+.poster {
+  width: 250px;
+  height: 350px;
+}
 .panel-review {
 }
 

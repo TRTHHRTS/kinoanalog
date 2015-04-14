@@ -2,7 +2,7 @@
   <h1><strong class="title font-cambria"><%= @movie.title %></strong><br>
     <small><strong class="title font-cambria"><%= @movie.orig_title + ' (' + @movie.release_date.year.to_s + ')' %></strong></small>
   </h1>
-  <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>" class="img-thumbnail poster">
+  <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>" class="img-thumbnail poster float-r">
   <table class="about-movie-table">
     <tr>
       <td>Страна:</td>
@@ -45,7 +45,7 @@
   <table>
     <tr>
       <td>
-          <p class="font-georgia" style="padding-right: 1em"><%= @movie.description %></p>
+          <p class="font-georgia pr-10"><%= @movie.description %></p>
         <p><strong>Пользовательский рейтинг: </strong>
           <% if @movie.ratings.count == 0 %>
               еще никто не проголосовал

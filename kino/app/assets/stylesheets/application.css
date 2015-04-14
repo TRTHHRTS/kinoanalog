@@ -44,11 +44,20 @@
 .cntr {
     text-align: center;
 }
+.pl-10 {
+    padding-left: 1em;
+}
+.pr-10 {
+    padding-right: 1em;
+}
 .ta-right {
     text-align: right;
 }
 .ta-left{
     text-align: left;
+}
+.va-top {
+    vertical-align: top;
 }
 .h100perc {
     height: 100%;
