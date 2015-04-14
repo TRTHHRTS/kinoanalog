@@ -304,14 +304,9 @@ footer {
 }
 
 @font-face {
-  font-family: 'Broadway'; /* Гарнитура шрифта */
-  src:  asset_url('../fonts/broadway/broadway.eot' + "?#iefix") format('embedded-opentype'),
-        asset_url('../fonts/broadway/broadway.woff') format('woff'),
-        asset_url('../fonts/broadway/broadway.ttf') format('truetype'),
-        asset_url(font-path('../fonts/broadway/broadway..svg') + "#MyFont") format('svg');
+  font-family: 'broadway'; /* Гарнитура шрифта */
+  src:  url(asset-path('broadw__.ttf'));
 }
-
 .font-broadway {
-  font-family: 'Broadway';
-
+  font-family: 'broadway';
 }

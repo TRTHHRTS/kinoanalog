@@ -30,7 +30,10 @@ Kino::Application.configure do
   config.action_mailer.default_url_options ={ :host => 'localhost:3000' }
 
   config.assets.enabled = true
-  config.assets.paths << Rails.root.join("app", "assets", "fonts")
-  config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
+  # Add the fonts path
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+# Precompile additional assets
+  config.assets.precompile += %w( .svg .eot .woff .ttf )
 
 end
