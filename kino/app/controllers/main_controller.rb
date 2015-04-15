@@ -40,9 +40,37 @@ class MainController < ApplicationController
     @movies = Movie.where('(lower(title) LIKE lower(?) or orig_title LIKE ?)
                             and release_date LIKE ? ', "%#{params[:title]}%", "%#{params[:title]}%",
                           "%#{params[:year]}%") #and Movie.where('genre_id LIKE ?',"%#{params[:genre][:genre_id]}%")
-    # TODO по жанру
-    # на крайний случай как вариант через foreach выбрать фильмы, кот. соответ. жанру, что плохо!
-    # @movies=@movies.genre.where('id LIKE ?', "%#{params[:genre][:genre_id]}%")
+    # TODO поиск по жанру: если id жанра='', т.е. пользователь выбрал все жанры, а пока что сделал через if
+    if params[:genre][:genre_id]==''
+      sql='SELECT m.id, m.title, m.release_date
+    FROM movies m
+    WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?',
+          "%#{params[:title]}%", "%#{params[:title]}%", "%#{params[:year]}%"
+    else
+      sql='SELECT m.id, m.title, m.release_date
+    FROM movies m
+    WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?
+          AND
+          m.id IN (
+          SELECT m.id
+          FROM movies m
+          LEFT JOIN genres_movies gm WHERE m.id = gm.movie_id AND gm.genre_id = ?)',
+          "%#{params[:title]}%", "%#{params[:title]}%", "%#{params[:year]}%", params[:genre][:genre_id]#, params[:genre][:genre_id]
+    end
+    @movies=Movie.find_by_sql(sql)
+
+    sql2='SELECT m.id, m.title, m.release_date
+          FROM movies m
+          LEFT JOIN genres_movies gm WHERE m.id = gm.movie_id AND gm.genre_id = ?',
+        params[:genre][:genre_id]
+    #@movies=Movie.find_by_sql(sql2)
+
+    sql3='SELECT m.id, m.title, m.release_date
+    FROM movies m
+    WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?',
+        "%#{params[:title]}%", "%#{params[:title]}%", "%#{params[:year]}%"
+    #@movies=Movie.find_by_sql(sql3)
+
     render 'main/extended_search', notice: params
   end
 
