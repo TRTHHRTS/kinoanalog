@@ -10,14 +10,14 @@
     <div class="form-group">
       <%= label_tag 'Год', nil, { class: 'col-sm-4 control-label', for: 'yearInput' } %>
       <div class="col-sm-4">
-        <!--%= number_field_tag :year, nil, { class: 'form-control', id: 'yearInput' } %-->
-        <%= date_field_tag :year, nil, { class: 'form-control', id: 'yearInput' } %>
+        <%= number_field_tag :year, params[:year],in: 1900...Time.now.year+10, class: 'form-control', id: 'yearInput' %>
+        <!--%= date_field_tag :year, nil, { class: 'form-control', id: 'yearInput' } %-->
       </div>
     </div>
     <div class="form-group">
       <%= label_tag 'Жанр', nil, { class: 'col-sm-4 control-label', for: 'genreInput' } %>
       <div class="col-sm-4">
-        <%= collection_select(:genre, :genre_id, Genre.all, :id, :name, {include_blank: 'Все'}, {class: 'form-control'}) %>
+        <%= collection_select(:genre, :genre_id, Genre.all, :id, :name, {selected: params[:genre] == nil ? '0' : params[:genre][:genre_id], include_blank: 'Все'}, class: 'form-control') %>
       </div>
     </div>
     <div class="form-group">

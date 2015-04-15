@@ -36,9 +36,13 @@ class MainController < ApplicationController
   #POST расширенный поиск
   def extended_search_result
     #TODO и как найти все записи, удовлетворяющие условиям?
-    #<!-- TODO написать поиск по году в запросе-->
-    #@movies = Movie.where('lower(title) LIKE lower(?)', "%#{params[:title]}%").find_all_by_release_date(params[:year])
-    @movies = Movie.where('lower(title) LIKE lower(?) and release_date LIKE ?', "%#{params[:title]}%", "%#{params[:year]}%")
+    #@movies = Movie.where('lower(title) LIKE lower(?)', "%#{params[:title]}%").find_all_by_release_date(params[:year])    and genre_id LIKE genre   , "%#{params[:genre]}%"
+    @movies = Movie.where('(lower(title) LIKE lower(?) or orig_title LIKE ?)
+                            and release_date LIKE ? ', "%#{params[:title]}%", "%#{params[:title]}%",
+                          "%#{params[:year]}%") #and Movie.where('genre_id LIKE ?',"%#{params[:genre][:genre_id]}%")
+    # TODO по жанру
+    # на крайний случай как вариант через foreach выбрать фильмы, кот. соответ. жанру, что плохо!
+    # @movies=@movies.genre.where('id LIKE ?', "%#{params[:genre][:genre_id]}%")
     render 'main/extended_search', notice: params
   end
 
