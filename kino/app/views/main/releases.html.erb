@@ -13,7 +13,7 @@
       <tr class="table-movie-month text-bold font-italic"><td colspan="4"><%= Russian::strftime(curTime+i.month, "%B") + ' - ' + curTime.year.to_s %></tr>
       <% @movies.each do |movie| if movie.release_date.year == curTime.year && movie.release_date.month == curTime.month+i %>
               <tr class="table-tr cntr font-georgia font-darkgray-color">
-                <td class="font-size-24 font-numbers"><%= movie.release_date.day %></td>
+                <td class="font-size-26 font-numbers"><%= movie.release_date.day %></td>
                 <td><%= movie.title %></td>
                 <td><%= movie.orig_title %></td>
                 <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn table-more-inf' %></td>
