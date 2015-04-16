@@ -1,7 +1,7 @@
 class MainController < ApplicationController
   before_action :set_movie, only: [:random]
   before_action :find_movies, only: [:search_result]
-  before_action :check_only_admin_moder, only: [:users, :destroy_profile]
+  before_action :check_only_admin_moder, only: [:users, :destroy_profile, :profile]
   before_action :check_only_admin, only: [:change_rights]
 
   # GET /main

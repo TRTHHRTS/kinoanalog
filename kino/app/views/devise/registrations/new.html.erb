@@ -5,7 +5,7 @@
       <%= f.hidden_field :permission, { :value => 3 } %>
       <div  class="form-group">
         <%= f.label 'Имя', for: 'loginInput' %>
-        <%= f.text_field :name, autofocus: true, class: 'form-control', id: 'loginInput' %>
+        <%= f.text_field :name, autofocus: true, class: 'form-control', id: 'nameInput', required: 'true'%>
       </div>
       <div  class="form-group">
         <%= f.label 'E-mail', for: 'emailInput' %>
