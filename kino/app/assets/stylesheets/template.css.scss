@@ -268,7 +268,7 @@ div.movie-details {
   }
 }
 
-.remote-to-admin {
+.change-to-admin {
   color: $darkgreen;
   background-color: $lightgreen;
   border: 1px solid $darkgreen;
@@ -278,18 +278,20 @@ div.movie-details {
   }
 }
 
-.demote-to-user {
+.change-to-user {
   color: $richorange;
   background-color: $lightorange;
+  border: 1px solid $richorange;
   &:hover {
     color: $lightorange;
     background-color: $richorange;
   }
 }
 
-.remote-to-editor {
+.change-to-editor {
   color: $richblue;
   background-color: $lightblue;
+  border: 1px solid $richblue;
   &:hover {
     color: $lightblue;
     background-color: $richblue;
