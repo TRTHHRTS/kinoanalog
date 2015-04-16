@@ -32,8 +32,8 @@
             <%= f.label 'Cтраны' %>
             <div class="input-group">
               <%= collection_select(:movie_countries, :c_id, Country.all, :id, :name, {}, {id: 'country_select', class: 'form-control'}) %>
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="button" onclick="addCountry()">Добавить выбранную страну</button>
+              <div class="input-group-btn btn-group-border">
+                <button class="btn table-more-inf" type="button" onclick="addCountry()">Добавить выбранную страну</button>
               </div>
             </div>
             <div id="selected_countries" class="w100perc"></div>
@@ -44,8 +44,8 @@
             <input id="star_url_select" type="text" class="form-control mb-5" placeholder="Введите ссылку на страницу актера">
             <div class="input-group">
               <input id="star_select" type="text" class="form-control" placeholder="Введите полное имя актера">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button" onclick="addStar()">Добавить</button>
+              <span class="input-group-btn btn-group-border">
+                <button class="btn table-more-inf" type="button" onclick="addStar()">Добавить</button>
               </span>
             </div>
             <ul id="selected_stars"></ul>
@@ -56,8 +56,8 @@
             <input id="director_url_select" type="text" class="form-control mb-5" placeholder="Введите ссылку на страницу режиссера">
             <div class="input-group">
               <input id="director_select" type="text" class="form-control" placeholder="Введите полное имя режиссера">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button" onclick="addDirector()">Добавить</button>
+              <span class="input-group-btn btn-group-border">
+                <button class="btn table-more-inf" type="button" onclick="addDirector()">Добавить</button>
               </span>
             </div>
             <ul id="selected_directors"></ul>
@@ -68,8 +68,8 @@
             <input id="producer_url_select" type="text" class="form-control mb-5" placeholder="Введите ссылку на страницу продюсера">
             <div class="input-group">
               <input id="producer_select" type="text" class="form-control" placeholder="Введите полное имя продюсера">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button" onclick="addProducer()">Добавить</button>
+              <span class="input-group-btn btn-group-border">
+                <button class="btn table-more-inf" type="button" onclick="addProducer()">Добавить</button>
               </span>
             </div>
             <ul id="selected_producers"></ul>
@@ -80,8 +80,8 @@
             <input id="writer_url_select" type="text" class="form-control mb-5" placeholder="Введите ссылку на страницу писателя">
             <div class="input-group">
               <input id="writer_select" type="text" class="form-control" placeholder="Введите полное имя писателя">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button" onclick="addWriter()">Добавить</button>
+              <span class="input-group-btn btn-group-border">
+                <button class="btn table-more-inf" type="button" onclick="addWriter()">Добавить</button>
               </span>
             </div>
             <ul id="selected_writers"></ul>

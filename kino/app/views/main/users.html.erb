@@ -1,7 +1,7 @@
 <% # 1 - администратор %>
 <% # 2 - редактор %>
 <% # 3 - пользователь %>
-<table class="table table-condensed">
+<table class="table table-condensed font-darkgray-color">
   <thead>
   <tr>
     <th>Id</th>
@@ -24,9 +24,9 @@
           <%= 'Редактор' if user.permission == 2 %>
           <%= 'Пользователь' if user.permission == 3 %></td>
         <% if current_user.permission == 1 %>
-            <td><%= link_to 'Сделать администратором', '/rights/?id=' + user.id.to_s + '&change_to=1', class:'btn btn-default btn-sm' if user.permission != 1 %>
-              <%= link_to 'Сделать пользователем', '/rights/?id=' + user.id.to_s + '&change_to=3', class:'btn btn-default btn-sm' if user.permission != 3 %>
-              <%= link_to 'Сделать редактором', '/rights/?id=' + user.id.to_s + '&change_to=2', class:'btn btn-default btn-sm' if user.permission != 2 %></td>
+            <td><%= link_to 'Сделать администратором', '/rights/?id=' + user.id.to_s + '&change_to=1', class:'btn btn-sm btn-add-new-film' if user.permission != 1 %>
+              <%= link_to 'Сделать пользователем', '/rights/?id=' + user.id.to_s + '&change_to=3', class:'btn btn-sm demote-to-user' if user.permission != 3 %>
+              <%= link_to 'Сделать редактором', '/rights/?id=' + user.id.to_s + '&change_to=2', class:'btn btn-sm remote-to-editor' if user.permission != 2 %></td>
             </tr>
         <% end %>
   <% end %>

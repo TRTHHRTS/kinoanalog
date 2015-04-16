@@ -146,7 +146,6 @@ div.movie-details {
   &:hover {
     color: $lightgreen;
     background-color: $darkgreen;
-    border: 1px solid $lightgreen;
   }
 }
 
@@ -256,12 +255,44 @@ div.movie-details {
   }
 }
 
+.btn-group-border {
+  border-left: 1px solid $richblue;
+}
+
 .table-tr {
   color: black;
   background-color: white;
   &:hover {
     color: black;
     background-color: #f5f5f5;
+  }
+}
+
+.remote-to-admin {
+  color: $darkgreen;
+  background-color: $lightgreen;
+  border: 1px solid $darkgreen;
+  &:hover {
+    color: $lightgreen;
+    background-color: $darkgreen;
+  }
+}
+
+.demote-to-user {
+  color: $richorange;
+  background-color: $lightorange;
+  &:hover {
+    color: $lightorange;
+    background-color: $richorange;
+  }
+}
+
+.remote-to-editor {
+  color: $richblue;
+  background-color: $lightblue;
+  &:hover {
+    color: $lightblue;
+    background-color: $richblue;
   }
 }
 
