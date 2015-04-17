@@ -1,5 +1,5 @@
 <table class="edit-new-film-form font-darkgray-color">
-  <%= form_for @movie, url: {action: url_link}  do |f| %>
+  <%= form_tag({ action: url_link, controller: :movies })  do %>
       <tr>
         <td>
           <% if @movie.errors.any? %>
@@ -13,34 +13,39 @@
               </div>
           <% end %>
           <div class="form-group">
-            <%= f.label 'Название на русском языке', for: 'titleInput' %>
-            <%= f.text_field :title, autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Название на русском языке', required: 'true' %>
+            <%= label_tag 'Название на русском языке', nil, {for: 'titleInput'} %>
+            <%= text_field_tag :title, params[:title], { autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Название на русском языке', required: 'true' } %>
           </div>
           <div class="form-group">
-            <%= f.label 'Название на языке оригинала', for: 'titleOrigInput' %>
-            <%= f.text_field :orig_title, class: 'form-control', id: 'titleOrigInput', placeholder: 'Название на языке оригинала', required: 'true'  %>
+            <%= label_tag 'Название на языке оригинала', nil, { for: 'titleOrigInput' } %>
+            <%= text_field_tag :orig_title, params[:title], { class: 'form-control', id: 'titleOrigInput', placeholder: 'Название на языке оригинала', required: 'true' } %>
           </div>
           <div class="form-group">
-            <%= f.label 'Дата выпуска', for: 'dateInput' %>
-            <%= f.date_field  :release_date, id: 'dateInput', class: 'form-control datepicker', required: 'true' %>
+            <%= label_tag 'Дата выпуска', nil, { for: 'dateInput' } %>
+            <%= date_field_tag :release_date, params[:release_date], { id: 'dateInput', class: 'form-control datepicker', required: 'true' } %>
           </div>
           <div class="form-group">
-            <%= f.label 'Продолжительность (в минутах)', for: 'durationInput' %>
-            <%= f.number_field :duration, class: 'form-control', id: 'durationInput', in: 0...300, required: 'true' %>
+            <%= label_tag 'Продолжительность (в минутах)', nil, { for: 'durationInput' } %>
+            <%= number_field_tag :duration, nil, { class: 'form-control', id: 'durationInput', in: 0...300, required: 'true' } %>
           </div>
           <div class="form-group">
-            <%= f.label 'Cтраны' %>
+            <%= label_tag 'Cтраны', nil, { for: 'country_select' } %>
             <div class="input-group">
-              <%= collection_select(:movie_countries, :c_id, Country.all, :id, :name, {}, {id: 'country_select', class: 'form-control'}) %>
+              <%= collection_select(nil, nil, Country.all, :id, :name, {}, {id: 'country_select', class: 'form-control'}) %>
               <div class="input-group-btn btn-group-border">
                 <button class="btn table-more-inf" type="button" onclick="addCountry()">Добавить выбранную страну</button>
               </div>
             </div>
-            <div id="selected_countries" class="w100perc"></div>
+
+            <div id="selected_countries" class="w100perc">
+              <%= fields_for :countries do %>
+                  <input type="hidden" value="412" name="countries[22]">
+              <% end %>
+            </div>
           </div>
 
           <div class="form-group">
-            <%= f.label 'Актеры' %>
+            <%= label_tag 'Актеры' %>
             <input id="star_url_select" type="text" class="form-control mb-5" placeholder="Введите ссылку на страницу актера">
             <div class="input-group">
               <input id="star_select" type="text" class="form-control" placeholder="Введите полное имя актера">
@@ -52,7 +57,7 @@
           </div>
 
           <div class="form-group">
-            <%= f.label 'Режиссеры' %>
+            <%= label_tag 'Режиссеры' %>
             <input id="director_url_select" type="text" class="form-control mb-5" placeholder="Введите ссылку на страницу режиссера">
             <div class="input-group">
               <input id="director_select" type="text" class="form-control" placeholder="Введите полное имя режиссера">
@@ -64,7 +69,7 @@
           </div>
 
           <div class="form-group">
-            <%= f.label 'Продюсеры' %>
+            <%= label_tag 'Продюсеры' %>
             <input id="producer_url_select" type="text" class="form-control mb-5" placeholder="Введите ссылку на страницу продюсера">
             <div class="input-group">
               <input id="producer_select" type="text" class="form-control" placeholder="Введите полное имя продюсера">
@@ -76,7 +81,7 @@
           </div>
 
           <div class="form-group">
-            <%= f.label 'Сценаристы' %>
+            <%= label_tag 'Сценаристы' %>
             <input id="writer_url_select" type="text" class="form-control mb-5" placeholder="Введите ссылку на страницу писателя">
             <div class="input-group">
               <input id="writer_select" type="text" class="form-control" placeholder="Введите полное имя писателя">
@@ -88,31 +93,31 @@
           </div>
 
           <div class="form-group">
-            <%= f.label 'Возрастное ограничение' %>
-            <%= f.collection_select :age_id, Age.all, :id, :name, {}, class: 'form-control', required: 'true' %>
+            <%= label_tag 'Возрастное ограничение' %>
+            <%= collection_select(nil, nil, Age.all, :id, :name, {}, { class: 'form-control', required: 'true' }) %>
           </div>
 
           <div class="form-group">
-            <%= f.label 'Описание фильма', for: 'descInput' %>
-            <%= f.text_area :description, id: 'descInput', class: 'form-control', size: '30x10', required: 'true' %>
+            <%= label_tag 'Описание фильма', nil, { for: 'descInput' } %>
+            <%= text_area_tag :description, params[:description], { id: 'descInput', class: 'form-control resize-vertical', size: '30x10', required: 'true' } %>
           </div>
         </td>
         <td class="va-top">
           <div class="form-group cntr">
-            <%= f.label 'Текущий постер:'%>
+            <%= label_tag 'Текущий постер:'%>
             <% if !@movie.image_url.nil? %>
                 <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>" class="img-thumbnail poster mb-5">
             <% else %>
                 <div class="img-thumbnail poster mb-5"></div>
             <% end %>
-            <%= f.file_field :poster, accept: 'image/png,image/gif,image/jpeg', class: 'pl-10 float-r' %>
+            <%= file_field_tag :poster, { accept: 'image/png,image/gif,image/jpeg', class: 'pl-10 float-r' } %>
           </div>
         </td>
       </tr>
       <tr>
         <td colspan="2">
           <div class="form-group cntr">
-            <%= f.submit 'Сохранить', class: 'btn btn btn-header-color btn-nav-size' %>
+            <%= submit_tag 'Сохранить', { class: 'btn btn btn-header-color btn-nav-size' } %>
           </div>
 
           <div class="form-group cntr">

@@ -71,11 +71,13 @@
 .h30 {
     height: 30px;
 }
+.resize-vertical {
+    resize: vertical;
+}
+
 .font-georgia {
     font-family: Georgia;
 }
-
-
 
 .font-numbers {
     font-family: "Modern No. 20";

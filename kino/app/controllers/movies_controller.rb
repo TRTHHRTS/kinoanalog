@@ -13,6 +13,10 @@ class MoviesController < ApplicationController
 
   # POST
   def create_movie
+
+    redirect_to :back, notice: params
+
+=begin
     @movie = Movie.new
 
     @movie.id = Movie.last.id + 1
@@ -34,15 +38,17 @@ class MoviesController < ApplicationController
 
       @movie.image_url = path
     end
+=end
 
-    respond_to do |format|
-      if @movie.save
-        format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Фильм успешно создан' }
-        format.js {}
-      else
-        format.html { render action: 'new_movie' }
-      end
-    end
+    #
+    #respond_to do |format|
+    #  if @movie.save
+    #    format.html { redirect_to '/details/'+@movie.id.to_s, notice: 'Фильм успешно создан' }
+    #    format.js {}
+    #  else
+    #    format.html { render action: 'new_movie' }
+    #  end
+    #end
   end
 
   # PATCH/PUT
@@ -85,7 +91,8 @@ class MoviesController < ApplicationController
     end
 
   def movie_params
-    params.require(:movie).permit(:id, :title, :orig_title, :release_date, :duration, :description, :age_id, :poster, :image_url)
+    params.permit(:id, :title, :orig_title, :release_date, :duration, :description, :age_id, :poster, :image_url, :countries,
+      :directors, :movie_producers, :movie_stars, :movie_writers, :movie_countries)
   end
 
   def check_only_admin_moder

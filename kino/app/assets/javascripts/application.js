@@ -18,8 +18,9 @@ function addCountry() {
     if (currentCountry.length > 0) {
         var selectedCountries = $( "#selected_countries");
         selectedCountries.addClass("h30");
-        selectedCountries.append('<span class="float-l ml-5 mt-5 label label-default" name="movie_countries[c_' + currentCountry.val() + ']" ' +
+        selectedCountries.append('<span class="float-l ml-5 mt-5 label label-default"' +
             'class="ml-5 label label-default">'+ currentCountry.text() +'</span>');
+        selectedCountries.append('<input type="hidden" value="'+ currentCountry.text() + '" name="countries[' + currentCountry.val() + ']">');
 
         currentCountry.remove();
     }
@@ -32,10 +33,10 @@ function addDirector() {
     if (director.val().length > 0) {
         if (director_url.val().length > 0) {
             director_ul.append('<a target="_blank" name="movie_director_urls[d_' + director_ul.children("li").length + ']" href="' + director_url.val() + '">' +
-                '<li class="" name="movie_directors[d_' + director_ul.children("li").length + ']" class="ml-5 label label-default">'+ director.val() +'</li></a>');
+                '<li class="" name="directors[d_' + director_ul.children("li").length + ']" class="ml-5 label label-default">'+ director.val() +'</li></a>');
             director_url.val("");
         } else {
-            director_ul.append('<li class="" name="movie_directors[d_' + director_ul.children("li").length + ']" class="ml-5 label label-default">'+ director.val() +'</li>');
+            director_ul.append('<li class="" name="directors[d_' + director_ul.children("li").length + ']" class="ml-5 label label-default">'+ director.val() +'</li>');
         }
         director.val("").focus();
     }

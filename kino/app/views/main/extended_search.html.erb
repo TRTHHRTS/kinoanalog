@@ -1,6 +1,5 @@
 <h2 class="title font-cambria">Расширенный поиск</h2>
 <%= form_tag({ action: :extended_search, controller: main_path}, { class: 'form-horizontal'}) do %>
-<!--%= form_tag(extended_search_path(:title => @title), role: 'search',  class: 'form-horizontal') do %-->
     <div class="form-group">
       <%= label_tag 'Название фильма', nil, { class: 'col-sm-4 control-label', for: 'title'} %>
       <div class="col-sm-4">
@@ -11,7 +10,6 @@
       <%= label_tag 'Год', nil, { class: 'col-sm-4 control-label', for: 'yearInput' } %>
       <div class="col-sm-4">
         <%= number_field_tag :year, params[:year],in: 1900...Time.now.year+10, class: 'form-control', id: 'yearInput' %>
-        <!--%= date_field_tag :year, nil, { class: 'form-control', id: 'yearInput' } %-->
       </div>
     </div>
     <div class="form-group">
