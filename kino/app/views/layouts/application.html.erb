@@ -4,6 +4,7 @@
   <title>PROkino</title>
   <%= stylesheet_link_tag :application %>
   <%= javascript_include_tag :application %>
+  <%= javascript_include_tag :details if action_name == 'details' %>
 </head>
 <body>
   <div class="container">

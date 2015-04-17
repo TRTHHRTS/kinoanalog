@@ -95,5 +95,5 @@ Review.create([{movie_id:1, user_id:1, title:'10/10', content:"
 10 из 10", recommended: true},
                {movie_id:1, user_id:2, title:'Средне', content:'В целом пойдет, но книга лучше', recommended: true},
                {movie_id:1, user_id:1, title:'Очень не очень =(', content:'Даже не тратьте свое время на это..', recommended: false}])
-Rating.create([{id:1, movie_id:1, user_id:1, value:6},
+Rating.create([{id:1, movie_id:1, user_id:1, value:5},
                {id:2, movie_id:1, user_id:2, value:3}])

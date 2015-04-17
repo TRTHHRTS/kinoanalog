@@ -48,9 +48,35 @@
           <p class="font-georgia pr-10"><%= @movie.description %></p>
         <p><strong>Пользовательский рейтинг: </strong>
           <% if @movie.ratings.count == 0 %>
-              еще никто не проголосовал
+              [еще никто не проголосовал]
           <% else %>
-              <%= @movie.ratings.average(:value).round(2)%>
+              <span id="stars_count" hidden="hidden"><%= @movie.ratings.average(:value).round%></span>
+              <span id="rating_stars" class="starRating">
+                <input id="rating5" type="radio" name="rating" value="5">
+                <label for="rating5">5</label>
+                <input id="rating4" type="radio" name="rating" value="4">
+                <label for="rating4">4</label>
+                <input id="rating3" type="radio" name="rating" value="3">
+                <label for="rating3">3</label>
+                <input id="rating2" type="radio" name="rating" value="2">
+                <label for="rating2">2</label>
+                <input id="rating1" type="radio" name="rating" value="1">
+                <label for="rating1">1</label>
+              </span>
+              <div class="input-group">
+                <select class="form-control" style="width: 80px">
+                  <option>0</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+                <div class="input-group-btn btn-group-border">
+                  <button class="btn table-more-inf" type="button" onclick="alert('Not ready now, sorry..');">Проголосовать</button>
+                </div>
+              </div>
+
           <% end %>
         </p>
         <p><strong>Число голосов: </strong> <%= @movie.ratings.count %> </p>
