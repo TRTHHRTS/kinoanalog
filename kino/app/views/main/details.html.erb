@@ -88,6 +88,16 @@
       <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, class: 'btn btn-link', confirm: 'Удалить этот фильм?' %>
   <% end %>
 </div>
+<div class="recommended-films-table cntr">
+  Похожие фильмы:
+  <table>
+    <tr>
+      <td>
+
+      </td>
+    </tr>
+  </table>
+</div>
 <% if @movie.reviews.count == 0
      reviewString = 'Отзывов еще нет'
      if user_signed_in?
