@@ -46,10 +46,12 @@ Genre.create([{name:'Аниме'},
               {name:'Фантастика'},
               {name:'Фильм-нуар'},
               {name:'Фэнтези'}])
-Star.create([{name:'Джонни Депп'},{name:'Эдвард Нортон'},{name:'Эдвард Ферлонг'},{name:'Беверли Д’Анджело'}])
-Director.create([{name:'Кристофер Нолан'}, {name:'Тони Кэй'}])
-Producer.create([{name:'Джерри Брукхаймер'}, {name:'Джон Мориссей'}, {name:'Билл Карраро'}, {name:'Майкл Де Лука'}])
-Writer.create([{name:'Люк Бессон'}, {name:'Дэвид МакКенна'}])
+Star.create([{name:'Джонни Депп'},{name:'Эдвард Нортон'},{name:'Эдвард Ферлонг'},{name:'Беверли Д’Анджело'},
+             {name:'Роберт Дауни мл.'},{name:'Крис Хемсворт'},{name:'Крис Эванс'},{name:'Скарлетт Йоханссон'},{name:'Марк Руффало'},{name:'Джереми Реннер'}])
+Director.create([{name:'Кристофер Нолан'}, {name:'Тони Кэй'}, {name:'Джосс Уидон'}])
+Producer.create([{name:'Джерри Брукхаймер'}, {name:'Джон Мориссей'}, {name:'Билл Карраро'}, {name:'Майкл Де Лука'},
+                 {name:'Кевин Файги'},{name:'Виктория Алонсо'},{name:'Митчелл Белл'}])
+Writer.create([{name:'Люк Бессон'}, {name:'Дэвид МакКенна'}, {name:'Джосс Уидон'}, {name:'Стэн Ли'}, {name:'Джек Кирби'}])
 Country.create([{name:'Россия'},
                 {name:'США'},
                 {name:'Германия'},
@@ -73,18 +75,26 @@ Age.create([{name:'0+'},
             {name:'18+'}])
 Movie.create([{id:1, title:'Американская История Х', orig_title:'American history X', image_url:'/assets/images/movies/1.jpg',
                release_date:'2015-04-01', duration:119, description:"Лидер местной банды скинхедов Дерек Виньярд прочно удерживает авторитет в своём районе. Убеждённый в своей правоте, он беспощадно расправляется с теми, кто имеет не белый цвет кожи. Независимость и смелость Дерека вызывают восхищение у его младшего брата Дэнни, который уже тоже сделал свой выбор.\n
-Но зверское убийство двух чернокожих парней, совершённое Дереком, разделяет дороги братьев: Дерек оказывается в тюрьме, где существует свой расклад сил, а Дэнни на свободе успешно продолжает дело брата. До тех пор, пока их пути не пересеклись вновь…", age_id:1}])
+Но зверское убийство двух чернокожих парней, совершённое Дереком, разделяет дороги братьев: Дерек оказывается в тюрьме, где существует свой расклад сил, а Дэнни на свободе успешно продолжает дело брата. До тех пор, пока их пути не пересеклись вновь…", age_id:4}])
 Movie.create([{id:2, title:'Мгла', orig_title:'The mist', release_date:'2015-04-02',
                duration:119, description:'history..', age_id:2, image_url:'/assets/images/movies/noposter.png'}])
 Movie.create([{id:3, title:'Третье пришествие', orig_title:'Третье пришествие', release_date:'2015-04-15',
                duration:119, description:'history..', age_id:3, image_url:'/assets/images/movies/noposter.png'}])
 Movie.create([{id:4, title:'Очередной слоупок', orig_title:'Slowpoke', release_date:'2015-05-19',
                duration:119, description:'history..', age_id:4, image_url:'/assets/images/movies/noposter.png'}])
-CountriesMovies.create([{movie_id:1, country_id:2}])
-GenresMovies.create([{movie_id:1, genre_id:9},{movie_id:1, genre_id:13}])
-DirectorsMovies.create([{director_id:2, movie_id:1}])
-ProducersMovies.create([{producer_id:2, movie_id:1},{producer_id:3, movie_id:1},{producer_id:4, movie_id:1}])
-StarsMovies.create([{star_id:2, movie_id:1},{star_id:3, movie_id:1},{star_id:4, movie_id:1}])
+Movie.create([{id:5, title:'Мстители: Эра Альтрона', orig_title:'Avengers: Age of Ultron', release_date:'2015-04-23',
+               duration:141, description:"Человечество на грани уничтожения. На этот раз людям угрожает Альтрон — искусственный интеллект, ранее созданный для того, чтобы защищать Землю от любых угроз.\n
+Однако, главной угрозой он посчитал человечество. Международная организация Щ. И. Т распалась, и теперь мир не способен справиться с таким мощным врагом, потому люди вновь обращаются за помощью к Величайшим Героям Земли — Мстителям.\n
+Однако Альтрон слишком силен, и есть большая вероятность, что даже им не удастся остановить начало надвигающейся Эры Альтрона, где нет места для людей…", age_id:3, image_url:'/assets/images/movies/5.jpg'}])
+CountriesMovies.create([{movie_id:1, country_id:2}, {movie_id:5, country_id:2}])
+GenresMovies.create([{movie_id:1, genre_id:9},{movie_id:1, genre_id:13},
+                     {movie_id:2, genre_id:20}, {movie_id:2, genre_id:3}, {movie_id:2, genre_id:18}, {movie_id:2, genre_id:15}])
+DirectorsMovies.create([{director_id:2, movie_id:1}, {director_id:3, movie_id:5}])
+ProducersMovies.create([{producer_id:2, movie_id:1},{producer_id:3, movie_id:1},{producer_id:4, movie_id:1},
+                        {producer_id:5, movie_id:5},{producer_id:6, movie_id:5},{producer_id:7, movie_id:1}])
+WritersMovies.create([{writer_id:3, movie_id: 5}, {writer_id:4, movie_id: 5}, {writer_id:5, movie_id: 5}])
+StarsMovies.create([{star_id:2, movie_id:1},{star_id:3, movie_id:1},{star_id:4, movie_id:1},{star_id:10, movie_id:5},
+                    {star_id:5, movie_id:5},{star_id:6, movie_id:5},{star_id:7, movie_id:5},{star_id:8, movie_id:5},{star_id:9, movie_id:5}])
 Review.create([{movie_id:1, user_id:1, title:'10/10', content:"
 Что такое быть человеком, который подписал себе приговор своим мировоззрением и отношением к людям? И еще стать лидером для многих и в частности для своего брата?\n
 И все это время следовать слепой ненависти, которая привела Дерека в тюрьму. И быть еще при этом идеалом для младшего брата, ради которого он держался три года и верил.\n

@@ -1,6 +1,5 @@
 class MainController < ApplicationController
   before_action :set_movie, only: [:random]
-  before_action :find_movies, only: [:search_result]
   before_action :check_only_admin_moder, only: [:users, :destroy_profile]
   before_action :check_only_admin, only: [:change_rights]
 
@@ -76,6 +75,9 @@ class MainController < ApplicationController
 
   # GET обычный поиск
   def search_result
+    arg = params[:query]
+    @movies = Movie.where('lower(title) LIKE lower(?) OR lower(orig_title) LIKE lower(?)', "%#{arg}%", "%#{arg}%")
+
   end
 
   def profile
@@ -110,11 +112,6 @@ class MainController < ApplicationController
   def set_movie
     @movie = Movie.all[rand(0..Movie.count-1)]
     @users = User.all
-  end
-
-  def find_movies
-    @movies = Movie.where('lower(title) LIKE lower(?)', "%#{params[:query]}%")
-    @str_search = params[:query]
   end
 
   def movie_params

@@ -84,8 +84,8 @@
     </tr>
   </table>
   <% if user_signed_in? && current_user.permission == 1 %>
-      <%= link_to 'Редактировать данные', '/edit_movie/'+@movie.id.to_s, :class => 'btn btn-link' %>
-      <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, :class => 'btn btn-link', confirm: 'Удалить этот фильм?' %>
+      <%= link_to 'Редактировать данные', '/edit_movie/'+@movie.id.to_s, class: 'btn btn-link' %>
+      <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, class: 'btn btn-link', confirm: 'Удалить этот фильм?' %>
   <% end %>
 </div>
 <% if @movie.reviews.count == 0
@@ -109,7 +109,7 @@
             <tr>
               <td>
                 <div class="review <%= review.recommended ? 'review-good' : 'review-bad' %>">
-                  <% if user_signed_in? && (review.user_id==current_user.id || current_user.permission == 1 ) then%>
+                  <% if user_signed_in? && (review.user_id==current_user.id || current_user.permission == 1 ) %>
                      <span>
                        <%= link_to '/destroy_review/'+review.id.to_s, :class => 'btn btn-danger btn-sm', confirm: 'Удалить этот отзыв?' do %>
                           <img src="<%= image_path 'remove.png' %>" class="image-size">
@@ -122,7 +122,7 @@
                   <h4 class="mb-10 mt-10 font-size-16"><strong><%= review.title %></strong></h4>
                   <p class="mb-0 mt-0 font-georgia font-size-13"><%= review.content %></p>
                   <i class="font-size-12"><%= @users.find(review.user_id).name %>
-                  <% unless review.review_date.nil? %>, <%= Russian::strftime(review.review_date , "%d-%m-%Y %H:%M")%><% end %></i>
+                  <% unless review.review_date.nil? %>, <%= Russian::strftime(review.review_date , '%d-%m-%Y %H:%M')%><% end %></i>
                 </div>
               </td>
             </tr>
