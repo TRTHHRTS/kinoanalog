@@ -34,13 +34,13 @@
     </header>
     <nav>
       <ul class="nav-justified">
-        <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'index' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Главная', main_path %></li>
-        <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'releases' ? 'active' : 'btn-nav-color' %>"><%= link_to 'График премьер', releases_path%></li>
-        <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'random' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Случайный фильм', random_film_path%></li>
-        <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'extended_search' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Расширенный поиск', extended_search_path %></li>
+        <li role="presentation" class="btn btn-block btn-nav-size box-shadow<%= action_name == 'index' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Главная', main_path %></li>
+        <li role="presentation" class="btn btn-block btn-nav-size box-shadow<%= action_name == 'releases' ? 'active' : 'btn-nav-color' %>"><%= link_to 'График премьер', releases_path%></li>
+        <li role="presentation" class="btn btn-block btn-nav-size box-shadow<%= action_name == 'random' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Случайный фильм', random_film_path%></li>
+        <li role="presentation" class="btn btn-block btn-nav-size box-shadow<%= action_name == 'extended_search' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Расширенный поиск', extended_search_path %></li>
         <% if user_signed_in? && current_user.permission == 1 %>
-            <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'users' ? 'active' : 'btn-users' %>"><%= link_to 'Пользователи', users_path %></li>
-            <li role="presentation" class="btn btn-block btn-nav-size <%= action_name == 'new_movie' ? 'active-new-film' : 'btn-add-new-film' %>"><%= link_to 'Добавить фильм', new_movie_path %></li>
+            <li role="presentation" class="btn btn-block btn-nav-size box-shadow <%= action_name == 'users' ? 'active-users' : 'btn-users' %>"><%= link_to 'Пользователи', users_path %></li>
+            <li role="presentation" class="btn btn-block btn-nav-size box-shadow <%= action_name == 'new_movie' ? 'active-new-film' : 'btn-add-new-film' %>"><%= link_to 'Добавить фильм', new_movie_path %></li>
       <% end %>
       </ul>
     </nav>

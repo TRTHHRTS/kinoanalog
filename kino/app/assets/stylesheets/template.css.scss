@@ -140,20 +140,28 @@ div.movie-details {
   }
 }
 
-.btn-add-new-film {
-  color: $darkgreen;
+li.btn-add-new-film {
   background-color: $lightgreen;
+  a {
+    color: $darkgreen !important;
+  }
   &:hover {
-    color: $lightgreen;
+    a {
+      color: $lightgreen !important;
+    }
     background-color: $darkgreen;
   }
 }
 
-.btn-users {
-  color: $richorange;
+li.btn-users {
   background-color: $lightorange;
+  a {
+    color: $richorange !important;
+  }
   &:hover {
-    color: $lightorange;
+    a {
+      color: $lightorange !important;
+    }
     background-color:  $richorange;
     border: 1px solid $lightorange;
   }
@@ -185,13 +193,37 @@ div.movie-details {
   }
 }
 
+.box-shadow {
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  }
+
 .active:hover {
   color: $lightblue;
   background-color: $richblue;
 }
-.active-new-film:hover {
-  color: $lightgreen;
-  background-color: $darkgreen;
+li.active-new-film {
+  a {
+  color: $darkgreen !important;
+  }
+  &:hover {
+    a {
+      color: $lightgreen !important;
+    }
+    background-color: $darkgreen;
+  }
+}
+
+li.active-users {
+  a {
+    color: $richorange !important;
+  }
+  &:hover {
+    a {
+      color: $lightorange !important;
+    }
+    background-color: $richorange;
+  }
 }
 
 .title {
