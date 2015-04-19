@@ -15,79 +15,39 @@
 //= require jquery_ujs
 function addCountry() {
     var currentCountry = $( "select#country_select option:selected" );
+    var cName;
+    var cId;
     if (currentCountry.length > 0) {
-        var selectedCountries = $("#selected_countries");
-        selectedCountries.addClass("h30");
-        cVal = currentCountry.val();
+        var countryList = $("ul#selected_countries");
         cName = currentCountry.text();
-        selectedCountries.append('<span class="float-l ml-5 mt-5 label label-default" class="ml-5 label label-default">'+ cName +'</span>');
-
-        selectedCountries.append($('<input type="hidden" value="' + cName + '" name="countries[]" readonly/>'));
-
+        cId = countryList.children().length + 1;
+        countryList.append($('<li id="' + cId + '">' + cName + ' <a class="btn" href="javascript:deleteCountry(' + cId + ')">X</a></li>'));
+        countryList.append($('<input id="' + cId + '" type="hidden" value="' + cName + '" name="countries[]" readonly/>'));
         currentCountry.remove();
     }
 }
 
-function addDirector() {
-    var director = $( "#director_select" );
-    var director_url = $( "#director_url_select" );
-    var director_ul =  $( "ul#selected_directors");
-    if (director.val().length > 0) {
-        if (director_url.val().length > 0) {
-            director_ul.append('<a target="_blank" name="movie_director_urls[d_' + director_ul.children("li").length + ']" href="' + director_url.val() + '">' +
-                '<li class="" name="directors[d_' + director_ul.children("li").length + ']" class="ml-5 label label-default">'+ director.val() +'</li></a>');
-            director_url.val("");
-        } else {
-            director_ul.append('<li class="" name="directors[d_' + director_ul.children("li").length + ']" class="ml-5 label label-default">'+ director.val() +'</li>');
-        }
-        director.val("").focus();
-    }
+function deleteCountry(id) {
+    var removingItem = $("ul#selected_countries");
+    removingItem.children().remove("#" + id);
 }
 
-function addProducer() {
-    var producer = $( "#producer_select" );
-    var producer_url = $( "#producer_url_select" );
-    var producer_ul =  $( "ul#selected_producers");
-    if (producer.val().length > 0) {
-        if (producer_url.val().length > 0) {
-            producer_ul.append('<a target="_blank" name="movie_producer_urls[p_' + producer_ul.children("li").length + ']" href="' + producer_url.val() + '">' +
-                '<li class="" name="movie_producers[p_' + producer_ul.children("li").length + ']" class="ml-5 label label-default">'+ producer.val() +'</li></a>');
-            producer_url.val("");
+function addItem(itemName) {
+    var item = $( "#" + itemName + "_select" );
+    var item_url = $( "#" + itemName + "_url_select" );
+    var item_list =  $( "ul#selected_" + itemName + "s");
+    if (item.val().length > 0) {
+        if (item_url.val().length > 0) {
+            item_list.append($('<a target="_blank" href="' + item_url.val() + '"><li>'+ item.val() +'</li></a>'));
+            item_url.val("");
+            item_list.append($('<input type="hidden" value="' + item.val() + '" name="' + itemName + 's[]" readonly/>'));
+            item_list.append($('<input type="hidden" value="' + item.val() + '" name="' + itemName + '_urls[]" readonly/>'));
         } else {
-            producer_ul.append('<li class="" name="movie_producers[p_' + producer_ul.children("li").length + ']" class="ml-5 label label-default">'+ producer.val() +'</li>');
+            item_list.append($('<li>'+ item.val() +'</li>'));
+            item_url.val("");
+            item_list.append($('<input type="hidden" value="' + item.val() + '" name="' + itemName + 's[]" readonly/>'));
+            item_list.append($('<input type="hidden" value="-1" name="' + itemName + '_urls[]" readonly/>'));
         }
-        producer.val("").focus();
-    }
-}
-
-function addWriter() {
-    var writer = $( "#writer_select" );
-    var writer_url = $( "#writer_url_select" );
-    var writer_ul =  $( "ul#selected_writers");
-    if (writer.val().length > 0) {
-        if (writer_url.val().length > 0) {
-            writer_ul.append('<a target="_blank" name="movie_writer_urls[w_' + writer_ul.children("li").length + ']" href="' + writer_url.val() + '">' +
-                '<li class="" name="movie_writers[w_' + writer_ul.children("li").length + ']" class="ml-5 label label-default">'+ writer.val() +'</li></a>');
-            writer_url.val("");
-        } else {
-            writer_ul.append('<li class="" name="movie_writers[w_' + writer_ul.children("li").length + ']" class="ml-5 label label-default">'+ writer.val() +'</li>');
-        }
-        writer.val("").focus();
-    }
-}
-
-function addStar() {
-    var star = $( "#star_select" );
-    var star_url = $( "#star_url_select" );
-    var star_ul =  $( "ul#selected_stars");
-    if (star.val().length > 0) {
-        if (star_url.val().length > 0) {
-            star_ul.append('<a target="_blank" name="movie_star_urls[s_' + star_ul.children("li").length + ']" href="' + star_url.val() + '">' +
-                '<li class="" name="movie_stars[s_' + star_ul.children("li").length + ']" class="ml-5 label label-default">'+ star.val() +'</li></a>');
-            star_url.val("");
-        } else {
-            star_ul.append('<li class="" name="movie_stars[s_' + star_ul.children("li").length + ']" class="ml-5 label label-default">'+ star.val() +'</li>');
-        }
-        star.val("").focus();
+        item.val("").focus();
     }
 }
