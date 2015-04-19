@@ -16,11 +16,13 @@
 function addCountry() {
     var currentCountry = $( "select#country_select option:selected" );
     if (currentCountry.length > 0) {
-        var selectedCountries = $( "#selected_countries");
+        var selectedCountries = $("#selected_countries");
         selectedCountries.addClass("h30");
-        selectedCountries.append('<span class="float-l ml-5 mt-5 label label-default"' +
-            'class="ml-5 label label-default">'+ currentCountry.text() +'</span>');
-        selectedCountries.append('<input type="hidden" value="'+ currentCountry.text() + '" name="countries[' + currentCountry.val() + ']">');
+        cVal = currentCountry.val();
+        cName = currentCountry.text();
+        selectedCountries.append('<span class="float-l ml-5 mt-5 label label-default" class="ml-5 label label-default">'+ cName +'</span>');
+
+        selectedCountries.append($('<input type="hidden" value="' + cName + '" name="countries[]" readonly/>'));
 
         currentCountry.remove();
     }

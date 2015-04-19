@@ -78,6 +78,7 @@ class MainController < ApplicationController
     arg = params[:query]
     @movies = Movie.where('lower(title) LIKE lower(?) OR lower(orig_title) LIKE lower(?)', "%#{arg}%", "%#{arg}%")
 
+    render 'main/extended_search'
   end
 
   def profile

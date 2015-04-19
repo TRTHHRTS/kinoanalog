@@ -1,5 +1,5 @@
-<table class="edit-new-film-form font-darkgray-color">
-  <%= form_tag({ action: url_link, controller: :movies })  do %>
+<%= form_tag({ action: url_link, controller: :movies }, id: 'movie_details_form')  do %>
+    <table class="edit-new-film-form font-darkgray-color">
       <tr>
         <td>
           <% if @movie.errors.any? %>
@@ -22,7 +22,7 @@
           </div>
           <div class="form-group">
             <%= label_tag 'Дата выпуска', nil, { for: 'dateInput' } %>
-            <%= date_field_tag :release_date, params[:release_date], { id: 'dateInput', class: 'form-control datepicker', required: 'true' } %>
+            <%= date_field_tag :release_date, params[:release_date], { id: 'dateInput', class: 'form-control datepicker', required: 'true', value: Time.now.strftime('%Y-%m-%d') } %>
           </div>
           <div class="form-group">
             <%= label_tag 'Продолжительность (в минутах)', nil, { for: 'durationInput' } %>
@@ -38,9 +38,6 @@
             </div>
 
             <div id="selected_countries" class="w100perc">
-              <%= fields_for :countries do %>
-                  <input type="hidden" value="412" name="countries[22]">
-              <% end %>
             </div>
           </div>
 
@@ -119,11 +116,10 @@
           <div class="form-group cntr">
             <%= submit_tag 'Сохранить', { class: 'btn btn btn-header-color btn-nav-size' } %>
           </div>
-
           <div class="form-group cntr">
             <%= link_to 'Отмена', :back %>
           </div>
         </td>
       </tr>
-  <% end %>
-</table>
+    </table>
+<% end %>
