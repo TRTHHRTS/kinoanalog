@@ -21,9 +21,10 @@
           <% end %>
         </tr>
         <tr>
-          <%= form_tag(search_result_path(:title => @guery), role: 'search') do %>
+          <%= form_tag(search_result_path) do %>
           <td colspan="3">
-            <%= text_field_tag(:title, @str_search, {class: 'form-control', required: 'true', placeholder: 'Введите название фильма'}) %>
+            <%= text_field_tag(:title, nil, {class: 'form-control', required: 'true', placeholder: 'Введите название фильма'}) %>
+            <!--%= hidden_field :humanName, nil %-->
           </td>
           <td>
             <%= submit_tag('Найти', {class: 'btn btn-block btn-header-color', name: 'search'}) %>

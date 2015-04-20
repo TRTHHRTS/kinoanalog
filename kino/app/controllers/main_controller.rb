@@ -34,42 +34,116 @@ class MainController < ApplicationController
 
   #POST расширенный поиск
   def extended_search_result
-    #TODO и как найти все записи, удовлетворяющие условиям?
-    #@movies = Movie.where('lower(title) LIKE lower(?)', "%#{params[:title]}%").find_all_by_release_date(params[:year])    and genre_id LIKE genre   , "%#{params[:genre]}%"
-    @movies = Movie.where('(lower(title) LIKE lower(?) or orig_title LIKE ?)
-                            and release_date LIKE ? ', "%#{params[:title]}%", "%#{params[:title]}%",
-                          "%#{params[:date][:year]}%") #and Movie.where('genre_id LIKE ?',"%#{params[:genre][:genre_id]}%")
+    params[:title]=params[:title].strip
+    params[:humanName]=params[:humanName].strip
     # TODO поиск по жанру: если id жанра='', т.е. пользователь выбрал все жанры, а пока что сделал через if
+
     if params[:genre][:genre_id]==''
       sql='SELECT m.id, m.title, m.release_date
-    FROM movies m
-    WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?',
-          "%#{params[:title]}%", "%#{params[:title]}%", "%#{params[:date][:year]}%"
+           FROM movies m
+           WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?
+          ', "%#{params[:title]}%", "%#{params[:title]}%", "%#{params[:date][:year]}%"
+
+      if params[:humanName]!=''
+          sql_tmp='SELECT d.id
+                   FROM directors d
+                   WHERE d.name LIKE ?', "%#{params[:humanName]}%"
+          @dir_id=Director.find_by_sql(sql_tmp)
+
+          sql_tmp='SELECT p.id
+                   FROM producers p
+                   WHERE p.name LIKE ?', "%#{params[:humanName]}%"
+          @prod_id=Producer.find_by_sql(sql_tmp)
+
+          sql_tmp='SELECT s.id
+                   FROM stars s
+                   WHERE s.name LIKE ?', "%#{params[:humanName]}%"
+          @star_id=Star.find_by_sql(sql_tmp)
+
+          sql='SELECT m.id, m.title, m.release_date
+               FROM movies m
+               WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?
+               AND
+               (
+                 m.id IN (
+                 SELECT m.id
+                 FROM movies m
+                 LEFT JOIN directors_movies dm WHERE m.id = dm.movie_id AND dm.director_id = ?)
+
+                 OR
+                 m.id IN (
+                 SELECT m.id
+                 FROM movies m
+                 LEFT JOIN producers_movies pm WHERE m.id = pm.movie_id AND pm.producer_id = ?)
+
+                 OR
+                 m.id IN (
+                 SELECT m.id
+                 FROM movies m
+                 LEFT JOIN stars_movies sm WHERE m.id = sm.movie_id AND sm.star_id = ?)
+               )
+              ', "%#{params[:title]}%", "%#{params[:title]}%","%#{params[:date][:year]}%", @dir_id, @prod_id, @star_id
+      end
     else
       sql='SELECT m.id, m.title, m.release_date
-    FROM movies m
-    WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?
-          AND
-          m.id IN (
-          SELECT m.id
-          FROM movies m
-          LEFT JOIN genres_movies gm WHERE m.id = gm.movie_id AND gm.genre_id = ?)',
-          "%#{params[:title]}%", "%#{params[:title]}%", "%#{params[:date][:year]}%", params[:genre][:genre_id]#, params[:genre][:genre_id]
+           FROM movies m
+           WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?
+           AND
+           m.id IN (
+           SELECT m.id
+           FROM movies m
+           LEFT JOIN genres_movies gm WHERE m.id = gm.movie_id AND gm.genre_id = ?)
+          ', "%#{params[:title]}%", "%#{params[:title]}%", "%#{params[:date][:year]}%", params[:genre][:genre_id]
+      if params[:humanName]!=''
+        sql_tmp='SELECT d.id
+                 FROM directors d
+                 WHERE d.name LIKE ?', "%#{params[:humanName]}%"
+        @dir_id=Director.find_by_sql(sql_tmp)
+
+        sql_tmp='SELECT p.id
+                 FROM producers p
+                 WHERE p.name LIKE ?', "%#{params[:humanName]}%"
+        @prod_id=Producer.find_by_sql(sql_tmp)
+
+        sql_tmp='SELECT s.id
+                 FROM stars s
+                 WHERE s.name LIKE ?', "%#{params[:humanName]}%"
+        @star_id=Star.find_by_sql(sql_tmp)
+
+        sql='SELECT m.id, m.title, m.release_date
+             FROM movies m
+             WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?
+             AND
+             m.id IN (
+             SELECT m.id
+             FROM movies m
+             LEFT JOIN genres_movies gm WHERE m.id = gm.movie_id AND gm.genre_id = ?)
+             AND
+             (
+               m.id IN (
+               SELECT m.id
+               FROM movies m
+               LEFT JOIN directors_movies dm WHERE m.id = dm.movie_id AND dm.director_id = ?)
+
+               OR
+               m.id IN (
+               SELECT m.id
+               FROM movies m
+               LEFT JOIN producers_movies pm WHERE m.id = pm.movie_id AND pm.producer_id = ?)
+
+               OR
+               m.id IN (
+               SELECT m.id
+               FROM movies m
+               LEFT JOIN stars_movies sm WHERE m.id = sm.movie_id AND sm.star_id = ?)
+             )
+            ', "%#{params[:title]}%", "%#{params[:title]}%","%#{params[:date][:year]}%", params[:genre][:genre_id], @dir_id, @prod_id, @star_id
+      end
     end
     @movies=Movie.find_by_sql(sql)
 
+    # это нужно для сохранения выбранной даты
     params[:year]=params[:date][:year].to_i
-    sql2='SELECT m.id, m.title, m.release_date
-          FROM movies m
-          LEFT JOIN genres_movies gm WHERE m.id = gm.movie_id AND gm.genre_id = ?',
-        params[:genre][:genre_id]
-    #@movies=Movie.find_by_sql(sql2)
-
-    sql3='SELECT m.id, m.title, m.release_date
-    FROM movies m
-    WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?',
-        "%#{params[:title]}%", "%#{params[:title]}%", "%#{params[:date][:year]}%"
-    #@movies=Movie.find_by_sql(sql3)
 
     render 'main/extended_search', notice: params
   end

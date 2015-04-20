@@ -3,7 +3,7 @@
     <div class="form-group">
       <%= label_tag 'Название фильма', nil, { class: 'col-sm-4 control-label', for: 'title'} %>
       <div class="col-sm-4">
-        <%= text_field_tag 'title', params[:title], { autofocus: true, class: 'form-control', id: 'title', placeholder: 'Оригинальное или локализованное' } %>
+        <%= text_field_tag :title, params[:title], { autofocus: true, class: 'form-control', id: 'title', placeholder: 'Оригинальное или локализованное' } %>
       </div>
     </div>
     <div class="form-group">
@@ -21,7 +21,7 @@
     <div class="form-group">
       <%= label_tag 'Имя актера или создателя фильма', nil, { class: 'col-sm-4 control-label', for: 'humanNameInput' } %>
       <div class="col-sm-4">
-        <%= text_field_tag :humanName, nil, { class: 'form-control', id: 'humanNameInput' } %>
+        <%= text_field_tag :humanName, params[:humanName], { class: 'form-control', id: 'humanNameInput' } %>
       </div>
     </div>
     <div class="form-group cntr">
@@ -29,23 +29,4 @@
     </div>
 <% end %>
 
-<table class="table table-hover">
-  <thead>
-  <tr class="font-cambria title font-size-18 cntr">
-    <th class="cntr">Название</th>
-    <th class="cntr">Дата премьеры</th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <% if @movies !=nil %>
-      <% @movies.each do |movie| %>
-          <tr class="table-tr font-georgia cntr">
-            <td><%= movie.title %></td>
-            <td><%= movie.release_date %></td>
-            <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn table-more-inf' %></td>
-          </tr>
-      <% end %>
-  <% end %>
-  </tbody>
-</table>
+<%= render 'search_result' %>

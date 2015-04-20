@@ -1,0 +1,27 @@
+<% if !@movies.empty? %>
+    <table class="table table-hover">
+      <thead>
+      <tr class="font-cambria title font-size-18 cntr">
+        <th class="cntr">Название</th>
+        <th class="cntr">Дата премьеры</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @movies.each do |movie| %>
+          <tr class="table-tr font-georgia cntr">
+            <td><%= movie.title %></td>
+            <td><%= movie.release_date %></td>
+            <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn table-more-inf' %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <div class="cntr">
+      <h2><strong>Ничего не найдено</strong><br>
+        <small><strong>Попробуйте изменить критерии поиска. Возможно, вы где-то опечатались</strong></small>
+      </h2>
+    </div>
+<% end %>
+<br>
