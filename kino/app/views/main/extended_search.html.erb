@@ -9,7 +9,7 @@
     <div class="form-group">
       <%= label_tag 'Год', nil, { class: 'col-sm-4 control-label', for: 'yearInput' } %>
       <div class="col-sm-4">
-        <%= number_field_tag :year, params[:year],in: 1900...Time.now.year+10, class: 'form-control', id: 'yearInput' %>
+        <%= select_year(params[:year], {prompt: 'Все', start_year: DateTime.now.year+10, end_year: 1960}, {field_name: :year, class: 'form-control', id: 'yearInput'}) %>
       </div>
     </div>
     <div class="form-group">
