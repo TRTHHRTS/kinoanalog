@@ -1,10 +1,10 @@
-<%= form_tag({ action: url_link, controller: :movies }, id: 'movie_details_form')  do %>
+<%= form_tag({ action: url_link, controller: :movies }, enctype: 'multipart/form-data', id: 'movie_details_form')  do %>
     <table class="edit-new-film-form font-darkgray-color">
       <tr>
         <td>
           <% if @movie.errors.any? %>
               <div id="error_explanation">
-                <h2><%= Russian::pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+                <h2><%= Russian::pluralize(@movie.errors.count, 'error') %> prohibited this movie from being saved:</h2>
                 <ul>
                   <% @movie.errors.full_messages.each do |msg| %>
                       <li><%= msg %></li>
@@ -12,22 +12,27 @@
                 </ul>
               </div>
           <% end %>
+
           <div class="form-group">
             <%= label_tag 'Название на русском языке', nil, {for: 'titleInput'} %>
             <%= text_field_tag :title, params[:title], { autofocus: true, class: 'form-control', id: 'titleInput', placeholder: 'Название на русском языке', required: 'true' } %>
           </div>
+
           <div class="form-group">
             <%= label_tag 'Название на языке оригинала', nil, { for: 'titleOrigInput' } %>
             <%= text_field_tag :orig_title, params[:title], { class: 'form-control', id: 'titleOrigInput', placeholder: 'Название на языке оригинала', required: 'true' } %>
           </div>
+
           <div class="form-group">
             <%= label_tag 'Дата выпуска', nil, { for: 'dateInput' } %>
             <%= date_field_tag :release_date, params[:release_date], { id: 'dateInput', class: 'form-control datepicker', required: 'true', value: Time.now.strftime('%Y-%m-%d') } %>
           </div>
+
           <div class="form-group">
             <%= label_tag 'Продолжительность (в минутах)', nil, { for: 'durationInput' } %>
             <%= number_field_tag :duration, nil, { class: 'form-control', id: 'durationInput', in: 0...500, required: 'true' } %>
           </div>
+
           <div class="form-group">
             <%= label_tag 'Cтраны', nil, { for: 'country_select' } %>
             <div class="input-group">
@@ -36,7 +41,18 @@
                 <button class="btn table-more-inf" type="button" onclick="addCountry()">Добавить выбранную страну</button>
               </div>
             </div>
-            <ul id="selected_countries"></ul>
+            <ul id="selected_countries" style="padding: 0"></ul>
+          </div>
+
+          <div class="form-group">
+            <%= label_tag 'Жанры', nil, { for: 'genre_select' } %>
+            <div class="input-group">
+              <%= collection_select(nil, nil, Genre.all, :id, :name, {}, {id: 'genre_select', class: 'form-control'}) %>
+              <div class="input-group-btn btn-group-border">
+                <button class="btn table-more-inf" type="button" onclick="addGenre()">Добавить выбранную жанр</button>
+              </div>
+            </div>
+            <ul id="selected_genres" style="padding: 0"></ul>
           </div>
 
           <div class="form-group">
@@ -89,7 +105,7 @@
 
           <div class="form-group">
             <%= label_tag 'Возрастное ограничение' %>
-            <%= collection_select(nil, nil, Age.all, :id, :name, {}, { class: 'form-control', required: 'true' }) %>
+            <%= collection_select(nil, :age_id, Age.all, :id, :name, {}, { class: 'form-control', required: 'true' }) %>
           </div>
 
           <div class="form-group">
@@ -105,7 +121,7 @@
             <% else %>
                 <div class="img-thumbnail poster mb-5"></div>
             <% end %>
-            <%= file_field_tag :poster, { accept: 'image/png,image/gif,image/jpeg', class: 'pl-10 float-r' } %>
+            <%= file_field_tag 'file[poster]', { accept: 'image/png,image/gif,image/jpeg', class: 'pl-10 float-r' } %>
           </div>
         </td>
       </tr>
