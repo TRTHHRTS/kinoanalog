@@ -5,39 +5,39 @@
   <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>" class="img-thumbnail poster float-r">
   <table class="about-movie-table font-cambria">
     <tr class="border-bottom">
-      <td class="text-bold pb-10">Страна:</td>
+      <td class="text-bold pb-5 pt-5">Страна:</td>
       <td><%= render partial: 'list', object: @movie.countries %></td>
     </tr>
     <tr class="border-bottom">
-      <td class="text-bold pb-10">Жанр:</td>
+      <td class="text-bold pb-5 pt-5">Жанр:</td>
       <td><%= render partial: 'list', object: @movie.genres %></td>
     </tr>
     <tr class="border-bottom">
-      <td class="text-bold pb-10">Дата премьеры:</td>
+      <td class="text-bold pb-5 pt-5">Дата премьеры:</td>
       <td><%= @movie.release_date.to_s %></td>
     </tr>
     <tr class="border-bottom">
-      <td class="text-bold pb-10">Продолжительность:</td>
+      <td class="text-bold pb-5 pt-5">Продолжительность:</td>
       <td><%= @movie.duration.to_s %> мин.</td>
     </tr>
     <tr class="border-bottom">
-      <td class="text-bold pb-10">Ограничение:</td>
+      <td class="text-bold pb-5 pt-5">Ограничение:</td>
       <td><%= @movie.age.name %></td>
     </tr>
     <tr class="border-bottom">
-      <td class="text-bold pb-10">Режиссер:</td>
+      <td class="text-bold pb-5 pt-5">Режиссер:</td>
       <td><%= render partial: 'list_url', object: @movie.directors %></td>
     </tr>
     <tr class="border-bottom">
-      <td class="text-bold pb-10">Продюсер:</td>
+      <td class="text-bold pb-5 pt-5">Продюсер:</td>
       <td><%= render partial: 'list_url', object: @movie.producers %></td>
     </tr>
     <tr class="border-bottom">
-      <td class="text-bold pb-10">Сценарист:</td>
+      <td class="text-bold pb-5 pt-5">Сценарист:</td>
       <td><%= render partial: 'list_url', object: @movie.writers %></td>
     </tr>
     <tr class="border-bottom">
-      <td class="text-bold pb-10">Актерский состав:</td>
+      <td class="text-bold pb-5 pt-5">Актерский состав:</td>
       <td><%= render partial: 'list_url', object: @movie.stars %></td>
     </tr>
 </table>
@@ -52,41 +52,39 @@
           <% else %>
               <span id="stars_count" hidden="hidden"><%= @movie.ratings.average(:value).round%></span>
               <span id="rating_stars" class="starRating">
-                <input id="rating5" type="radio" name="rating" value="5">
-                <label for="rating5">5</label>
-                <input id="rating4" type="radio" name="rating" value="4">
-                <label for="rating4">4</label>
-                <input id="rating3" type="radio" name="rating" value="3">
-                <label for="rating3">3</label>
-                <input id="rating2" type="radio" name="rating" value="2">
-                <label for="rating2">2</label>
-                <input id="rating1" type="radio" name="rating" value="1">
-                <label for="rating1">1</label>
+                <input id="rating5" type="radio" name="rating" value="5" readonly><label for="rating5">5</label>
+                <input id="rating4" type="radio" name="rating" value="4" readonly><label for="rating4">4</label>
+                <input id="rating3" type="radio" name="rating" value="3" readonly><label for="rating3">3</label>
+                <input id="rating2" type="radio" name="rating" value="2" readonly><label for="rating2">2</label>
+                <input id="rating1" type="radio" name="rating" value="1" readonly><label for="rating1">1</label>
               </span>
-              <div class="input-group">
-                <select class="form-control" style="width: 80px">
-                  <option>0</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-                <div class="input-group-btn btn-group-border">
-                  <button class="btn table-more-inf" type="button" onclick="alert('Not ready now, sorry..');">Проголосовать</button>
-                </div>
-              </div>
-
-          <% end %>
-        </p>
-          <p class="font-cambria"><strong>Число голосов: </strong> <%= @movie.ratings.count %> </p>
-         <span class="label btn-enter-color">Проголосовать</span>
+            <a class="ml-5 label btn-enter-color" href="#ratingModal">Проголосуй!</a>
+        <% end %>
+        <!-- <p><strong>Число голосов: </strong> <%= @movie.ratings.count %> </p> -->
       </td>
     </tr>
   </table>
+<div id="ratingModal" class="modalDialog">
+  <div>
+    <a href="#close" title="Close" class="close"><img src="<%= image_path 'remove.png' %>" class="image-size"></a>
+    <h2 class="cntr">Проголосуй за фильм!</h2>
+    <div class="cntr">
+    <span id="set_movie_rating" class="starRating">
+      <input type="radio" value="5"><label for="rating5">5</label>
+      <input type="radio" value="4"><label for="rating4">4</label>
+      <input type="radio" value="3"><label for="rating3">3</label>
+      <input type="radio" value="2"><label for="rating2">2</label>
+      <input type="radio" value="1"><label for="rating1">1</label>
+    </span>
+    </div>
+  </div>
+</div>
   <% if user_signed_in? && current_user.permission == 1 %>
-      <%= link_to 'Редактировать данные', '/edit_movie/'+@movie.id.to_s, class: 'btn btn-link' %>
-      <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, class: 'btn btn-link', confirm: 'Удалить этот фильм?' %>
+      <div class="ta-right">
+        <%= link_to 'Редактировать данные', '/edit_movie/'+@movie.id.to_s, class: 'btn btn-link' %><br/>
+        <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, class: 'btn btn-link', confirm: 'Удалить этот фильм?' %>
+      </div>
+
   <% end %>
 </div>
 

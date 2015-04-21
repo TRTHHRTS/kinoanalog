@@ -27,7 +27,7 @@ function addItem(itemName) {
         var itemList = $("ul#selected_" + items);
         cName = currentItem.text();
         cId = itemList.children().length + 1;
-        itemList.append($('<li class="selected-item" id="' + cId + '">' + cName + ' ' +
+        itemList.append($('<li class="selected-item" id="' + cId + '">' + cName +
             '<a class="btn btn-xs" href="javascript:deleteItem(\'' + items + '\',' + cId + ')">' +
             '<img src="/assets/remove.png"/></a></li>'));
         itemList.append($('<input id="' + cId + '" type="hidden" value="' + cName + '" name="' + items + '[]" readonly/>'));
@@ -54,7 +54,7 @@ function addItemWithUrl(itemName) {
                 '<img src="/assets/remove.png"/></a></li>'));
         } else {
             item_list.append($('<li class="selected-item" id="' + cId + '">' + item.val() +
-                ' <a class="btn btn-xs" href="javascript:deleteItem(\'' + itemName + 's\',' + cId + ')">' +
+                '<a class="btn btn-xs" href="javascript:deleteItem(\'' + itemName + 's\',' + cId + ')">' +
                 '<img src="/assets/remove.png"/></a></li>'));
         }
         item_url.val("");

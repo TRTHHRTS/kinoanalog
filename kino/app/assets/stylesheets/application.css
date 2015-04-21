@@ -50,6 +50,21 @@
 .pr-10 {
     padding-right: 1em;
 }
+.pb-5 {
+    padding-bottom: 5px;
+}
+.pt-5 {
+    padding-top: 5px;
+}
+.pt-10 {
+    padding-top: 1em;
+}
+.pb-10 {
+    padding-bottom: 1em;
+}
+.border-bottom {
+    border-bottom: 1px solid #dddddd;
+}
 .ta-right {
     text-align: right;
 }
