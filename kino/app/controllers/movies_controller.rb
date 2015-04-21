@@ -121,6 +121,7 @@ class MoviesController < ApplicationController
     end
   end
 
+
   # PATCH/PUT
   def update_movie
     #TODO Переделать по аналогии с добавлением фильма.
