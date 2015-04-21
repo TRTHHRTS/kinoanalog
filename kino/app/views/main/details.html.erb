@@ -88,16 +88,38 @@
       <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, class: 'btn btn-link', confirm: 'Удалить этот фильм?' %>
   <% end %>
 </div>
+
+<!--% if !@like_movies.empty? %-->
+<% if @like_movies!=nil %>
+    <div class="recommended-films-table cntr">
+      Похожие фильмы:
+      <table>
+        <tr>
+          <% @like_movies.each do |like_movie| %>
+            <td>
+              <%= link_to(image_tag(like_movie.image_url, alt: like_movie.title, class: 'img-thumbnail poster float-l'), '/details/' + like_movie.id.to_s) %>
+              <h6><strong class=""><%= link_to(like_movie.title, '/details/' + like_movie.id.to_s) %></strong></h6>
+            </td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+<% end %>
+
 <div class="recommended-films-table cntr">
-  Похожие фильмы:
+  Директоры
+  <!--%= render partial: 'list_url', object: @movie.directors.name %-->
   <table>
     <tr>
-      <td>
-
-      </td>
+      <% @writer_id.each do |dir| %>
+          <td>
+            <h6><strong class=""><%= dir.writer_id %> ---></strong></h6>
+          </td>
+      <% end %>
     </tr>
   </table>
 </div>
+
 <% if @movie.reviews.count == 0
      reviewString = 'Отзывов еще нет'
      if user_signed_in?
