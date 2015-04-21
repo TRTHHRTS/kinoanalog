@@ -376,10 +376,18 @@ footer {
   font-family: 'broadway';
 }
 
+.pb-10 {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.border-bottom {
+  border-bottom: 1px solid #dddddd;
+}
+
 .selected-item {
   a:last-child {
-    background-color: #F7F7F7;
-    border: 1px solid lightgray;
+    background-color: white;
+    border: 1px solid white;
   }
   img {
     width: 12px;

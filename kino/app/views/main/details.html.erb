@@ -3,41 +3,41 @@
     <small><strong class="title font-cambria"><%= @movie.orig_title + ' (' + @movie.release_date.year.to_s + ')' %></strong></small>
   </h1>
   <img src="<%= @movie.image_url %>" alt="<%= @movie.orig_title %>" class="img-thumbnail poster float-r">
-  <table class="about-movie-table">
-    <tr>
-      <td>Страна:</td>
+  <table class="about-movie-table font-cambria">
+    <tr class="border-bottom">
+      <td class="text-bold pb-10">Страна:</td>
       <td><%= render partial: 'list', object: @movie.countries %></td>
     </tr>
-    <tr>
-      <td>Жанр:</td>
+    <tr class="border-bottom">
+      <td class="text-bold pb-10">Жанр:</td>
       <td><%= render partial: 'list', object: @movie.genres %></td>
     </tr>
-    <tr>
-      <td>Дата премьеры:</td>
+    <tr class="border-bottom">
+      <td class="text-bold pb-10">Дата премьеры:</td>
       <td><%= @movie.release_date.to_s %></td>
     </tr>
-    <tr>
-      <td>Продолжительность:</td>
+    <tr class="border-bottom">
+      <td class="text-bold pb-10">Продолжительность:</td>
       <td><%= @movie.duration.to_s %> мин.</td>
     </tr>
-    <tr>
-      <td>Ограничение:</td>
+    <tr class="border-bottom">
+      <td class="text-bold pb-10">Ограничение:</td>
       <td><%= @movie.age.name %></td>
     </tr>
-    <tr>
-      <td>Режиссер:</td>
+    <tr class="border-bottom">
+      <td class="text-bold pb-10">Режиссер:</td>
       <td><%= render partial: 'list_url', object: @movie.directors %></td>
     </tr>
-    <tr>
-      <td>Продюсер:</td>
+    <tr class="border-bottom">
+      <td class="text-bold pb-10">Продюсер:</td>
       <td><%= render partial: 'list_url', object: @movie.producers %></td>
     </tr>
-    <tr>
-      <td>Сценарист:</td>
+    <tr class="border-bottom">
+      <td class="text-bold pb-10">Сценарист:</td>
       <td><%= render partial: 'list_url', object: @movie.writers %></td>
     </tr>
-    <tr>
-      <td>Актерский состав:</td>
+    <tr class="border-bottom">
+      <td class="text-bold pb-10">Актерский состав:</td>
       <td><%= render partial: 'list_url', object: @movie.stars %></td>
     </tr>
 </table>
@@ -46,7 +46,7 @@
     <tr>
       <td>
           <p class="font-georgia pr-10"><%= @movie.description %></p>
-        <p><strong>Пользовательский рейтинг: </strong>
+        <p class="font-cambria"><strong>Пользовательский рейтинг: </strong>
           <% if @movie.ratings.count == 0 %>
               [еще никто не проголосовал]
           <% else %>
@@ -79,7 +79,8 @@
 
           <% end %>
         </p>
-        <p><strong>Число голосов: </strong> <%= @movie.ratings.count %> </p>
+          <p class="font-cambria"><strong>Число голосов: </strong> <%= @movie.ratings.count %> </p>
+         <span class="label btn-enter-color">Проголосовать</span>
       </td>
     </tr>
   </table>
