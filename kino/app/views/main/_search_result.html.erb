@@ -1,5 +1,5 @@
 <% if !@movies.empty? %>
-    <table class="table table-hover">
+    <table class="table table-hover ">
       <thead>
       <tr class="font-cambria title font-size-18 cntr">
         <th class="cntr">Название</th>
@@ -9,7 +9,7 @@
       </thead>
       <tbody>
       <% @movies.each do |movie| %>
-          <tr class="table-tr font-georgia cntr">
+          <tr class="table-tr font-georgia cntr font-darkgray-color">
             <td><%= movie.title %></td>
             <td><%= movie.release_date %></td>
             <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn table-more-inf' %></td>

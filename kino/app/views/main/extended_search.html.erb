@@ -1,24 +1,24 @@
 <h2 class="title font-cambria">Расширенный поиск</h2>
 <%= form_tag({ action: :extended_search, controller: main_path}, { class: 'form-horizontal'}) do %>
-    <div class="form-group">
+    <div class="form-group font-darkgray-color">
       <%= label_tag 'Название фильма', nil, { class: 'col-sm-4 control-label', for: 'title'} %>
       <div class="col-sm-4">
         <%= text_field_tag :title, params[:title], { autofocus: true, class: 'form-control', id: 'title', placeholder: 'Оригинальное или локализованное' } %>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group font-darkgray-color">
       <%= label_tag 'Год', nil, { class: 'col-sm-4 control-label', for: 'yearInput' } %>
       <div class="col-sm-4">
         <%= select_year(params[:year], {prompt: 'Все', start_year: DateTime.now.year+10, end_year: 1960}, {field_name: :year, class: 'form-control', id: 'yearInput'}) %>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group font-darkgray-color">
       <%= label_tag 'Жанр', nil, { class: 'col-sm-4 control-label', for: 'genreInput' } %>
       <div class="col-sm-4">
         <%= collection_select(:genre, :genre_id, Genre.all, :id, :name, {selected: params[:genre] == nil ? '0' : params[:genre][:genre_id], include_blank: 'Все'}, class: 'form-control') %>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group font-darkgray-color">
       <%= label_tag 'Имя актера или создателя фильма', nil, { class: 'col-sm-4 control-label', for: 'humanNameInput' } %>
       <div class="col-sm-4">
         <%= text_field_tag :humanName, params[:humanName], { class: 'form-control', id: 'humanNameInput' } %>
