@@ -20,6 +20,7 @@ Kino::Application.routes.draw do
   get 'edit_movie/:id', to: 'movies#edit_movie'
   patch 'edit_movie/:id', to: 'movies#update_movie'
   get 'destroy_movie/:id', to: 'movies#destroy_movie'
+  post 'add_rating', to: 'movies#add_rating'
 
   get 'create_review', to: 'reviews#new_review', shallow: true
   post 'create_review', to: 'reviews#create_review'

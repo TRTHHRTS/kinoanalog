@@ -157,6 +157,16 @@ class MoviesController < ApplicationController
     end
   end
 
+  def add_rating
+    rated = Rating.find_by(user_id: params[:user_id], movie_id: params[:movie_id])
+    unless rated
+      Rating.create(user_id: params[:user_id], movie_id: params[:movie_id], value: params[:rating_value])
+      redirect_to :back, notice: 'Спасибо, мы учли твой голос!'
+      return
+    end
+    redirect_to :back, notice: 'Что-то пошло не так..'
+  end
+
   private
     def set_movie
       @movie = Movie.find(params[:id])

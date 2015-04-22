@@ -1,5 +1,4 @@
 class MainController < ApplicationController
-  before_action :set_movie, only: [:random]
   before_action :check_only_admin_moder, only: [:users, :destroy_profile]
   before_action :check_only_admin, only: [:change_rights]
 
@@ -16,6 +15,15 @@ class MainController < ApplicationController
 
   def new
     @movie = Movie.new
+  end
+
+  # GET случайный фильм
+  def random
+    mov_id = 0
+    until Movie.exists?(mov_id)
+      mov_id = rand(0..Movie.count-1)
+    end
+    redirect_to '/details/' + mov_id.to_s
   end
 
   def details
@@ -79,10 +87,6 @@ class MainController < ApplicationController
          )
         ', "%#{@movie.title}%", "%#{@movie.orig_title}%", @dir_id, @prod_id, @star_id, @writer_id
     @like_movies=Movie.find_by_sql(sql2)
-  end
-
-  def random
-    render 'main/details/'
   end
 
   #GET переход к расширенному поиску
@@ -265,11 +269,6 @@ class MainController < ApplicationController
   end
 
   private
-  def set_movie
-    @movie = Movie.all[rand(0..Movie.count-1)]
-    @users = User.all
-  end
-
   def movie_params
     params.require(:movie).permit(:id, :title, :orig_title, :year, :release_date, :duration, :description, :rate_id)
   end

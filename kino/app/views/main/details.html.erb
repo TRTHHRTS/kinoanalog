@@ -40,17 +40,15 @@
       <td class="text-bold pb-5 pt-5">Актерский состав:</td>
       <td><%= render partial: 'list_url', object: @movie.stars %></td>
     </tr>
-</table>
+  </table>
 
-  <table>
-    <tr>
-      <td>
-          <p class="font-georgia pr-10"><%= @movie.description %></p>
-        <p class="font-cambria"><strong>Пользовательский рейтинг: </strong>
-          <% if @movie.ratings.count == 0 %>
-              [еще никто не проголосовал]
-          <% else %>
-              <span id="stars_count" hidden="hidden"><%= @movie.ratings.average(:value).round%></span>
+  <p class="font-georgia pr-10"><%= @movie.description %></p>
+  <!-- Пользовательский рейтинг фильма и ссылка на голосование -->
+  <p class="font-cambria"><strong>Пользовательский рейтинг: </strong>
+    <% if @movie.ratings.count == 0 %>
+        <span>(еще никто не проголосовал)</span>
+    <% else %>
+        <span id="stars_count" hidden="hidden"><%= @movie.ratings.average(:value).round%></span>
               <span id="rating_stars" class="starRating">
                 <input id="rating5" type="radio" name="rating" value="5" readonly><label for="rating5">5</label>
                 <input id="rating4" type="radio" name="rating" value="4" readonly><label for="rating4">4</label>
@@ -58,36 +56,32 @@
                 <input id="rating2" type="radio" name="rating" value="2" readonly><label for="rating2">2</label>
                 <input id="rating1" type="radio" name="rating" value="1" readonly><label for="rating1">1</label>
               </span>
-            <a class="ml-5 label btn-enter-color" href="#ratingModal">Проголосуй!</a>
+    <% end %>
+    <% if user_signed_in? %>
+        <% if @movie.ratings.find_by(user_id: current_user.id) %>
+                      <span class="ml-5 ">
+                        <span>Твой голос уже учтен (</span>
+                        <% @movie.ratings.find_by(user_id: current_user.id).value.times do %>
+                            <img src="<%= image_path 'star-on.svg' %>" width="12" height="12"/>
+                        <% end %>
+                        <span>)</span>
+                      </span>
+        <% else %>
+            <a class="ml-5" href="#ratingModal">Проголосуй</a>
         <% end %>
-        <!-- <p><strong>Число голосов: </strong> <%= @movie.ratings.count %> </p> -->
-      </td>
-    </tr>
-  </table>
-<div id="ratingModal" class="modalDialog">
-  <div>
-    <a href="#close" title="Close" class="close"><img src="<%= image_path 'remove.png' %>" class="image-size"></a>
-    <h2 class="cntr">Проголосуй за фильм!</h2>
-    <div class="cntr">
-    <span id="set_movie_rating" class="starRating">
-      <input type="radio" value="5"><label for="rating5">5</label>
-      <input type="radio" value="4"><label for="rating4">4</label>
-      <input type="radio" value="3"><label for="rating3">3</label>
-      <input type="radio" value="2"><label for="rating2">2</label>
-      <input type="radio" value="1"><label for="rating1">1</label>
-    </span>
-    </div>
-  </div>
-</div>
+    <% else %>
+        <span>Зарегистрируйся, чтобы проголосовать</span>
+    <% end %>
+  </p>
+  <!-- Ссылки администратора на редактирование и удаление фильма -->
   <% if user_signed_in? && current_user.permission == 1 %>
       <div class="ta-right">
         <%= link_to 'Редактировать данные', '/edit_movie/'+@movie.id.to_s, class: 'btn btn-link' %><br/>
         <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, class: 'btn btn-link', confirm: 'Удалить этот фильм?' %>
       </div>
-
   <% end %>
 </div>
-
+<!-- Панель похожих фильмов -->
 <!--% if !@like_movies.empty? %-->
 <% if @like_movies!=nil %>
     <div class="recommended-films-table cntr">
@@ -95,10 +89,10 @@
       <table>
         <tr>
           <% @like_movies.each do |like_movie| %>
-            <td>
-              <%= link_to(image_tag(like_movie.image_url, alt: like_movie.title, class: 'img-thumbnail poster float-l'), '/details/' + like_movie.id.to_s) %>
-              <h6><strong class=""><%= link_to(like_movie.title, '/details/' + like_movie.id.to_s) %></strong></h6>
-            </td>
+              <td>
+                <%= link_to(image_tag(like_movie.image_url, alt: like_movie.title, class: 'img-thumbnail poster float-l'), '/details/' + like_movie.id.to_s) %>
+                <h6><strong class=""><%= link_to(like_movie.title, '/details/' + like_movie.id.to_s) %></strong></h6>
+              </td>
           <% end %>
         </tr>
       </table>
@@ -118,7 +112,7 @@
     </tr>
   </table>
 </div>
-
+<!-- Панель отзывов -->
 <% if @movie.reviews.count == 0
      reviewString = 'Отзывов еще нет'
      if user_signed_in?
@@ -153,7 +147,7 @@
                   <h4 class="mb-10 mt-10 font-size-16"><strong><%= review.title %></strong></h4>
                   <p class="mb-0 mt-0 font-georgia font-size-13"><%= review.content %></p>
                   <i class="font-size-12"><%= @users.find(review.user_id).name %>
-                  <% unless review.review_date.nil? %>, <%= Russian::strftime(review.review_date , '%d-%m-%Y %H:%M')%><% end %></i>
+                    <% unless review.review_date.nil? %>, <%= Russian::strftime(review.review_date , '%d-%m-%Y %H:%M')%><% end %></i>
                 </div>
               </td>
             </tr>
@@ -161,3 +155,25 @@
       </table>
   <% end %>
 </div>
+<!-- Модальное диалоговое окно голосования -->
+<% if user_signed_in? %>
+    <div id="ratingModal" class="modalDialog">
+      <div>
+        <a id="close_modal" href="#close" title="Close" class="close"><img src="<%= image_path 'remove.png' %>" class="image-size"></a>
+        <h2 class="cntr">Проголосуй за фильм!</h2>
+        <div class="cntr">
+          <%= form_tag({ action: 'add_rating', controller: :movies}, id: 'add_rating_form') do %>
+            <span id="set_movie_rating" class="starRating">
+              <input type="radio" value="5"><label for="rating5" onclick="submitForm(5)">5</label>
+              <input type="radio" value="4"><label for="rating4" onclick="submitForm(4)">4</label>
+              <input type="radio" value="3"><label for="rating3" onclick="submitForm(3)">3</label>
+              <input type="radio" value="2"><label for="rating2" onclick="submitForm(2)">2</label>
+              <input type="radio" value="1"><label for="rating1" onclick="submitForm(1)">1</label>
+            </span>
+              <input type="hidden" name="movie_id" value="<%= @movie.id %>" readonly/>
+              <input type="hidden" name="user_id" value="<%= current_user.id %>" readonly/>
+          <% end %>
+        </div>
+      </div>
+    </div>
+<% end %>
