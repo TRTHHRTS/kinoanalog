@@ -65,5 +65,13 @@ function addItemWithUrl(itemName) {
 
 function deleteItem(c, id) {
     var removingItem = $("ul#selected_"+c);
+    var itemName = removingItem.find("#" + id);
     removingItem.children().remove("#" + id);
+    if (c == 'countries') {
+        c = 'country'
+    } else {
+        c = c.substr(0, c.length - 1)
+    }
+    var select = $("select#" + c + "_select");
+    select.append('<option>' + itemName.text() + '</option>')
 }
