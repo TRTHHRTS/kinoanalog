@@ -104,9 +104,9 @@
   <!--%= render partial: 'list_url', object: @movie.directors.name %-->
   <table>
     <tr>
-      <% @writer_id.each do |dir| %>
+      <% @dir_id.each do |dir| %>
           <td>
-            <h6><strong class=""><%= dir.writer_id %> ---></strong></h6>
+            <h6><strong class=""><%= dir.id %> ---></strong></h6>
           </td>
       <% end %>
     </tr>

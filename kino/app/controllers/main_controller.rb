@@ -37,27 +37,62 @@ class MainController < ApplicationController
     #@like_movies= Movie.find_by_sql(sql_tmp)
 
 
-    sql_tmp='SELECT dm.director_id
+    sql_tmp='SELECT dm.director_id AS id
              FROM directors_movies dm
              WHERE dm.movie_id = ?', @movie.id
     @dir_id=Director.find_by_sql(sql_tmp)
 
-    sql_tmp='SELECT pm.producer_id
+    sql_tmp='SELECT d.id
+                   FROM directors d
+                   WHERE d.id = ?', @dir_id
+    #@dir_id=Director.find_by_sql(sql_tmp)
+
+    sql_tmp='SELECT pm.producer_id AS id
              FROM producers_movies pm
              WHERE pm.movie_id = ?', @movie.id
     @prod_id=Producer.find_by_sql(sql_tmp)
 
-    sql_tmp='SELECT sm.star_id
+    sql_tmp='SELECT sm.star_id AS id
              FROM stars_movies sm
              WHERE sm.movie_id = ?', @movie.id
     @star_id=Star.find_by_sql(sql_tmp)
 
-    sql_tmp='SELECT wm.writer_id
+    sql_tmp='SELECT wm.writer_id AS id
              FROM writers_movies wm
              WHERE wm.movie_id = ?', @movie.id
     @writer_id=Star.find_by_sql(sql_tmp)
 
     sql='SELECT m.id, m.title, m.image_url
+         FROM movies m
+         WHERE
+         (
+           m.id IN (
+           SELECT m.id
+           FROM movies m
+           LEFT JOIN directors_movies dm WHERE m.id = dm.movie_id AND dm.director_id IN (?))
+
+           OR
+           m.id IN (
+           SELECT m.id
+           FROM movies m
+           LEFT JOIN producers_movies pm WHERE m.id = pm.movie_id AND pm.producer_id IN (?))
+
+           OR
+           m.id IN (
+           SELECT m.id
+           FROM movies m
+           LEFT JOIN stars_movies sm WHERE m.id = sm.movie_id AND sm.star_id IN (?))
+
+           OR
+           m.id IN (
+           SELECT m.id
+           FROM movies m
+           LEFT JOIN writers_movies wm WHERE m.id = wm.movie_id AND wm.writer_id IN (?))
+         )
+        ', @dir_id, @prod_id, @star_id, @writer_id
+
+
+    sql3='SELECT m.id, m.title, m.image_url
          FROM movies m
          WHERE (m.title LIKE ? OR m.orig_title LIKE ?)
          AND
@@ -65,28 +100,11 @@ class MainController < ApplicationController
            m.id IN (
            SELECT m.id
            FROM movies m
-           LEFT JOIN directors_movies dm WHERE m.id = dm.movie_id AND dm.director_id = ?)
-
-           OR
-           m.id IN (
-           SELECT m.id
-           FROM movies m
-           LEFT JOIN producers_movies pm WHERE m.id = pm.movie_id AND pm.producer_id = ?)
-
-           OR
-           m.id IN (
-           SELECT m.id
-           FROM movies m
-           LEFT JOIN stars_movies sm WHERE m.id = sm.movie_id AND sm.star_id = ?)
-
-           OR
-           m.id IN (
-           SELECT m.id
-           FROM movies m
-           LEFT JOIN writers_movies wm WHERE m.id = wm.movie_id AND wm.writer_id = ?)
+           LEFT JOIN directors_movies dm WHERE m.id = dm.movie_id AND dm.director_id IN (?) )
          )
-        ', "%#{@movie.title}%", "%#{@movie.orig_title}%", @dir_id, @prod_id, @star_id, @writer_id
-    @like_movies=Movie.find_by_sql(sql2)
+        ', "%#{@movie.title}%", "%#{@movie.orig_title}%", @dir_id
+
+    @like_movies=Movie.find_by_sql(sql)
   end
 
   #GET переход к расширенному поиску
