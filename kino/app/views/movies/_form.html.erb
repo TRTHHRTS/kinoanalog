@@ -1,4 +1,4 @@
-<%= form_tag({ action: url_link, controller: :movies }, enctype: 'multipart/form-data', id: 'movie_details_form')  do %>
+<%= form_tag({ action: url_link, controller: :movies }, enctype: 'multipart/form-data', id: 'movie_details_form', method: 'patch')  do %>
     <table class="edit-new-film-form font-darkgray-color">
       <tr>
         <td>
@@ -20,17 +20,21 @@
 
           <div class="form-group">
             <%= label_tag 'Название на языке оригинала', nil, { for: 'titleOrigInput' } %>
-            <%= text_field_tag :orig_title, params[:title], { class: 'form-control', id: 'titleOrigInput', placeholder: 'Название на языке оригинала', required: 'true' } %>
+            <%= text_field_tag :orig_title, params[:orig_title], { class: 'form-control', id: 'titleOrigInput', placeholder: 'Название на языке оригинала', required: 'true' } %>
           </div>
 
           <div class="form-group">
             <%= label_tag 'Дата выпуска', nil, { for: 'dateInput' } %>
-            <%= date_field_tag :release_date, params[:release_date], { id: 'dateInput', class: 'form-control datepicker', required: 'true', value: Time.now.strftime('%Y-%m-%d') } %>
+            <% dateInDatePicker = Time.now.strftime('%Y-%m-%d')
+               unless @movie.release_date.nil?
+                 dateInDatePicker = @movie.release_date.strftime('%Y-%m-%d')
+               end %>
+            <%= date_field_tag :release_date, dateInDatePicker, { id: 'dateInput', class: 'form-control datepicker', required: 'true' } %>
           </div>
 
           <div class="form-group">
             <%= label_tag 'Продолжительность (в минутах)', nil, { for: 'durationInput' } %>
-            <%= number_field_tag :duration, nil, { class: 'form-control', id: 'durationInput', in: 0...500, required: 'true' } %>
+            <%= number_field_tag :duration, params[:duration], { class: 'form-control', id: 'durationInput', in: 0...500, required: 'true' } %>
           </div>
 
           <div class="form-group">
@@ -41,7 +45,13 @@
                 <button class="btn table-more-inf" type="button" onclick="addItem('country')">Добавить выбранную страну</button>
               </div>
             </div>
-            <ul id="selected_countries"></ul>
+            <ul id="selected_countries">
+              <% if @movie.countries.count > 0 %>
+                  <% @movie.countries.each do |country| %>
+                      <input id="<%= country.id %>" type="hidden" value="<%= country.name %>" name="countries[]" readonly/>
+                  <% end %>
+              <% end %>
+            </ul>
           </div>
 
           <div class="form-group">
@@ -52,7 +62,13 @@
                 <button class="btn table-more-inf" type="button" onclick="addItem('genre')">Добавить выбранную жанр</button>
               </div>
             </div>
-            <ul id="selected_genres"></ul>
+            <ul id="selected_genres">
+              <% if @movie.genres.count > 0 %>
+                  <% @movie.genres.each do |genre| %>
+                      <input id="<%= genre.id %>" type="hidden" value="<%= genre.name %>" name="genres[]" readonly/>
+                  <% end %>
+              <% end %>
+            </ul>
           </div>
 
           <div class="form-group">
@@ -64,7 +80,13 @@
                 <button class="btn table-more-inf" type="button" onclick="addItemWithUrl('star')">Добавить</button>
               </span>
             </div>
-            <ul id="selected_stars"></ul>
+            <ul id="selected_stars">
+              <% if @movie.stars.count > 0 %>
+                  <% @movie.stars.each do |star| %>
+                      <input id="<%= star.id %>" type="hidden" value="<%= star.url == nil ? '-1' : star.url %>" name="stars[<%= star.name %>]" readonly/>
+                  <% end %>
+              <% end %>
+            </ul>
           </div>
 
           <div class="form-group">
@@ -76,7 +98,13 @@
                 <button class="btn table-more-inf" type="button" onclick="addItemWithUrl('director')">Добавить</button>
               </span>
             </div>
-            <ul id="selected_directors"></ul>
+            <ul id="selected_directors">
+              <% if @movie.directors.count > 0 %>
+                  <% @movie.directors.each do |director| %>
+                      <input id="<%= director.id %>" type="hidden" value="<%= director.url == nil ? '-1' : director.url %>" name="directors[<%= director.name %>]" readonly/>
+                  <% end %>
+              <% end %>
+            </ul>
           </div>
 
           <div class="form-group">
@@ -88,7 +116,13 @@
                 <button class="btn table-more-inf" type="button" onclick="addItemWithUrl('producer')">Добавить</button>
               </span>
             </div>
-            <ul id="selected_producers"></ul>
+            <ul id="selected_producers">
+              <% if @movie.producers.count > 0 %>
+                  <% @movie.producers.each do |producer| %>
+                      <input id="<%= producer.id %>" type="hidden" value="<%= producer.url == nil ? '-1' : producer.url %>" name="producers[<%= producer.name %>]" readonly/>
+                  <% end %>
+              <% end %>
+            </ul>
           </div>
 
           <div class="form-group">
@@ -100,12 +134,18 @@
                 <button class="btn table-more-inf" type="button" onclick="addItemWithUrl('writer')">Добавить</button>
               </span>
             </div>
-            <ul id="selected_writers"></ul>
+            <ul id="selected_writers">
+              <% if @movie.writers.count > 0 %>
+                  <% @movie.writers.each do |writer| %>
+                      <input id="<%= writer.id %>" type="hidden" value="<%= writer.url == nil ? '-1' : writer.url %>" name="writers[<%= writer.name %>]" readonly/>
+                  <% end %>
+              <% end %>
+            </ul>
           </div>
 
           <div class="form-group">
             <%= label_tag 'Возрастное ограничение' %>
-            <%= collection_select(nil, :age_id, Age.all, :id, :name, {}, { class: 'form-control', required: 'true' }) %>
+            <%= collection_select(:movie, :age_id, Age.all, :id, :name, {}, { class: 'form-control', required: 'true' }) %>
           </div>
 
           <div class="form-group">

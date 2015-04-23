@@ -22,7 +22,7 @@
     </tr>
     <tr class="border-bottom">
       <td class="text-bold pb-5 pt-5">Ограничение:</td>
-      <td><%= @movie.age.name %></td>
+      <td><%= @movie.age.name unless @movie.age.nil? %></td>
     </tr>
     <tr class="border-bottom">
       <td class="text-bold pb-5 pt-5">Режиссер:</td>
