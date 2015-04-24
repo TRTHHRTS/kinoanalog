@@ -59,7 +59,7 @@
             <div class="input-group">
               <%= collection_select(nil, nil, Genre.all, :id, :name, {}, {id: 'genre_select', class: 'form-control'}) %>
               <div class="input-group-btn btn-group-border">
-                <button class="btn table-more-inf" type="button" onclick="addItem('genre')">Добавить выбранную жанр</button>
+                <button class="btn table-more-inf" type="button" onclick="addItem('genre')">Добавить выбранный жанр</button>
               </div>
             </div>
             <ul id="selected_genres">

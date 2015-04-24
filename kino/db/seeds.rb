@@ -86,15 +86,22 @@ Movie.create([{id:5, title:'Мстители: Эра Альтрона', orig_tit
                duration:141, description:"Человечество на грани уничтожения. На этот раз людям угрожает Альтрон — искусственный интеллект, ранее созданный для того, чтобы защищать Землю от любых угроз.\n
 Однако, главной угрозой он посчитал человечество. Международная организация Щ. И. Т распалась, и теперь мир не способен справиться с таким мощным врагом, потому люди вновь обращаются за помощью к Величайшим Героям Земли — Мстителям.\n
 Однако Альтрон слишком силен, и есть большая вероятность, что даже им не удастся остановить начало надвигающейся Эры Альтрона, где нет места для людей…", age_id:3, image_url:'/assets/images/movies/5.jpg'}])
+Movie.create([{id:6, title:'Мстители', orig_title:'The Avengers', release_date:'2012-03-21',
+               duration:141, description:"Локи, сводный брат Тора, возвращается, и в этот раз он не один. Земля на грани порабощения, и только лучшие из лучших могут спасти человечество.\n
+Ник Фьюри, глава международной организации Щ. И. Т., собирает выдающихся поборников справедливости и добра, чтобы отразить атаку. Под предводительством Капитана Америки Железный Человек, Тор, Невероятный Халк, Соколиный глаз и Чёрная Вдова вступают в войну с захватчиком.",
+               age_id:3, image_url:'/assets/images/movies/6.jpg'}])
 CountriesMovies.create([{movie_id:1, country_id:2}, {movie_id:5, country_id:2}])
 GenresMovies.create([{movie_id:1, genre_id:9},{movie_id:1, genre_id:13},
-                     {movie_id:2, genre_id:20}, {movie_id:2, genre_id:3}, {movie_id:2, genre_id:18}, {movie_id:2, genre_id:15}])
-DirectorsMovies.create([{director_id:2, movie_id:1}, {director_id:3, movie_id:5}])
+                     {movie_id:2, genre_id:20}, {movie_id:2, genre_id:3}, {movie_id:2, genre_id:18},
+                     {movie_id:2, genre_id:15},{movie_id:6, genre_id:20}])
+DirectorsMovies.create([{director_id:2, movie_id:1}, {director_id:3, movie_id:5}, {director_id:3, movie_id:6}])
 ProducersMovies.create([{producer_id:2, movie_id:1},{producer_id:3, movie_id:1},{producer_id:4, movie_id:1},
-                        {producer_id:5, movie_id:5},{producer_id:6, movie_id:5},{producer_id:7, movie_id:1}])
-WritersMovies.create([{writer_id:3, movie_id: 5}, {writer_id:4, movie_id: 5}, {writer_id:5, movie_id: 5}])
+                        {producer_id:5, movie_id:5},{producer_id:6, movie_id:5},{producer_id:7, movie_id:1},
+                        {producer_id:5, movie_id:6},{producer_id:6, movie_id:6},{producer_id:7, movie_id:6}])
+WritersMovies.create([{writer_id:3, movie_id: 5}, {writer_id:4, movie_id: 5}, {writer_id:5, movie_id: 5}, {writer_id:3, movie_id: 6}])
 StarsMovies.create([{star_id:2, movie_id:1},{star_id:3, movie_id:1},{star_id:4, movie_id:1},{star_id:10, movie_id:5},
-                    {star_id:5, movie_id:5},{star_id:6, movie_id:5},{star_id:7, movie_id:5},{star_id:8, movie_id:5},{star_id:9, movie_id:5}])
+                    {star_id:5, movie_id:5},{star_id:6, movie_id:5},{star_id:7, movie_id:5},{star_id:8, movie_id:5},{star_id:9, movie_id:5},
+                    {star_id:5, movie_id:6},{star_id:6, movie_id:6},{star_id:7, movie_id:6},{star_id:8, movie_id:6},{star_id:9, movie_id:6}])
 Review.create([{movie_id:1, user_id:1, title:'10/10', content:"
 Что такое быть человеком, который подписал себе приговор своим мировоззрением и отношением к людям? И еще стать лидером для многих и в частности для своего брата?\n
 И все это время следовать слепой ненависти, которая привела Дерека в тюрьму. И быть еще при этом идеалом для младшего брата, ради которого он держался три года и верил.\n
