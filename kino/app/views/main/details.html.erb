@@ -86,22 +86,22 @@
 <!-- Здесь count>1, потому что в список также входит текущий фильм -->
 <% if @like_movies.count > 1 %>
     <div class="recommended-films-table cntr">
-      Похожие фильмы:
-      <table>
+      <span class="font-georgia">Похожие фильмы:</span>
+      <table class="w100perc">
         <tr>
           <% @like_movies.each do |like_movie| %>
-              <td>
-                <% if like_movie.id != @movie.id %>
-                    <%= link_to(image_tag(like_movie.image_url, alt: like_movie.title, class: 'img-thumbnail poster float-l'), '/details/' + like_movie.id.to_s) %>
-                    <h6><strong class="">
-                    <% if like_movie.title.length <=15 %>
-                        <%= link_to(like_movie.title, '/details/' + like_movie.id.to_s) %>
-                    <% else %>
-                        <%= link_to(like_movie.title[0,15]+'...', '/details/' + like_movie.id.to_s) %>
-                    <% end %>
-                      </strong></h6>
-                <% end %>
-              </td>
+              <% if like_movie.id != @movie.id %>
+                  <td>
+                    <%= link_to(image_tag(like_movie.image_url, alt: like_movie.title, class: 'img-thumbnail poster '), '/details/' + like_movie.id.to_s) %>
+                    <h6 class="mt-0 font-cambria"><strong>
+                      <% if like_movie.title.length <= 15 %>
+                          <%= link_to(like_movie.title, '/details/' + like_movie.id.to_s) %>
+                      <% else %>
+                          <%= link_to(like_movie.title[0,15]+'...', '/details/' + like_movie.id.to_s) %>
+                      <% end %>
+                    </strong></h6>
+                  </td>
+              <% end %>
           <% end %>
         </tr>
       </table>

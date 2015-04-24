@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20150420171844) do
   create_table "movies", force: true do |t|
     t.string  "title"
     t.string  "orig_title"
-    t.integer "year"
     t.date    "release_date"
     t.integer "duration"
     t.text    "description"
@@ -124,9 +123,9 @@ ActiveRecord::Schema.define(version: 20150420171844) do
   add_index "stars_movies", ["star_id"], name: "index_stars_movies_on_star_id"
 
   create_table "users", force: true do |t|
-    t.string  "encrypted_password", default: "",           null: false
-    t.string  "email",              default: "",           null: false
-    t.string  "name",               default: "",           null: false
+    t.string  "encrypted_password",                        null: false
+    t.string  "email",                                     null: false
+    t.string  "name",                                      null: false
     t.string  "sex",                default: "Неизвестно", null: false
     t.integer "permission",         default: 3,            null: false
   end
