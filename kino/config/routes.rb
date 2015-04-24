@@ -16,7 +16,7 @@ Kino::Application.routes.draw do
   get 'destroy_profile/:id', to: 'main#destroy_profile'
 
   get 'new_movie', to: 'movies#new_movie'
-  patch 'create_movie', to: 'movies#create_movie'
+  post 'create_movie', to: 'movies#create_movie'
   get 'edit_movie/:id', to: 'movies#edit_movie'
   patch 'edit_movie/:id', to: 'movies#update_movie'
   get 'destroy_movie/:id', to: 'movies#destroy_movie'

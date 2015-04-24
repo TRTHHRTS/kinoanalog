@@ -1,4 +1,4 @@
-<%= form_tag({ action: url_link, controller: :movies }, enctype: 'multipart/form-data', id: 'movie_details_form', method: 'patch')  do %>
+<%= form_tag({ action: url_link, controller: :movies }, { enctype: 'multipart/form-data', id: 'movie_details_form', method: method_movie })  do %>
     <table class="edit-new-film-form font-darkgray-color">
       <tr>
         <td>
