@@ -126,11 +126,10 @@ class MoviesController < ApplicationController
           star = Star.find_by_name(k)
           if star.nil?
             if v == '-1'
-              star = Star.new(id:Star.last.id + 1, name: k, url: nil)
+              star = Star.new(name: k)
             else
-              star = Star.new(id:Star.last.id + 1, name: k, url: v)
+              star = Star.new(name: k, url: v)
             end
-
             star.save
           else
             if star.url.nil? && v != '-1'
@@ -146,7 +145,11 @@ class MoviesController < ApplicationController
         params[:directors].each { |k,v|
           director = Director.find_by_name(k)
           if director.nil?
-            director = Director.new(id:Director.last.id + 1, name: k, url: v)
+            if v == '-1'
+              director = Director.new(name: k)
+            else
+              director = Director.new(name: k, url: v)
+            end
             director.save
           else
             if director.url.nil?
@@ -162,7 +165,11 @@ class MoviesController < ApplicationController
         params[:producers].each { |k,v|
           producer = Producer.find_by_name(k)
           if producer.nil?
-            producer = Producer.new(id:Producer.last.id + 1, name: k, url: v)
+            if v == '-1'
+              producer = Producer.new(name: k)
+            else
+              producer = Producer.new(name: k, url: v)
+            end
             producer.save
           else
             if producer.url.nil?
@@ -178,7 +185,11 @@ class MoviesController < ApplicationController
         params[:writers].each { |k,v|
           writer = Writer.find_by_name(k)
           if writer.nil?
-            writer = Writer.new(id:Writer.last.id + 1, name: k, url: v)
+            if v == '-1'
+              writer = Writer.new(name: k)
+            else
+              writer = Writer.new(name: k, url: v)
+            end
             writer.save
           else
             if writer.url.nil?
