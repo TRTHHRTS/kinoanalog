@@ -1,74 +1,75 @@
 <h2 class="title font-cambria">Расширенный поиск</h2>
 <%= form_tag({ action: :extended_search, controller: main_path}) do %>
-    <table class="extended-search-form">
-      <tr>
-        <td colspan="2">
-          <div class="form-group font-darkgray-color">
-            <%= label_tag 'Название фильма', nil, { for: 'title'} %>
-            <%= text_field_tag :title, params[:title], { autofocus: true, class: 'form-control', id: 'title', placeholder: 'Оригинальное или локализованное' } %>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="form-group font-darkgray-color">
-            <%= label_tag 'Год', nil, { for: 'yearInput' } %>
-            <%= select_year(params[:date] == nil ? Date.today : Date.new(params[:date][:year].to_i), {prompt: 'Все', start_year: DateTime.now.year+10, end_year: 1960}, {class: 'form-control', id: 'yearInput'}) %>
-          </div>
-        </td>
-        <td>
-          <div class="form-group font-darkgray-color">
-            <%= label_tag 'Жанр', nil, { for: 'genreInput' } %>
-            <%= collection_select(:select, :genre, Genre.all, :id, :name, {selected: params[:select] == nil ? '0' : params[:select][:genre], include_blank: 'Все'}, class: 'form-control', id: 'genreInput') %>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="form-group font-darkgray-color">
-            <%= label_tag 'Страна', nil, { for: 'countryInput' } %>
-            <%= collection_select(:select, :country, Country.all, :id, :name, {selected: params[:select] == nil ? '0' : params[:select][:country], include_blank: 'Все'}, class: 'form-control', id: 'countryInput') %>
-          </div>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="form-group font-darkgray-color">
-            <%= label_tag 'Режиссер', nil, { for: 'dirNameInput' } %>
-            <%= text_field_tag :dirName, params[:dirName], { class: 'form-control', id: 'dirNameInput', placeholder: 'Например, Джосс Уидон' } %>
-          </div>
-        </td>
-        <td>
-          <div class="form-group font-darkgray-color">
-            <%= label_tag 'Продюсер', nil, { for: 'prodNameInput' } %>
-            <%= text_field_tag :prodName, params[:prodName], { class: 'form-control', id: 'prodNameInput', placeholder: 'Например, Джерри Брукхаймер' } %>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="form-group font-darkgray-color">
-            <%= label_tag 'Актер', nil, { for: 'starNameInput' } %>
-            <%= text_field_tag :starName, params[:starName], { class: 'form-control', id: 'starNameInput', placeholder: 'Например, Джонни Депп' } %>
-          </div>
-        </td>
-        <td>
-          <div class="form-group font-darkgray-color">
-            <%= label_tag 'Сценарист', nil, { for: 'writerNameInput' } %>
-            <%= text_field_tag :writerName, params[:writerName], { class: 'form-control', id: 'writerNameInput', placeholder: 'Например, Стэн Ли' } %>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td class="ta-right" colspan="2">
-          <div class="form-group">
-            <%= submit_tag 'Искать', { class: 'btn btn-header-color', name: 'search' } %>
-          </div>
-        </td>
-      </tr>
-    </table>
+      <table class="extended-search-form">
+        <tr>
+          <td colspan="2">
+            <div class="form-group font-darkgray-color">
+              <%= label_tag 'Название фильма', nil, { for: 'title'} %>
+              <%= text_field_tag :title, params[:title], { autofocus: true, class: 'form-control', id: 'title', placeholder: 'Оригинальное или локализованное' } %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group font-darkgray-color">
+              <%= label_tag 'Год', nil, { for: 'yearInput' } %>
+              <%= select_year(params[:date] == nil ? Date.today : Date.new(params[:date][:year].to_i), {prompt: 'Все', start_year: DateTime.now.year+10, end_year: 1960}, {class: 'form-control', id: 'yearInput'}) %>
+            </div>
+          </td>
+          <td>
+            <div class="form-group font-darkgray-color">
+              <%= label_tag 'Жанр', nil, { for: 'genreInput' } %>
+              <%= collection_select(:select, :genre, Genre.all, :id, :name, {selected: params[:select] == nil ? '0' : params[:select][:genre], include_blank: 'Все'}, class: 'form-control', id: 'genreInput') %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group font-darkgray-color">
+              <%= label_tag 'Страна', nil, { for: 'countryInput' } %>
+              <%= collection_select(:select, :country, Country.all, :id, :name, {selected: params[:select] == nil ? '0' : params[:select][:country], include_blank: 'Все'}, class: 'form-control', id: 'countryInput') %>
+            </div>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group font-darkgray-color">
+              <%= label_tag 'Режиссер', nil, { for: 'dirNameInput' } %>
+              <%= text_field_tag :dirName, params[:dirName], { class: 'form-control', id: 'dirNameInput', placeholder: 'Например, Джосс Уидон' } %>
+            </div>
+          </td>
+          <td>
+            <div class="form-group font-darkgray-color">
+              <%= label_tag 'Продюсер', nil, { for: 'prodNameInput' } %>
+              <%= text_field_tag :prodName, params[:prodName], { class: 'form-control', id: 'prodNameInput', placeholder: 'Например, Джерри Брукхаймер' } %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group font-darkgray-color">
+              <%= label_tag 'Актер', nil, { for: 'starNameInput' } %>
+              <%= text_field_tag :starName, params[:starName], { class: 'form-control', id: 'starNameInput', placeholder: 'Например, Джонни Депп' } %>
+            </div>
+          </td>
+          <td>
+            <div class="form-group font-darkgray-color">
+              <%= label_tag 'Сценарист', nil, { for: 'writerNameInput' } %>
+              <%= text_field_tag :writerName, params[:writerName], { class: 'form-control', id: 'writerNameInput', placeholder: 'Например, Стэн Ли' } %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="ta-right">
+            <div class="form-group">
+              <%= submit_tag 'Искать', { class: 'btn btn-header-color', name: 'search' } %>
+            </div>
+          </td>
+        </tr>
+      </table>
 <% end %>
 
 <%= render 'search_result' %>

@@ -129,7 +129,7 @@ class MainController < ApplicationController
       prod_id=Producer.where('name LIKE ?', "%#{params[:prodName].strip}%")
       star_id=Star.where('name LIKE ?', "%#{params[:starName].strip}%")
       writer_id=Writer.where('name LIKE ?', "%#{params[:writerName].strip}%")
-      sql = 'SELECT DISTINCT(m.id), m.title, m.release_date
+      sql = 'SELECT DISTINCT(m.id), m.title, m.orig_title, m.release_date
                     FROM movies m, directors_movies dm, producers_movies pm, stars_movies sm, writers_movies wm, genres_movies gm
                     WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?
                       AND m.id = dm.movie_id AND m.id = pm.movie_id AND m.id = sm.movie_id AND m.id = wm.movie_id AND m.id = gm.movie_id
