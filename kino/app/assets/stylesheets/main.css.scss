@@ -41,7 +41,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.3);
   z-index: 99999;
   opacity:0;
   -webkit-transition: opacity 200ms ease-in;
@@ -74,7 +74,13 @@
   vertical-align: middle;
   width: 24px;
   border-radius: 4px;
-  box-shadow: 1px 1px 3px #000;
 }
 
-.close:hover { background: #00d9ff; }
+.close {
+  opacity:1;
+  background: #d9534f;
+  &:hover {
+    opacity:1;
+    background: #c9302c;
+  }
+}

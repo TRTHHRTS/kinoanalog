@@ -155,8 +155,8 @@
 <% if user_signed_in? %>
     <div id="ratingModal" class="modalDialog">
       <div>
-        <a id="close_modal" href="#close" title="Close" class="close"><img src="<%= image_path 'remove.png' %>" class="image-size"></a>
-        <h2 class="cntr">Проголосуй за фильм!</h2>
+        <a id="close_modal" href="#close" title="Close" class="close" ><div ><img style="vertical-align: middle" src="<%= image_path 'remove.png' %>" class="image-size"></div></a>
+        <h2 class="cntr font-darkgray-color font-size-22">Проголосуй за фильм!</h2>
         <div class="cntr">
           <%= form_tag({ action: 'add_rating', controller: :movies}, id: 'add_rating_form') do %>
             <span id="set_movie_rating" class="starRating">
