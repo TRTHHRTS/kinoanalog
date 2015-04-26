@@ -78,3 +78,9 @@
 }
 
 .close:hover { background: #00d9ff; }
+
+.extended-search-form {
+  min-width: 400px;
+  > tbody > tr {
+  }
+}
