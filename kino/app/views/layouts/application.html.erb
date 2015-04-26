@@ -35,7 +35,7 @@
     </header>
     <nav>
       <ul class="nav-justified">
-        <li role="presentation" class="btn btn-block box-shadow btn-nav-size <%= action_name == 'index' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Главная', main_path %></li>
+        <li role="presentation" class="btn btn-block btn-nav-size box-shadow  <%= action_name == 'index' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Главная', main_path %></li>
         <li role="presentation" class="btn btn-block box-shadow btn-nav-size <%= action_name == 'releases' ? 'active' : 'btn-nav-color' %>"><%= link_to 'График премьер', releases_path%></li>
         <li role="presentation" class="btn btn-block box-shadow btn-nav-size <%= action_name == 'random' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Случайный фильм', random_film_path%></li>
         <li role="presentation" class="btn btn-block box-shadow btn-nav-size <%= action_name == 'extended_search' ? 'active' : 'btn-nav-color' %>"><%= link_to 'Расширенный поиск', extended_search_path %></li>
