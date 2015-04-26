@@ -368,6 +368,12 @@ footer {
 
 .font-black         { color: black; }
 .font-dark-pink     { color: $darkpink; }
+.link-reg {
+  color: $richpink;
+  &:hover {
+    color: $darkpink;
+  }
+}
 
 .image-size {
   width: 12px;
@@ -375,8 +381,15 @@ footer {
   opacity: 0.5;
 }
 
-.font-darkgray-color{
+.font-darkgray-color {
   color: #505050;
+}
+
+.like-movies-link {
+  color: #505050;
+  &:hover {
+    color: #505050;
+  }
 }
 
 @font-face {

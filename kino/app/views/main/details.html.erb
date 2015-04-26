@@ -60,7 +60,7 @@
     <% if user_signed_in? %>
         <% if @movie.ratings.find_by(user_id: current_user.id) %>
                       <span class="ml-5 ">
-                        <span>Твой голос уже учтен (</span>
+                        <span class="font-dark-green">Твой голос уже учтен (</span>
                         <% @movie.ratings.find_by(user_id: current_user.id).value.times do %>
                             <img src="<%= image_path 'star-on.svg' %>" width="12" height="12"/>
                         <% end %>
@@ -70,7 +70,7 @@
             <a class="ml-5 font-dark-green" href="#ratingModal">Проголосуй</a>
         <% end %>
     <% else %>
-        <span>Зарегистрируйся, чтобы проголосовать</span>
+        <span class="ml-5"><%= link_to('Зарегистрируйся', '/users/sign_up', class: 'link-reg') %>, чтобы проголосовать</span>
     <% end %>
   </p>
   <!-- Ссылки администратора на редактирование и удаление фильма -->
@@ -85,17 +85,17 @@
 
 <!-- Здесь count>1, потому что в список также входит текущий фильм -->
 <% if @like_movies.count > 1 %>
-    <div class="font-georgia cntr">Похожие фильмы:</div>
+    <div class="title font-cambria cntr text-bold font-size-20 pb-5">Похожие фильмы:</div>
     <div class="recommended-films cntr">
       <% @like_movies.each do |like_movie| %>
           <% if like_movie.id != @movie.id %>
               <div>
                 <%= link_to(image_tag(like_movie.image_url, alt: like_movie.title, class: 'img-thumbnail poster '), '/details/' + like_movie.id.to_s) %>
-                <h6 class="mt-0 font-cambria"><strong>
+                <h6 class="mt-0 font-cambria "><strong>
                   <% if like_movie.title.length <= 15 %>
-                      <%= link_to(like_movie.title, '/details/' + like_movie.id.to_s) %>
+                      <%= link_to(like_movie.title, '/details/' + like_movie.id.to_s, class: 'like-movies-link') %>
                   <% else %>
-                      <%= link_to(like_movie.title[0,15]+'...', '/details/' + like_movie.id.to_s) %>
+                      <%= link_to(like_movie.title[0,15]+'...', '/details/' + like_movie.id.to_s, class: 'like-movies-link') %>
                   <% end %>
                 </strong></h6>
               </div>
@@ -114,7 +114,7 @@
      reviewString = 'Отзывы пользователей:'
    end %>
 <div class="panel-review">
-  <h2 class="mb-0 cntr"><small><strong class="title font-cambria"><%= reviewString %></strong></small></h2>
+  <h2 class="mb-0 cntr"><small><strong class="title font-cambria font-size-20"><%= reviewString %></strong></small></h2>
   <% if user_signed_in? && @movie.reviews.where(user_id: current_user.id).count == 0 %>
       <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-enter-color' do %>
           + Добавить отзыв
