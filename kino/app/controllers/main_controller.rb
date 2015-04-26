@@ -118,27 +118,22 @@ class MainController < ApplicationController
 
     genre_id = Genre.select('id')
     genre_id = params[:select][:genre] if params[:select][:genre] != ''
-
-    sql='SELECT DISTINCT(m.id), m.title, m.release_date
-              FROM movies m, genres_movies gm
-              WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?
-                AND m.id = gm.movie_id AND gm.genre_id IN (?)
-          ', "%#{title}%", "%#{title}%", "%#{params[:date][:year]}%", genre_id
+    country_id = Country.select('id')
+    country_id = params[:select][:country] if params[:select][:country] != ''
 
       dir_id = Director.where('name LIKE ?', "%#{params[:dirName].strip}%")
       prod_id=Producer.where('name LIKE ?', "%#{params[:prodName].strip}%")
       star_id=Star.where('name LIKE ?', "%#{params[:starName].strip}%")
       writer_id=Writer.where('name LIKE ?', "%#{params[:writerName].strip}%")
       sql = 'SELECT DISTINCT(m.id), m.title, m.orig_title, m.release_date
-                    FROM movies m, directors_movies dm, producers_movies pm, stars_movies sm, writers_movies wm, genres_movies gm
+                    FROM movies m, directors_movies dm, producers_movies pm, stars_movies sm, writers_movies wm, genres_movies gm, countries_movies cm
                     WHERE (m.title LIKE ? OR m.orig_title LIKE ?) AND m.release_date LIKE ?
                       AND m.id = dm.movie_id AND m.id = pm.movie_id AND m.id = sm.movie_id AND m.id = wm.movie_id AND m.id = gm.movie_id
-                      AND gm.genre_id IN (?)
+                      AND gm.genre_id IN (?) AND cm.country_id IN (?)
                       AND (dm.director_id IN (?) OR pm.producer_id IN (?) OR sm.star_id IN (?) OR wm.writer_id IN (?) )
-                  ', "%#{title}%", "%#{title}%","%#{params[:date][:year]}%", genre_id, dir_id, prod_id, star_id, writer_id
+                  ', "%#{title}%", "%#{title}%","%#{params[:date][:year]}%", genre_id, country_id, dir_id, prod_id, star_id, writer_id
 
     @movies=Movie.find_by_sql(sql)
-    puts @movies
     render 'main/extended_search', notice: params
   end
 
