@@ -3,6 +3,7 @@
       <thead>
       <tr class="font-cambria title font-size-18 cntr">
         <th class="cntr">Название</th>
+        <th class="cntr">Оригинальное название</th>
         <th class="cntr">Дата премьеры</th>
         <th></th>
       </tr>
@@ -11,6 +12,7 @@
       <% @movies.each do |movie| %>
           <tr class="table-tr font-georgia cntr font-darkgray-color">
             <td><%= movie.title %></td>
+            <td><%= movie.orig_title %></td>
             <td><%= movie.release_date %></td>
             <td><%= link_to 'Подробно', '/details/' + movie.id.to_s, class:'btn table-more-inf' %></td>
           </tr>

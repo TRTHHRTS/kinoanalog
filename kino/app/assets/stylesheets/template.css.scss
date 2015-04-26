@@ -119,6 +119,14 @@ div.movie-details {
   width: 206px;
   height: 35px;
 }
+.btn-width-size {
+  width: 112px;
+}
+
+.btn-reg-size {
+  width: 162px;
+}
+
 
 .btn-header-color {
    color: $lightblue;
@@ -338,6 +346,9 @@ li.active-users {
 
 .font-dark-green {
   color: $darkgreen;
+  &:hover {
+    color: $darkgreen;
+  }
 }
 
 footer {
