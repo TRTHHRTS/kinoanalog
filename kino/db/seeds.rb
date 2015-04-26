@@ -114,7 +114,8 @@ ProducersMovies.create([{producer_id:2, movie_id:1},{producer_id:3, movie_id:1},
                         {producer_id:5, movie_id:6},{producer_id:6, movie_id:6},{producer_id:7, movie_id:6},
                         {producer_id:8, movie_id:2}, {producer_id:2, movie_id:3},{producer_id:1, movie_id:4}])
 WritersMovies.create([{writer_id:3, movie_id: 5}, {writer_id:4, movie_id: 5}, {writer_id:5, movie_id: 5}, {writer_id:3, movie_id: 6},
-                      {writer_id:6, movie_id: 2}, {writer_id:3, movie_id: 3}, {writer_id:4, movie_id: 4}, {writer_id:3, movie_id: 2}])
+                      {writer_id:6, movie_id: 2}, {writer_id:3, movie_id: 3}, {writer_id:4, movie_id: 4}, {writer_id:3, movie_id: 2},
+                      {writer_id:4, movie_id: 1}])
 StarsMovies.create([{star_id:2, movie_id:1},{star_id:3, movie_id:1},{star_id:4, movie_id:1},{star_id:10, movie_id:5},
                     {star_id:5, movie_id:5},{star_id:6, movie_id:5},{star_id:7, movie_id:5},{star_id:8, movie_id:5},{star_id:9, movie_id:5},
                     {star_id:5, movie_id:6},{star_id:6, movie_id:6},{star_id:7, movie_id:6},{star_id:8, movie_id:6},{star_id:9, movie_id:6},

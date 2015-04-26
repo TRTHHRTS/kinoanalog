@@ -13,7 +13,7 @@
           <td>
             <div class="form-group font-darkgray-color">
               <%= label_tag 'Год', nil, { for: 'yearInput' } %>
-              <%= select_year(params[:date] == nil ? Date.today : Date.new(params[:date][:year].to_i), {prompt: 'Все', start_year: DateTime.now.year+10, end_year: 1960}, {class: 'form-control', id: 'yearInput'}) %>
+              <%= select_year(params[:date] == nil ? Date.today : Date.new(params[:date][:year].to_i), {prompt: 'Все', start_year: @max_year, end_year: @min_year}, {class: 'form-control', id: 'yearInput'}) %>
             </div>
           </td>
           <td>
@@ -31,6 +31,10 @@
             </div>
           </td>
           <td>
+            <div class="form-group font-darkgray-color">
+              <%= label_tag 'Возрастное ограничение', nil, { for: 'ageInput' } %>
+              <%= collection_select(:select, :age, Age.all, :id, :name, {selected: params[:select] == nil ? '0' : params[:select][:age], include_blank: 'Все'}, class: 'form-control', id: 'ageInput') %>
+            </div>
           </td>
         </tr>
         <tr>
