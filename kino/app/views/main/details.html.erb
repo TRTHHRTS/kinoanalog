@@ -113,12 +113,15 @@
    else
      reviewString = 'Отзывы пользователей:'
    end %>
+
 <div class="panel-review">
   <h2 class="mb-0 cntr"><small><strong class="title font-cambria font-size-20"><%= reviewString %></strong></small></h2>
   <% if user_signed_in? && @movie.reviews.where(user_id: current_user.id).count == 0 %>
-      <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), class:'btn btn-enter-color' do %>
-          + Добавить отзыв
-      <% end %>
+      <div id="js_review">
+          <%= link_to create_review_path(:review => { :movie_id => @movie.id , :user_id => current_user.id}), remote: true,  class:'btn btn-enter-color' do %>
+              + Добавить отзыв
+          <% end %>
+      </div>
   <% end %>
   <% if @movie.reviews.size > 0 %>
       <table class="reviews">
@@ -127,14 +130,16 @@
               <td>
                 <div class="review <%= review.recommended ? 'review-good' : 'review-bad' %>">
                   <% if user_signed_in? && (review.user_id==current_user.id || current_user.permission == 1 ) %>
-                     <span>
-                       <%= link_to '/destroy_review/'+review.id.to_s, :class => 'btn btn-danger btn-sm', confirm: 'Удалить этот отзыв?' do %>
-                          <img src="<%= image_path 'remove.png' %>" class="image-size">
-                      <% end %>
-                       <%= link_to '/edit_review/'+review.id.to_s, :class => 'btn btn-default btn-sm' do %>
-                          <img src="<%= image_path 'pencil.png' %>" class="image-size">
-                      <% end %>
-                     </span>
+                         <span>
+                          <%= link_to '/destroy_review/'+review.id.to_s, :class => 'btn btn-danger btn-sm', confirm: 'Удалить этот отзыв?' do %>
+                              <img src="<%= image_path 'remove.png' %>" class="image-size">
+                          <% end %>
+                          <div id="js_review">
+                              <%= link_to '/edit_review/'+review.id.to_s, remote: true, :class => 'btn btn-default btn-sm' do %>
+                                  <img src="<%= image_path 'pencil.png' %>" class="image-size">
+                              <% end %>
+                          </div>
+                         </span>
                   <% end %>
                   <h4 class="mb-10 mt-10 font-size-16"><strong><%= review.title %></strong></h4>
                   <p class="mb-0 mt-0 font-georgia font-size-13"><%= review.content %></p>

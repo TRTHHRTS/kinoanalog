@@ -11,6 +11,10 @@ class ReviewsController < ApplicationController
   def new_review
     @review = Review.new(review_params)
     @movie_title = Movie.find(@review.movie_id).title
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # POST
