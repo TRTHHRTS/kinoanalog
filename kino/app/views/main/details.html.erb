@@ -81,9 +81,9 @@
       </div>
   <% end %>
 </div>
-<!-- Панель похожих фильмов -->
 
-<!-- Здесь count>1, потому что в список также входит текущий фильм -->
+<!-- Панель похожих фильмов -->
+<!-- Здесь count > 1, потому что в список также входит текущий фильм -->
 <% if @like_movies.count > 1 %>
     <div class="title font-cambria cntr text-bold font-size-20 pb-5">Похожие фильмы:</div>
     <div class="recommended-films cntr">
@@ -91,13 +91,11 @@
           <% if like_movie.id != @movie.id %>
               <div>
                 <%= link_to(image_tag(like_movie.image_url, alt: like_movie.title, class: 'img-thumbnail poster '), '/details/' + like_movie.id.to_s) %>
-                <h6 class="mt-0 font-cambria "><strong>
-                  <% if like_movie.title.length <= 15 %>
-                      <%= link_to(like_movie.title, '/details/' + like_movie.id.to_s, class: 'like-movies-link') %>
-                  <% else %>
-                      <%= link_to(like_movie.title[0,15]+'...', '/details/' + like_movie.id.to_s, class: 'like-movies-link') %>
-                  <% end %>
-                </strong></h6>
+                <h6 class="mt-0 font-cambria ">
+                  <strong>
+                    <%= link_to(like_movie.title.length <= 15 ? like_movie.title : like_movie.title[0,15]+'...', '/details/' + like_movie.id.to_s, class: 'like-movies-link') %>
+                  </strong>
+                </h6>
               </div>
           <% end %>
       <% end %>
@@ -107,9 +105,7 @@
 <!-- Панель отзывов -->
 <% if @movie.reviews.count == 0
      reviewString = 'Отзывов еще нет'
-     if user_signed_in?
-       reviewString += ', но вы можете оставить свой!'
-     end
+     reviewString += ', но вы можете оставить свой!' if user_signed_in?
    else
      reviewString = 'Отзывы пользователей:'
    end %>
@@ -144,7 +140,8 @@
                   <h4 class="mb-10 mt-10 font-size-16"><strong><%= review.title %></strong></h4>
                   <p class="mb-0 mt-0 font-georgia font-size-13"><%= review.content %></p>
                   <i class="font-size-12"><%= @users.find(review.user_id).name %>
-                    <% unless review.review_date.nil? %>, <%= Russian::strftime(review.review_date , '%d-%m-%Y %H:%M')%><% end %></i>
+                    <%= Russian::strftime(review.review_date , ', %d-%m-%Y %H:%M') unless review.review_date.nil? %>
+                  </i>
                 </div>
               </td>
             </tr>
@@ -152,6 +149,7 @@
       </table>
   <% end %>
 </div>
+
 <!-- Модальное диалоговое окно голосования -->
 <% if user_signed_in? %>
     <div id="ratingModal" class="modalDialog">
