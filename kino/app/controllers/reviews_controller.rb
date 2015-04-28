@@ -23,7 +23,9 @@ class ReviewsController < ApplicationController
     @review.id=Review.last.id+1
     respond_to do |format|
       if @review.save
-        format.html { redirect_to '/details/'+@review.movie_id.to_s, notice: 'Review was successfully created.' }
+        #format.html #{ redirect_to '/details/'+@review.movie_id.to_s, notice: 'Review was successfully created.' }
+        format.html #{ redirect_to :back, notice: 'Review was successfully created.' }
+        format.js #{ redirect_to :back, notice: 'Review was successfully created.' }
       else
         format.html { render action: 'new_review' }
       end
@@ -34,6 +36,10 @@ class ReviewsController < ApplicationController
   def edit_review
     @review = Review.find(params[:id])
     @movie_title = Movie.find(@review.movie_id).title
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # PATCH/PUT
@@ -41,7 +47,8 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to '/details/'+@review.movie_id.to_s, notice: 'Review was successfully updated.' }
+        format.html #{ redirect_to '/details/'+@review.movie_id.to_s, notice: 'Review was successfully updated.' }
+        format.js #{ redirect_to :back, notice: 'Review was successfully created.' }
       else
         format.html { render action: 'edit_review' }
       end
@@ -51,9 +58,12 @@ class ReviewsController < ApplicationController
   # DELETE
   def destroy_review
     @review = Review.find(params[:id])
+    @movie=Movie.find(@review.movie_id)
     @review.destroy
+
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html #{ redirect_to :back }
+      format.js
     end
   end
 
