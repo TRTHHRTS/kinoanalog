@@ -70,7 +70,8 @@
             <a class="ml-5 font-dark-green" href="#ratingModal">Проголосуй</a>
         <% end %>
     <% else %>
-        <span class="ml-5"><%= link_to('Зарегистрируйся', '/users/sign_up', class: 'link-reg') %>, чтобы проголосовать</span>
+        <span class="ml-5"><%= link_to('Зарегистрируйся', new_user_registration_path, class: 'link-reg') %> или </span>
+        <span><%= link_to('Войди', new_user_session_path, class: 'font-dark-green') %>, чтобы проголосовать</span>
     <% end %>
   </p>
   <!-- Ссылки администратора на редактирование и удаление фильма -->
@@ -91,7 +92,7 @@
           <% if like_movie.id != @movie.id %>
               <div>
                 <%= link_to(image_tag(like_movie.image_url, alt: like_movie.title, class: 'img-thumbnail poster '), '/details/' + like_movie.id.to_s) %>
-                <h6 class="mt-0 font-cambria ">
+                <h6 class="mt-5 font-cambria ">
                   <strong>
                     <%= link_to(like_movie.title.length <= 15 ? like_movie.title : like_movie.title[0,15]+'...', '/details/' + like_movie.id.to_s, class: 'like-movies-link') %>
                   </strong>
