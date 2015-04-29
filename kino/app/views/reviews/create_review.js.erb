@@ -1,2 +1,3 @@
-$('#js_review').html("<%= j (render 'review') %>");
-$('#js_button_review').html("<%= j (render 'empty') %>");
+$('#js_review').html("<%= j (render partial: 'review', object: @review) %>");
+$('#js_button_add').html("<%= j (render 'empty') %>");
+$('#js_review_str').html("<%= j (render 'review_str') %>");

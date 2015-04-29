@@ -21,6 +21,7 @@ class ReviewsController < ApplicationController
   def create_review
     @review = Review.new(review_params)
     @review.id=Review.last.id+1
+    @movie=Movie.find(@review.movie_id)
     respond_to do |format|
       if @review.save
         #format.html #{ redirect_to '/details/'+@review.movie_id.to_s, notice: 'Review was successfully created.' }
@@ -58,6 +59,7 @@ class ReviewsController < ApplicationController
   # DELETE
   def destroy_review
     @review = Review.find(params[:id])
+    @review_id=@review.id
     @movie=Movie.find(@review.movie_id)
     @review.destroy
 

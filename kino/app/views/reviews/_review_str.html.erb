@@ -1,0 +1,9 @@
+<% if @movie.reviews.count == 0
+     reviewString = 'Отзывов еще нет'
+     reviewString += ', но вы можете оставить свой!' if user_signed_in?
+   else
+     reviewString = 'Отзывы пользователей:'
+   end %>
+<h2 class="mb-0 cntr"><small><strong class="title font-cambria font-size-20">
+  <%= reviewString %></strong></small>
+</h2>
