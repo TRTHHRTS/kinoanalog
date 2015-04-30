@@ -1,41 +1,71 @@
-<h2 class="title font-cambria">Регистрация</h2>
-<div class="w300">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
-      <%= f.hidden_field :permission, { :value => 3 } %>
-      <div  class="form-group">
-        <%= f.label 'Имя', for: 'loginInput' %>
-        <%= f.text_field :name, autofocus: true, class: 'form-control', id: 'nameInput', required: 'true'%>
-      </div>
-      <div  class="form-group">
-        <%= f.label 'E-mail', for: 'emailInput' %>
-        <%= f.email_field :email, autofocus: true, class: 'form-control', id: 'emailInput' %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Пароль', for: 'passInput' %>
-        <% if @validatable %>
-            <em>(минимум  <%= @minimum_password_length %> символов)</em>
-        <% end %>
-        <%= f.password_field :password, autocomplete: 'off', class: 'form-control', id: 'passInput' %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Подтвердите пароль', for: 'passConfInput' %>
-        <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control', id: 'passConfInput' %>
-      </div>
-      <div  class="form-group">
-        <%= f.label 'Пол' %> <br>
-        <label class="btn-sm btn-success btn-unknown">
-          <%= f.radio_button :sex, 'Неизвестно', checked: true %> Неизвестно
-        </label>
-        <label class="btn-sm btn-primary btn-male">
-          <%= f.radio_button :sex, 'Мужской' %> Мужской
-        </label>
-        <label class="btn-sm btn-danger btn-female">
-          <%= f.radio_button :sex, 'Женский' %> Женский
-        </label>
-      </div>
-      <div class="form-group ta-right">
-        <%= f.submit 'Зарегистрироваться', class: 'btn btn-header-color btn-reg-size ' %>
-      </div>
-  <% end %>
-</div>
+<table class="enter-form">
+  <tr>
+    <td>
+      <h2 class="title font-cambria">Регистрация</h2>
+    </td>
+  </tr>
+  <tr>
+    <td>
+  <tr>
+    <td>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+          <%= f.hidden_field :permission, { :value => 3 } %>
+          <div  class="form-group">
+            <%= f.label 'Имя', for: 'loginInput' %>
+            <%= f.text_field :name, autofocus: true, class: 'form-control', id: 'nameInput', required: 'true'%>
+          </div>
+          </td>
+          </tr>
+          <tr>
+            <td>
+              <div  class="form-group">
+                <%= f.label 'E-mail', for: 'emailInput' %>
+                <%= f.email_field :email, autofocus: true, class: 'form-control', id: 'emailInput' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <%= f.label 'Пароль', for: 'passInput' %>
+                <% if @validatable %>
+                    <em>(минимум  <%= @minimum_password_length %> символов)</em>
+                <% end %>
+                <%= f.password_field :password, autocomplete: 'off', class: 'form-control', id: 'passInput' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <%= f.label 'Подтвердите пароль', for: 'passConfInput' %>
+                <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control', id: 'passConfInput' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div  class="form-group">
+                <%= f.label 'Пол' %> <br>
+                <label class="btn-sm btn-success btn-unknown">
+                  <%= f.radio_button :sex, 'Неизвестно', checked: true %> Неизвестно
+                </label>
+                <label class="btn-sm btn-primary btn-male">
+                  <%= f.radio_button :sex, 'Мужской' %> Мужской
+                </label>
+                <label class="btn-sm btn-danger btn-female">
+                  <%= f.radio_button :sex, 'Женский' %> Женский
+                </label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group ta-right">
+                <%= f.submit 'Зарегистрироваться', class: 'btn btn-header-color btn-reg-size ' %>
+              </div>
+            </td>
+          </tr>
+      <% end %>
+      </table>

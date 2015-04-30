@@ -1,19 +1,34 @@
-<h2 class="title font-cambria">Форма входа</h2>
-<div class="w300">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-group">
-        <%= f.label 'E-mail', for: 'emailInput' %>
-        <%= f.email_field :email, autofocus: true, class: 'form-control', id: 'emailInput' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label 'Пароль', for: 'passInput' %><br />
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control', id: 'passInput' %>
-      </div>
-
-      <div class="actions ta-right">
-        <%= f.submit "Войти", class: 'btn btn-header-color btn-width-size' %>
-      </div>
-  <% end %>
-  <div class="mt-5">    </div>
-</div>
+<table class="enter-form">
+  <tr>
+    <td>
+      <h2 class="title font-cambria">Форма входа</h2>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group">
+            <%= f.label 'E-mail', for: 'emailInput' %>
+            <%= f.email_field :email, autofocus: true, class: 'form-control', id: 'emailInput' %>
+          </div>
+          </div>
+          </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <%= f.label 'Пароль', for: 'passInput' %><br />
+                <%= f.password_field :password, autocomplete: "off", class: 'form-control', id: 'passInput' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="actions ta-right">
+                <%= f.submit "Войти", class: 'btn btn-header-color btn-width-size' %>
+              </div>
+      <% end %>
+      <div class="mt-5">    </div>
+      </td>
+      </tr>
+      </table>
