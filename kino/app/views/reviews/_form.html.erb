@@ -11,7 +11,7 @@
         </div>
     <% end %>
 
-    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+    <%= tag(:input, type: "hidden", name: request_forgery_protection_token.to_s, value: form_authenticity_token) %>
     <%= f.hidden_field :movie_id, { :value => @review.movie_id } %>
     <%= f.hidden_field :user_id, { :value => @review.user_id } %>
     <%= f.hidden_field :review_date, { :value => Time.now } %>

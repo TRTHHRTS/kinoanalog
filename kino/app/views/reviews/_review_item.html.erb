@@ -1,26 +1,7 @@
 <% review_item.each do |review| %>
     <tr>
       <td>
-        <div id="js_review<%= review.id%>">
-          <div class="review <%= review.recommended ? 'review-good' : 'review-bad' %>">
-            <% if user_signed_in? && (review.user_id==current_user.id || current_user.permission == 1 ) %>
-             <span>
-              <%= link_to '/destroy_review/'+review.id.to_s, remote: true, :class => 'btn btn-danger btn-sm', confirm: 'Удалить этот отзыв?' do %>
-                  <img src="<%= image_path 'remove.png' %>" class="image-size">
-              <% end %>
-
-               <%= link_to '/edit_review/'+review.id.to_s, remote: true, :class => 'btn btn-default btn-sm' do %>
-                  <img src="<%= image_path 'pencil.png' %>" class="image-size">
-              <% end %>
-             </span>
-            <% end %>
-            <h4 class="mb-10 mt-10 font-size-16"><strong><%= review.title %></strong></h4>
-            <p class="mb-0 mt-0 font-georgia font-size-13"><%= review.content %></p>
-            <i class="font-size-12"><%= User.find(review.user_id).name %>
-              <%= Russian::strftime(review.review_date , ', %d-%m-%Y %H:%M') unless review.review_date.nil? %>
-            </i>
-          </div>
-        </div>
+        <%= (render partial: 'reviews/review', object: review) %>
       </td>
     </tr>
 <% end %>

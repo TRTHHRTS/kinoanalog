@@ -24,9 +24,8 @@ class ReviewsController < ApplicationController
     @movie=Movie.find(@review.movie_id)
     respond_to do |format|
       if @review.save
-        #format.html #{ redirect_to '/details/'+@review.movie_id.to_s, notice: 'Review was successfully created.' }
-        format.html #{ redirect_to :back, notice: 'Review was successfully created.' }
-        format.js #{ redirect_to :back, notice: 'Review was successfully created.' }
+        format.html
+        format.js
       else
         format.html { render action: 'new_review' }
       end
@@ -48,8 +47,8 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     respond_to do |format|
       if @review.update(review_params)
-        format.html #{ redirect_to '/details/'+@review.movie_id.to_s, notice: 'Review was successfully updated.' }
-        format.js #{ redirect_to :back, notice: 'Review was successfully created.' }
+        format.html
+        format.js
       else
         format.html { render action: 'edit_review' }
       end
@@ -64,7 +63,7 @@ class ReviewsController < ApplicationController
     @review.destroy
 
     respond_to do |format|
-      format.html #{ redirect_to :back }
+      format.html
       format.js
     end
   end
@@ -93,7 +92,7 @@ class ReviewsController < ApplicationController
 
   def render_404
     respond_to do |format|
-      format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+      format.html { render file: "#{Rails.root}/public/404", layout: false, status: :not_found }
       format.xml  { head :not_found }
       format.any  { head :not_found }
     end

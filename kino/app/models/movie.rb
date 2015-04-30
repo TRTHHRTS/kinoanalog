@@ -1,6 +1,6 @@
 class Movie < ActiveRecord::Base
   belongs_to  :age
-  has_many :reviews, :order => "review_date DESC"
+  has_many :reviews, order: 'review_date DESC'
   accepts_nested_attributes_for :reviews
   has_many :ratings
   has_and_belongs_to_many :countries, join_table: 'countries_movies'

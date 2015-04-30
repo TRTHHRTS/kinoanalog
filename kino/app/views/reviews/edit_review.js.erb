@@ -1,1 +1,1 @@
-$('#js_review<%= @review.id %>').html("<%= j (render 'form', :url_link => 'update_review') %>");
+$('#js_review_<%= @review.id %>').html("<%= j (render 'form', url_link: 'update_review') %>");
