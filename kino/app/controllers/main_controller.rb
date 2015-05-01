@@ -23,7 +23,7 @@ class MainController < ApplicationController
     until Movie.exists?(mov_id)
       mov_id = rand(0..Movie.count-1)
     end
-    redirect_to '/details/' + mov_id.to_s
+    redirect_to '/details/' + mov_id.to_s, flash: { action: 'random' }
   end
 
   def details

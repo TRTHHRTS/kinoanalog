@@ -49,12 +49,12 @@
         <span>(еще никто не проголосовал)</span>
     <% else %>
         <span id="stars_count" hidden="hidden"><%= @movie.ratings.average(:value).round%></span>
-              <span id="rating_stars" class="starRating">
-                <input id="rating5" type="radio" name="rating" value="5" readonly><label for="rating5">5</label>
-                <input id="rating4" type="radio" name="rating" value="4" readonly><label for="rating4">4</label>
-                <input id="rating3" type="radio" name="rating" value="3" readonly><label for="rating3">3</label>
-                <input id="rating2" type="radio" name="rating" value="2" readonly><label for="rating2">2</label>
-                <input id="rating1" type="radio" name="rating" value="1" readonly><label for="rating1">1</label>
+              <span id="rating_stars" class="passiveRating">
+                <input id="rating5" type="radio" value="5" disabled><label for="rating5">5</label>
+                <input id="rating4" type="radio" value="4" disabled><label for="rating4">4</label>
+                <input id="rating3" type="radio" value="3" disabled><label for="rating3">3</label>
+                <input id="rating2" type="radio" value="2" disabled><label for="rating2">2</label>
+                <input id="rating1" type="radio" value="1" disabled><label for="rating1">1</label>
               </span>
     <% end %>
     <% if user_signed_in? %>
@@ -128,7 +128,7 @@
 <% if user_signed_in? %>
     <div id="ratingModal" class="modalDialog">
       <div>
-        <a id="close_modal" href="#close" title="Close" class="close" ><div ><img style="vertical-align: middle" src="<%= image_path 'remove.png' %>" class="image-size"></div></a>
+        <a id="close_modal" href="#close" title="Close" class="close" ><img src="<%= image_path 'remove.png' %>" class="image-size"></a>
         <h2 class="cntr font-darkgray-color font-size-22">Проголосуй за фильм!</h2>
         <div class="cntr">
           <%= form_tag({ action: 'add_rating', controller: :movies}, id: 'add_rating_form') do %>

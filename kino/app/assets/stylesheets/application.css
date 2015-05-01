@@ -160,3 +160,11 @@
 .bg {
     background: url("/assets/images/movies/1234.png") top left repeat;
 }
+
+div.container {
+    width: 900px;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0.5em auto;
+    background-color: #ffffff;
+}
