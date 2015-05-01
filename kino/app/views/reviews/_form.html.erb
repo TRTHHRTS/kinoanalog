@@ -1,4 +1,4 @@
-<%= form_for @review, remote: true, url: {action: url_link, controller: :reviews} do |f| %>
+<%= form_for @review, url: {action: url_link, controller: :reviews} do |f| %>
     <% if @review.errors.any? %>
         <div id="error_explanation">
           <h2><%= Russian::pluralize(@review.errors.count, 'error') %> prohibited this movie from being saved:</h2>

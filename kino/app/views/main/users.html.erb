@@ -2,26 +2,25 @@
 <% # 2 - редактор %>
 <% # 3 - пользователь %>
 <h2 class="title font-cambria">Пользователи</h2>
-<table class="table table-condensed font-darkgray-color">
+<table class="table table-hover font-darkgray-color">
   <thead>
-  <tr>
+  <tr class="font-cambria title">
     <th>Id</th>
     <th>Логин</th>
     <th>Почтовый ящик</th>
     <th>Пол</th>
     <th>Ранг</th>
     <th>Действие</th>
-    <th></th>
   </tr>
   </thead>
   <tbody>
   <% @users.each do |user| next if user.id == current_user.id %>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.sex %></td>
-        <td><%= 'Администратор' if user.permission == 1 %>
+        <td class="font-georgia"><%= user.id %></td>
+        <td class="font-georgia"><%= user.name %></td>
+        <td class="font-georgia"><%= user.email %></td>
+        <td class="font-georgia"><%= user.sex %></td>
+        <td class="font-georgia"><%= 'Администратор' if user.permission == 1 %>
           <%= 'Редактор' if user.permission == 2 %>
           <%= 'Пользователь' if user.permission == 3 %></td>
         <% if current_user.permission == 1 %>
