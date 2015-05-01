@@ -386,6 +386,8 @@ footer {
 }
 
 .image-size {
+  vertical-align: top;
+  margin-top: 3px;
   width: 12px;
   height: 12px;
   opacity: 0.5;
@@ -412,9 +414,11 @@ footer {
 
 .selected-item {
   a:last-child {
-    border: 1px solid white;
+    margin-left: 5px;
   }
   img {
+    vertical-align: top;
+    margin-top: 4px;
     width: 12px;
     height: 12px;
   }

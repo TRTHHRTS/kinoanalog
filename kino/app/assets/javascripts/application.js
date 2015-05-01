@@ -23,11 +23,11 @@ $(document).ready(function(){
         var starId = value.id;
         if (starUrl == '-1') {
             list.append($('<li class="selected-item" id="' + starId + '">' + starName +
-                '<a class="btn btn-xs" href="javascript:deleteItem(\'stars\',' + starId + ')">' +
+                '<a href="javascript:deleteItem(\'stars\',' + starId + ')">' +
                 '<img src="/assets/remove-orange.png"/></a></li>'));
         } else {
             list.append($('<li class="selected-item" id="' + starId + '"><a target="_blank" href="' + starUrl + '">'+ starName +'</a>' +
-                '<a class="btn btn-xs" href="javascript:deleteItem(\'stars\',' + starId + ')">' +
+                '<a href="javascript:deleteItem(\'stars\',' + starId + ')">' +
                 '<img src="/assets/remove-orange.png"/></a></li>'));
         }
     });
@@ -40,11 +40,11 @@ $(document).ready(function(){
         var dirId = value.id;
         if (dirUrl == '-1') {
             list.append($('<li class="selected-item" id="' + dirId + '">' + dirName +
-                '<a class="btn btn-xs" href="javascript:deleteItem(\'directors\',' + dirId + ')">' +
+                '<a href="javascript:deleteItem(\'directors\',' + dirId + ')">' +
                 '<img src="/assets/remove-orange.png"/></a></li>'));
         } else {
             list.append($('<li class="selected-item" id="' + dirId + '"><a target="_blank" href="' + dirUrl + '">'+ dirName +'</a>' +
-                '<a class="btn btn-xs" href="javascript:deleteItem(\'directors\',' + dirId + ')">' +
+                '<a href="javascript:deleteItem(\'directors\',' + dirId + ')">' +
                 '<img src="/assets/remove-orange.png"/></a></li>'));
         }
     });
@@ -57,11 +57,11 @@ $(document).ready(function(){
         var prodId = value.id;
         if (prodUrl == '-1') {
             list.append($('<li class="selected-item" id="' + prodId + '">' + prodName +
-                '<a class="btn btn-xs" href="javascript:deleteItem(\'producers\',' + prodId + ')">' +
+                '<a href="javascript:deleteItem(\'producers\',' + prodId + ')">' +
                 '<img src="/assets/remove-orange.png"/></a></li>'));
         } else {
             list.append($('<li class="selected-item" id="' + prodId + '"><a target="_blank" href="' + prodUrl + '">'+ prodName +'</a>' +
-                '<a class="btn btn-xs" href="javascript:deleteItem(\'producers\',' + prodId + ')">' +
+                '<a href="javascript:deleteItem(\'producers\',' + prodId + ')">' +
                 '<img src="/assets/remove-orange.png"/></a></li>'));
         }
     });
@@ -74,11 +74,11 @@ $(document).ready(function(){
         var writerId = value.id;
         if (writerUrl == '-1') {
             list.append($('<li class="selected-item" id="' + writerId + '">' + writerName +
-                '<a class="btn btn-xs" href="javascript:deleteItem(\'writers\',' + writerId + ')">' +
+                '<a href="javascript:deleteItem(\'writers\',' + writerId + ')">' +
                 '<img src="/assets/remove-orange.png"/></a></li>'));
         } else {
             list.append($('<li class="selected-item" id="' + writerId + '"><a target="_blank" href="' + writerUrl + '">'+ writerName +'</a>' +
-                '<a class="btn btn-xs" href="javascript:deleteItem(\'writers\',' + writerId + ')">' +
+                '<a href="javascript:deleteItem(\'writers\',' + writerId + ')">' +
                 '<img src="/assets/remove-orange.png"/></a></li>'));
         }
     });
@@ -90,7 +90,7 @@ $(document).ready(function(){
         var cName = $(value).val();
         var cId = value.id;
         list.append($('<li class="selected-item" id="' + cId + '">' + cName +
-            '<a class="btn btn-xs" href="javascript:deleteItem(\'' + items + '\',' + cId + ')">' +
+            '<a href="javascript:deleteItem(\'' + items + '\',' + cId + ')">' +
             '<img src="/assets/remove-orange.png"/></a></li>'));
         $('select#country_select option:contains('+ cName + ')').remove();
     });
@@ -102,7 +102,7 @@ $(document).ready(function(){
         var cName = $(value).val();
         var cId = value.id;
         list.append($('<li class="selected-item" id="' + cId + '">' + cName +
-            '<a class="btn btn-xs" href="javascript:deleteItem(\'' + items + '\',' + cId + ')">' +
+            '<a href="javascript:deleteItem(\'' + items + '\',' + cId + ')">' +
             '<img src="/assets/remove-orange.png"/></a></li>'));
         $('select#genre_select option:contains('+ cName + ')').remove();
     });
@@ -124,7 +124,7 @@ function addItem(itemName) {
         cName = currentItem.text();
         cId = itemList.children().length + 1;
         itemList.append($('<li class="selected-item" id="' + cId + '">' + cName +
-            '<a class="btn btn-xs" href="javascript:deleteItem(\'' + items + '\',' + cId + ')">' +
+            '<a href="javascript:deleteItem(\'' + items + '\',' + cId + ')">' +
             '<img src="/assets/remove-orange.png"/></a></li>'));
         itemList.append($('<input id="' + cId + '" type="hidden" value="' + cName + '" name="' + items + '[]" readonly/>'));
         currentItem.remove();
@@ -146,11 +146,11 @@ function addItemWithUrl(itemName) {
         cId = item_list.children().length + 1;
         if (url != '-1') {
             item_list.append($('<li class="selected-item" id="' + cId + '"><a target="_blank" href="' + item_url.val() + '">'+ item.val() +'</a>' +
-                '<a class="btn btn-xs" href="javascript:deleteItem(\'' + itemName + 's\',' + cId + ')">' +
+                '<a href="javascript:deleteItem(\'' + itemName + 's\',' + cId + ')">' +
                 '<img src="/assets/remove-orange.png"/></a></li>'));
         } else {
             item_list.append($('<li class="selected-item" id="' + cId + '">' + item.val() +
-                '<a class="btn btn-xs" href="javascript:deleteItem(\'' + itemName + 's\',' + cId + ')">' +
+                '<a href="javascript:deleteItem(\'' + itemName + 's\',' + cId + ')">' +
                 '<img src="/assets/remove-orange.png"/></a></li>'));
         }
         item_url.val("");
