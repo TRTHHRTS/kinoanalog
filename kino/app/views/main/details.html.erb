@@ -44,43 +44,18 @@
 
   <p class="font-georgia pr-10"><%= @movie.description %></p>
   <!-- Пользовательский рейтинг фильма и ссылка на голосование -->
-  <p class="font-cambria"><strong>Пользовательский рейтинг: </strong>
-    <% if @movie.ratings.count == 0 %>
-        <span>(еще никто не проголосовал)</span>
-    <% else %>
-        <span id="stars_count" hidden="hidden"><%= @movie.ratings.average(:value).round%></span>
-              <span id="rating_stars" class="passiveRating">
-                <input id="rating5" type="radio" value="5" disabled><label for="rating5">5</label>
-                <input id="rating4" type="radio" value="4" disabled><label for="rating4">4</label>
-                <input id="rating3" type="radio" value="3" disabled><label for="rating3">3</label>
-                <input id="rating2" type="radio" value="2" disabled><label for="rating2">2</label>
-                <input id="rating1" type="radio" value="1" disabled><label for="rating1">1</label>
-              </span>
+  <span class="font-cambria"><strong>Пользовательский рейтинг: </strong>
+    <div id="user_rating" class="inline-block">
+      <%= render 'ratings/user_rating' %>
+    </div>
+    <!-- Ссылки администратора на редактирование и удаление фильма -->
+    <% if user_signed_in? && current_user.permission == 1 %>
+        <div class="ta-right">
+          <%= link_to 'Редактировать данные', '/edit_movie/'+@movie.id.to_s, class: 'btn btn-link' %><br/>
+          <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, class: 'btn btn-link', confirm: 'Удалить этот фильм?' %>
+        </div>
     <% end %>
-    <% if user_signed_in? %>
-        <% if @movie.ratings.find_by(user_id: current_user.id) %>
-                      <span class="ml-5 ">
-                        <span class="font-dark-green">Твой голос уже учтен (</span>
-                        <% @movie.ratings.find_by(user_id: current_user.id).value.times do %>
-                            <img src="<%= image_path 'star-on.svg' %>" width="12" height="12"/>
-                        <% end %>
-                        <span>)</span>
-                      </span>
-        <% else %>
-            <a class="ml-5 font-dark-green" href="#ratingModal">Проголосуй</a>
-        <% end %>
-    <% else %>
-        <span class="ml-5"><%= link_to('Зарегистрируйся', new_user_registration_path, class: 'link-reg') %> или </span>
-        <span><%= link_to('Войди', new_user_session_path, class: 'font-dark-green') %>, чтобы проголосовать</span>
-    <% end %>
-  </p>
-  <!-- Ссылки администратора на редактирование и удаление фильма -->
-  <% if user_signed_in? && current_user.permission == 1 %>
-      <div class="ta-right">
-        <%= link_to 'Редактировать данные', '/edit_movie/'+@movie.id.to_s, class: 'btn btn-link' %><br/>
-        <%= link_to 'Удалить фильм', '/destroy_movie/'+@movie.id.to_s, class: 'btn btn-link', confirm: 'Удалить этот фильм?' %>
-      </div>
-  <% end %>
+  </span>
 </div>
 
 <!-- Панель похожих фильмов -->
@@ -134,8 +109,9 @@
         <a id="close_modal" href="#close" title="Close" class="close" ><img src="<%= image_path 'remove.png' %>" class="image-size"></a>
         <h2 class="cntr font-darkgray-color font-size-22">Проголосуй за фильм!</h2>
         <div class="cntr">
-          <%= form_tag({ action: 'add_rating', controller: :movies}, id: 'add_rating_form') do %>
-            <span id="set_movie_rating" class="starRating">
+          <%= form_tag({ action: 'add_rating', controller: :movies}, id: 'add_rating_form', remote: true) do %>
+              <%= tag(:input, type: 'hidden', name: request_forgery_protection_token.to_s, value: form_authenticity_token) %>
+              <span id="set_movie_rating" class="starRating">
               <input type="radio" value="5"><label for="rating5" onclick="submitForm(5)">5</label>
               <input type="radio" value="4"><label for="rating4" onclick="submitForm(4)">4</label>
               <input type="radio" value="3"><label for="rating3" onclick="submitForm(3)">3</label>

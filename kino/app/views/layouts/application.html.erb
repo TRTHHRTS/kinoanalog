@@ -4,6 +4,7 @@
   <title>PROkino</title>
   <%= stylesheet_link_tag :application %>
   <%= javascript_include_tag :application %>
+  <%= javascript_include_tag :edit_movie if action_name == 'edit_movie' %>
   <%= javascript_include_tag :details if action_name == 'details' %>
 </head>
 <body class="bg">
@@ -44,7 +45,9 @@
       <% end %>
       </ul>
     </nav>
-    <p id="notice"><%= notice %></p>
+    <% if notice.to_s.length > 0 %>
+        <div id="notice" class="notice-style font-cambria font-size-16"><%= notice %></div>
+    <% end %>
     <div class="content">
       <%= yield %>
     </div>

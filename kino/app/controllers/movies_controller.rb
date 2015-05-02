@@ -86,14 +86,24 @@ class MoviesController < ApplicationController
     end
   end
 
+  #select POST_JS
   def add_rating
     rated = Rating.find_by(user_id: params[:user_id], movie_id: params[:movie_id])
     unless rated
-      Rating.create(user_id: params[:user_id], movie_id: params[:movie_id], value: params[:rating_value])
-      redirect_to :back, notice: 'Спасибо, мы учли твой голос!'
-      return
+      @rating = Rating.new
+      @rating.movie_id = params[:movie_id]
+      @rating.user_id = params[:user_id]
+      @rating.value = params[:rating_value]
+      @rating.id=Rating.last.id+1
+      @movie=Movie.find(@rating.movie_id)
+      respond_to do |format|
+        if @rating.save
+          format.js {render action: 'process_rating', notice: 'Спасибо, мы учли твой голос!' }
+        else
+          format.js { render action: 'process_rating', notice: 'Что-то пошло не так..' }
+        end
+      end
     end
-    redirect_to :back, notice: 'Что-то пошло не так..'
   end
 
   private

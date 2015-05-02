@@ -161,6 +161,10 @@
     background: url("/assets/images/movies/1234.png") top left repeat;
 }
 
+.inline-block {
+    display: inline-block;
+}
+
 div.container {
     width: 900px;
     padding-left: 0;

@@ -433,3 +433,13 @@ footer {
 blockquote {
   border-left: 5px solid #ddd;
 }
+
+.notice-style {
+  width: 95%;
+  margin: 1em auto;
+  border-radius: 4px;
+  background-color: $lightblue;
+  color: $richblue;
+  border: 1px solid $richblue;
+  padding: 0.5em;
+}
