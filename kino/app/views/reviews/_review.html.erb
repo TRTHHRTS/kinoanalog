@@ -1,4 +1,4 @@
-<div id="js_review_<%= review.id%>">
+<div id="js_review_<%= review.id %>">
   <div class="review <%= review.recommended ? 'review-good' : 'review-bad' %>">
     <% if user_signed_in? && (review.user_id == current_user.id || current_user.permission == 1) %>
      <span>

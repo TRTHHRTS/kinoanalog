@@ -106,10 +106,12 @@
 <!-- Панель отзывов -->
 <div class="panel-review">
   <div id="js_review_str">
+    <!-- Общий заголовок отзывов, в зависимости от наличия отзывов на фильм -->
     <%= (render 'reviews/review_str') %>
   </div>
   <div id="js_button_add">
-    <%= (render 'reviews/button_add_review') %>
+    <!-- Кнопка добавления отзыва -->
+    <%= (render 'reviews/review_add_button') %>
   </div>
 
   <table class="reviews">
@@ -118,9 +120,10 @@
         <div id="js_review"></div>
       </td>
     </tr>
-      <% if @movie.reviews.size > 0 %>
+    <!-- Карточки отзывов -->
+    <% if @movie.reviews.size > 0 %>
         <%= render  partial: 'reviews/review_item', object: @movie.reviews %>
-      <% end %>
+    <% end %>
   </table>
 </div>
 
