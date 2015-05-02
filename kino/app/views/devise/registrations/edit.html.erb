@@ -6,12 +6,10 @@
       <%= f.label 'Имя', for: 'loginInput' %>
       <%= f.text_field :name, autofocus: true, class: 'form-control', id: 'nameInput', required: 'true' %>
     </div>
-
     <div  class="form-group">
       <%= f.label 'E-mail', for: 'emailInput' %>
       <%= f.email_field :email, autofocus: true, class: 'form-control', id: 'emailInput' %>
     </div>
-
     <div class="form-group">
       <%= f.label 'Пароль', for: 'passInput' %>
       <% if @validatable %>
@@ -19,20 +17,16 @@
       <% end %>
       <%= f.password_field :password, autocomplete: 'off', class: 'form-control', id: 'passInput' %>
     </div>
-
     <div class="form-group">
       <%= f.label 'Подтвердите пароль', for: 'passConfInput' %>
       <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control', id: 'passConfInput' %>
     </div>
-
   <div class="field">
     <%= f.label 'Текущий пароль', for: 'passCurInput' %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: 'off', class: 'form-control', id: 'passCurInput', required: 'true' %>
   </div>
-
   <div class="actions">
     <%= f.submit 'Подтвердить' %>
   </div>
 <% end %>
-
-<%= link_to "Назад", :back %>
+<%= link_to 'Назад', :back %>

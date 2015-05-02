@@ -11,6 +11,11 @@
  *= require_self
  *= require_tree
  */
+html {
+    margin-left: calc(100vw - 100%);
+    margin-right: 0;
+}
+
 .float-l {
     float: left;
 }
