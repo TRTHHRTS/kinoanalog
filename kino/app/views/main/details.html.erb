@@ -59,21 +59,18 @@
 </div>
 
 <!-- Панель похожих фильмов -->
-<!-- Здесь count > 1, потому что в список также входит текущий фильм -->
-<% if @like_movies.count > 1 %>
+<% if @like_movies.count > 0 %>
     <div class="title font-cambria cntr text-bold font-size-20 pb-5">Похожие фильмы:</div>
     <div class="recommended-films cntr">
       <% @like_movies.each do |like_movie| %>
-          <% if like_movie.id != @movie.id %>
-              <div>
-                <%= link_to(image_tag(like_movie.image_url, alt: like_movie.title, class: 'img-thumbnail poster '), '/details/' + like_movie.id.to_s) %>
-                <h6 class="mt-5 font-cambria ">
-                  <strong>
-                    <%= link_to(like_movie.title.length <= 15 ? like_movie.title : like_movie.title[0,15]+'...', '/details/' + like_movie.id.to_s, class: 'like-movies-link') %>
-                  </strong>
-                </h6>
-              </div>
-          <% end %>
+          <div>
+            <%= link_to(image_tag(like_movie.image_url, alt: like_movie.title, class: 'img-thumbnail poster '), '/details/' + like_movie.id.to_s) %>
+            <h6 class="mt-5 font-cambria ">
+              <strong>
+                <%= link_to(like_movie.title.length <= 15 ? like_movie.title : like_movie.title[0,15]+'...', '/details/' + like_movie.id.to_s, class: 'like-movies-link') %>
+              </strong>
+            </h6>
+          </div>
       <% end %>
     </div>
 <% end %>
