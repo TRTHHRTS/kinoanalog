@@ -45,9 +45,7 @@
       <% end %>
       </ul>
     </nav>
-    <% if notice.to_s.length > 0 %>
-        <div id="notice" class="notice-style font-cambria font-size-16"><%= notice %></div>
-    <% end %>
+    <span id="notice_container"><%= render partial: 'layouts/notice', object: notice %></span>
     <div class="content">
       <%= yield %>
     </div>

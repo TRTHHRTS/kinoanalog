@@ -1,2 +1,8 @@
 $('#user_rating').html("<%= j (render partial: 'ratings/user_rating') %>");
 checkRatingRadio();
+$('#notice_container').html("<%= j (render partial: 'layouts/notice', object: flash[:notice]) %>");
+showNoticeFor2Sec();
+$('body').animate({
+            scrollTop: 0
+        },
+        200);

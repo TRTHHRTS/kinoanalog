@@ -14,7 +14,11 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 $('document').ready(function() {
+    showNoticeFor2Sec();
+});
+
+function showNoticeFor2Sec() {
     setTimeout(function() {
         $('#notice').slideUp();
     }, 2000);
-});
+}

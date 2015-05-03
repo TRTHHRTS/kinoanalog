@@ -1,3 +1,5 @@
 $('#js_button_add').html("<%= j (render 'review_add_button') %>");
-$('#js_review_<%= @review_id %>').html("<%= j render 'empty' %>");
+$('#js_review_<%= @review_id %>').empty();
 $('#js_review_str').html("<%= j (render 'review_str') %>");
+$('#notice_container').html("<%= j (render partial: 'layouts/notice', object: flash[:notice]) %>");
+showNoticeFor2Sec();

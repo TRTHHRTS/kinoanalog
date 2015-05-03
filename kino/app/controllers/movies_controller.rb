@@ -98,9 +98,11 @@ class MoviesController < ApplicationController
       @movie=Movie.find(@rating.movie_id)
       respond_to do |format|
         if @rating.save
-          format.js {render action: 'process_rating', notice: 'Спасибо, мы учли твой голос!' }
+          flash.now[:notice] = 'Спасибо, мы учли твой голос!'
+          format.js { render action: 'process_rating' }
         else
-          format.js { render action: 'process_rating', notice: 'Что-то пошло не так..' }
+          flash.now[:notice] = 'Что-то пошло не так..'
+          format.js { render action: 'process_rating' }
         end
       end
     end

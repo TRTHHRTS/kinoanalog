@@ -12,7 +12,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @movie_title = Movie.find(@review.movie_id).title
     respond_to do |format|
-      format.html
       format.js
     end
   end
@@ -24,8 +23,10 @@ class ReviewsController < ApplicationController
     @movie=Movie.find(@review.movie_id)
     respond_to do |format|
       if @review.save
+        flash.now[:notice] = 'Отзыв успешно сохранен'
         format.js
       else
+        flash.now[:notice] = 'Что-то пошло не так.. проверьте правильность заполнения полей'
         format.js { render action: 'new_review' }
       end
     end
@@ -45,6 +46,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     respond_to do |format|
       if @review.update(review_params)
+        flash.now[:notice] = 'Отзыв обновлен'
         format.js
       else
         format.js { render action: 'edit_review' }
@@ -58,8 +60,8 @@ class ReviewsController < ApplicationController
     @review_id=@review.id
     @movie=Movie.find(@review.movie_id)
     @review.destroy
-
     respond_to do |format|
+      flash.now[:notice] = 'Отзыв удален'
       format.js
     end
   end
