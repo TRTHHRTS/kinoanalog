@@ -10,7 +10,11 @@
           <td colspan="2">
             <div class="form-group font-darkgray-color">
               <%= label_tag 'Название фильма', nil, { for: 'title'} %>
-              <%= text_field_tag :title, params[:title], { autofocus: true, class: 'form-control', id: 'title', placeholder: 'Оригинальное или на языке перевода' } %>
+
+              <!--%= text_field_tag :title, params[:title], {autofocus: true, class: 'form-control', id: 'ajax', list: "json-datalist",
+                                                          placeholder: 'Оригинальное или на языке перевода', onkeyup: 'findItem()' } %-->
+              <input type="text" id="ajax" list="json-datalist" placeholder="Оригинальное или на языке перевода" onkeyup="findItem(<%= :value %>)" class="form-control" />
+              <datalist id="json-datalist"></datalist>
             </div>
           </td>
         </tr>
