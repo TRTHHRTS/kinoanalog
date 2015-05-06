@@ -30,36 +30,77 @@ class MainController < ApplicationController
     @movie = Movie.find(params[:id])
     @users = User.all
 
-    #поиск похожих фильмов
-    sql2='SELECT m.id, m.title, m.image_url
-             FROM movies m
-             WHERE m.title LIKE ?', "%#{@movie.title}%"
-    #@like_movies= Movie.find_by_sql(sql_tmp)
-    mId = @movie.id
-    dir_id = DirectorsMovies.where('movie_id = ?', mId).pluck('DISTINCT director_id')
-    prod_id = ProducersMovies.where('movie_id = ?', mId).pluck('DISTINCT producer_id')
-    star_id = StarsMovies.where('movie_id = ? ', mId).pluck('DISTINCT star_id')
-    writer_id = WritersMovies.where('movie_id = ?', mId).pluck('DISTINCT writer_id')
+    sTitle = Array.new
+    @movie.title.split.each do |str|
+      sTitle << str.gsub(/[:,0-9]/, '')
+    end
+    sOrigTitle = Array.new
+    @movie.orig_title.split.each do |str|
+      sOrigTitle << str.gsub(/[:,0-9]/, '')
+    end
 
-    newSql = 'SELECT DISTINCT(m.id), m.title, m.image_url
-              FROM movies m, directors_movies dm, producers_movies pm, stars_movies sm, writers_movies wm
-              WHERE m.id <> ? AND m.id = dm.movie_id AND m.id = pm.movie_id AND m.id = sm.movie_id AND m.id = wm.movie_id AND
-                (dm.director_id IN (?) OR pm.producer_id IN (?) OR sm.star_id IN (?) OR wm.writer_id IN (?))',
-              mId, dir_id, prod_id, star_id, writer_id
+    allMovies = Movie.all
+    # хэш, в котором ключ - идентификатор фильма, а значение - сумма "очков". Чем больше значение - тем больше фильм похож на исходный
+    movies = Hash.new
+    allMovies.each do |mov|
+      next if mov.id == @movie.id
+      counter = 0
 
-    sql3='SELECT m.id, m.title, m.image_url
-         FROM movies m
-         WHERE (m.title LIKE ? OR m.orig_title LIKE ?)
-         AND
-         (
-           m.id IN (
-           SELECT m.id
-           FROM movies m
-           LEFT JOIN directors_movies dm WHERE m.id = dm.movie_id AND dm.director_id IN (?) )
-         )
-        ', "%#{@movie.title}%", "%#{@movie.orig_title}%", dir_id
+      # плюсуем за совпадения слов в названии фильма
+      sTitle.each do |str|
+        counter += 10 if mov.title.include? str
+      end
+      # плюсуем за совпадения слов в оригинальном названии фильма
+      sOrigTitle.each do |str|
+        counter += 10 if mov.orig_title.include? str
+      end
+      # плюсуем за похожих режиссеров
+      sql = 'SELECT COUNT(1)
+                FROM directors_movies dm
+                WHERE dm.movie_id = ? AND dm.director_id IN (?) AND dm.director_id IN (?)', mov.id, mov.directors.pluck('id'), @movie.directors.pluck('id')
+      counter += DirectorsMovies.count_by_sql(sql)*10
+      # плюсуем за похожих продюсеров
+      sql = 'SELECT COUNT(1)
+                FROM producers_movies pm
+                WHERE pm.movie_id = ? AND pm.producer_id IN (?) AND pm.producer_id IN (?)', mov.id, mov.producers.pluck('id'), @movie.producers.pluck('id')
+      counter += ProducersMovies.count_by_sql(sql)*5
+      # плюсуем за похожих актеров
+      sql = 'SELECT COUNT(1)
+                FROM stars_movies sm
+                WHERE sm.movie_id = ? AND sm.star_id IN (?) AND sm.star_id IN (?)', mov.id, mov.stars.pluck('id'), @movie.stars.pluck('id')
+      counter += StarsMovies.count_by_sql(sql)*5
+      # плюсуем за похожих сценаристов
+      sql = 'SELECT COUNT(1)
+                FROM writers_movies wm
+                WHERE wm.movie_id = ? AND wm.writer_id IN (?) AND wm.writer_id IN (?)', mov.id, mov.writers.pluck('id'), @movie.writers.pluck('id')
+      counter += WritersMovies.count_by_sql(sql)*8
+      # плюсуем за одинаковый год выпуска
+      counter += 4 if @movie.release_date.year == mov.release_date.year
+      # плюсуем за одинаковое возрастное ограничение
+      counter += 2 if @movie.age_id == mov.age_id
+      # плюсуем за одинаковые страны
+      sql = 'SELECT COUNT(1)
+                FROM countries_movies cm
+                WHERE cm.movie_id = ? AND cm.country_id IN (?) AND cm.country_id IN (?)', mov.id, mov.countries.pluck('id'), @movie.countries.pluck('id')
+      counter += CountriesMovies.count_by_sql(sql)
+      # плюсуем за одинаковые жанры
+      sql = 'SELECT COUNT(1)
+                FROM genres_movies gm
+                WHERE gm.movie_id = ? AND gm.genre_id IN (?) AND gm.genre_id IN (?)', mov.id, mov.genres.pluck('id'), @movie.genres.pluck('id')
+      counter += GenresMovies.count_by_sql(sql)*3
 
-    @like_movies=Movie.find_by_sql(newSql)
+      if counter > 0
+        movies[mov.id]=counter
+      end
+    end
+    movies = movies.sort_by(&:last).reverse.to_h
+
+    @like_movies = Array.new
+    movies.each do |k,v|
+      @like_movies << Movie.find(k)
+    end
+    @counts = movies.values
+
   end
 
   #GET переход к расширенному поиску

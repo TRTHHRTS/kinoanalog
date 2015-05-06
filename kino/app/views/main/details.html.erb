@@ -62,7 +62,7 @@
 <% if @like_movies.count > 0 %>
     <div class="title font-cambria cntr text-bold font-size-20 pb-5">Похожие фильмы:</div>
     <div class="recommended-films cntr">
-      <% @like_movies.each do |like_movie| %>
+      <% @like_movies[0..4].each do |like_movie| %>
           <div>
             <%= link_to(image_tag(like_movie.image_url, alt: like_movie.title, class: 'img-thumbnail poster '), '/details/' + like_movie.id.to_s) %>
             <h6 class="mt-5 font-cambria ">
