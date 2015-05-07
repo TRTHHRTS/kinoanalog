@@ -158,6 +158,15 @@ end
     @users = User.all
   end
 
+  def findItem
+    @mov = Movie.where('title LIKE ?', "%#{params[:name]}%")
+    if @mov.count == 0
+      render :json => { success: false }
+    else
+      render :json => { success: true, object: @mov}
+    end
+  end
+
   def change_rights
     @user = User.find(params[:id])
     respond_to do |format|

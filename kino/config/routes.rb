@@ -9,6 +9,7 @@ Kino::Application.routes.draw do
   get 'details/:id', to: 'main#details'
   get 'extended_search', to: 'main#extended_search'
   post 'extended_search', to: 'main#extended_search_result'
+  post 'findItem', to: 'main#findItem'
   get 'search_result', to: 'main#search_result'
   post 'search_result', to: 'main#search_result'
 
