@@ -108,7 +108,7 @@ class MainController < ApplicationController
     @movies = Movie.all.limit(100)
     @min_year = Movie.pluck('MIN(release_date)').first.to_date.year.to_i
     @max_year = Movie.pluck('MAX(release_date)').first.to_date.year.to_i
-end
+  end
 
   #POST расширенный поиск
   def extended_search_result
@@ -158,12 +158,27 @@ end
     @users = User.all
   end
 
-  def findItem
-    @mov = Movie.where('title LIKE ?', "%#{params[:name]}%")
-    if @mov.count == 0
-      render :json => { success: false }
+  def findList
+    value=params[:value]
+    case params[:name]
+      when 'title'
+        @item= Movie.select('title as name').where('title LIKE ? or orig_title LIKE ?', "%#{value}%", "%#{value}%").take(5)
+      when 'dirName'
+        @item= Director.select('name').where('name LIKE ?', "%#{value}%").take(5)
+      when 'prodName'
+        @item= Producer.select('name').where('name LIKE ?', "%#{value}%").take(5)
+      when 'starName'
+        @item= Star.select('name').where('name LIKE ?', "%#{value}%").take(5)
+      when 'writerName'
+        @item= Writer.select('name').where('name LIKE ?', "%#{value}%").take(5)
+      else
+        render json: { success: false }
+    end
+
+    if @item.count == 0
+      render json: { success: false }
     else
-      render :json => { success: true, object: @mov}
+      render json: { success: true, object: @item}
     end
   end
 

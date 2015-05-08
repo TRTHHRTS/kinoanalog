@@ -6,7 +6,8 @@
   <%= javascript_include_tag :application %>
   <%= javascript_include_tag :edit_movie if action_name == 'edit_movie' or action_name == 'new_movie' %>
   <%= javascript_include_tag :details if action_name == 'details' %>
-  <%= javascript_include_tag :extended_search if action_name == 'extended_search' %>
+  <%= javascript_include_tag :extended_search %>
+  <%= javascript_tag "window._token = '#{form_authenticity_token}';" %>
 </head>
 <body class="bg">
   <div class="container">
@@ -25,7 +26,9 @@
         <tr>
           <%= form_tag(search_result_path) do %>
           <td colspan="3">
-            <%= text_field_tag(:title, nil, {class: 'form-control', required: 'true', placeholder: 'Введите название фильма'}) %>
+            <%= text_field_tag :title, nil, {class: 'form-control', list: 'js-main-title', autocomplete: 'off',
+                                                        placeholder: 'Введите название фильма', onkeyup: 'findList(this)' } %>
+            <datalist id='js-main-title'></datalist>
           </td>
           <td>
             <%= submit_tag('Найти', {class: 'btn btn-block btn-header-color', name: 'search'}) %>
