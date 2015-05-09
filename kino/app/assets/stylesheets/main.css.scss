@@ -97,9 +97,7 @@
   min-width: 600px;
   margin: 0 auto;
   > tbody {
-    tr:first-child {
-    }
-    tr:nth-child(n+2) {
+    tr:nth-child(n+3) {
       td:nth-child(1) {
         padding-right: 1.5em;
       }

@@ -161,17 +161,12 @@ html {
 }
 
 .bg {
-    background: url("/assets/images/movies/1234.png") top left repeat;
+    background: url("/assets/images/movies/back.png");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .inline-block {
     display: inline-block;
-}
-
-div.container {
-    width: 900px;
-    padding-left: 0;
-    padding-right: 0;
-    margin: 0.5em auto;
-    background-color: #ffffff;
 }

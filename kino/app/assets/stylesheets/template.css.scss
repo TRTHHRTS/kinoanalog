@@ -21,15 +21,25 @@ $dirtyorange: #CF964D;
 $darkorange: #BC761A;
 
 .border-without-bottom {
-  border-right: 1px solid $softblue;
-  border-left: 1px solid $softblue;
   vertical-align: middle;
+}
+
+div.container {
+  border-radius: 4px;
+  border-left: 1px solid $softblue;
+  border-right: 1px solid $softblue;
+  box-shadow: 1px 1px 3px rgba($softblue,0.8);
+  width: 900px;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0.5em auto;
+  background-color: #ffffff;
 }
 
 header {
   width: 100%;
   .header-table {
-    border-radius: 4px 4px 0 0;
+    border-radius: 2px 2px 0 0;
     background-color: $softblue;
     width: 100%;
     border-collapse: separate;
@@ -77,13 +87,14 @@ header {
 
 div.content {
   margin: 0;
-  padding: 0 0.5em 0.5em 0.5em;
+  padding: 0 1.5em 0.5em 1.5em;
 }
 
 div.movie-details {
   min-height: 450px;
 }
 .poster {
+  margin: 0 0 1em 1em;
   width: 250px;
   height: 350px;
 }
@@ -187,8 +198,9 @@ li.btn-users {
 .nav-justified {
   border-collapse: collapse;
   padding-left: 0;
-
+  background: $softblue;
   li {
+    border-radius: 4px 4px 0 0;
     padding: 0;
     a {
       padding-top: 0.3em;
@@ -213,11 +225,16 @@ li.btn-users {
   border-bottom: none;
   }
 
-.active:hover {
-  color: $lightblue;
-  background-color: $richblue;
+.active {
+  background: #ffffff;
+  &:hover {
+    color: $lightblue;
+    background-color: $richblue;
+  }
 }
+
 li.active-new-film {
+  background: #ffffff;
   a {
   color: $darkgreen !important;
   }
@@ -230,6 +247,7 @@ li.active-new-film {
 }
 
 li.active-users {
+  background: #ffffff;
   a {
     color: $richorange !important;
   }
@@ -368,7 +386,7 @@ footer {
   margin: 0;
   padding: 7px 15px 0 0;
   height: 35px;
-  border-radius: 4px;
+  border-radius:0 0 2px 2px;
   h4 {
     margin: 0;
     padding: 0;
