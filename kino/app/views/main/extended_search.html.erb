@@ -20,7 +20,7 @@
         <td>
           <div class="form-group font-darkgray-color">
             <%= label_tag 'Год', nil, { for: 'yearInput' } %>
-            <%= select_year(params[:date] == nil ? Date.today : Date.new(params[:date][:year].to_i), {prompt: 'Все', start_year: @max_year, end_year: @min_year}, {class: 'form-control', id: 'yearInput'}) %>
+            <%= select_year(params[:date] == nil ? 0 : Date.new(params[:date][:year].to_i), {prompt: 'Все', start_year: @max_year, end_year: @min_year}, {class: 'form-control', id: 'yearInput'}) %>
           </div>
         </td>
         <td>

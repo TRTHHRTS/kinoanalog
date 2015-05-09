@@ -1,4 +1,3 @@
-
 function findList(obj) {
     var nameObj=obj.name;
     var valueObj=obj.value;
@@ -17,13 +16,13 @@ function findList(obj) {
             },
             success: function(data){
                 if (data["success"]) {
-                    data['object'].forEach(function(item_request) {
+                    data['object'].forEach(function(item_response) {
                         var option = document.createElement('option');
-                        option.value = item_request.name;
+                        option.value = item_response;
                         dataList.appendChild(option);
                     });
                 }
             }
         });
     }
-};
+}

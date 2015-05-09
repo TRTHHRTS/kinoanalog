@@ -1,6 +1,7 @@
 class MainController < ApplicationController
   before_action :check_only_admin_moder, only: [:users, :destroy_profile]
   before_action :check_only_admin, only: [:change_rights]
+  before_action :set_min_and_max_year, only: [:extended_search_result, :extended_search]
 
   # GET /main
   def index
@@ -106,8 +107,6 @@ class MainController < ApplicationController
   #GET переход к расширенному поиску
   def extended_search
     @movies = Movie.all.limit(100)
-    @min_year = Movie.pluck('MIN(release_date)').first.to_date.year.to_i
-    @max_year = Movie.pluck('MAX(release_date)').first.to_date.year.to_i
   end
 
   #POST расширенный поиск
@@ -162,15 +161,15 @@ class MainController < ApplicationController
     value=params[:value]
     case params[:name]
       when 'title'
-        @item= Movie.select('title as name').where('title LIKE ? or orig_title LIKE ?', "%#{value}%", "%#{value}%").take(5)
+        @item= Movie.where('title LIKE ? or orig_title LIKE ?', "%#{value}%", "%#{value}%").pluck('title').take(5)
       when 'dirName'
-        @item= Director.select('name').where('name LIKE ?', "%#{value}%").take(5)
+        @item= Director.where('name LIKE ?', "%#{value}%").pluck('name').take(5)
       when 'prodName'
-        @item= Producer.select('name').where('name LIKE ?', "%#{value}%").take(5)
+        @item= Producer.where('name LIKE ?', "%#{value}%").pluck('name').take(5)
       when 'starName'
-        @item= Star.select('name').where('name LIKE ?', "%#{value}%").take(5)
+        @item= Star.where('name LIKE ?', "%#{value}%").pluck('name').take(5)
       when 'writerName'
-        @item= Writer.select('name').where('name LIKE ?', "%#{value}%").take(5)
+        @item= Writer.where('name LIKE ?', "%#{value}%").pluck('name').take(5)
       else
         render json: { success: false }
     end
@@ -194,6 +193,11 @@ class MainController < ApplicationController
   end
 
   private
+  def set_min_and_max_year
+    @min_year = Movie.pluck('MIN(release_date)').first.to_date.year.to_i
+    @max_year = Movie.pluck('MAX(release_date)').first.to_date.year.to_i
+  end
+
   def movie_params
     params.require(:movie).permit(:id, :title, :orig_title, :year, :release_date, :duration, :description, :rate_id)
   end
