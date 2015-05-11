@@ -14,8 +14,8 @@
     <header>
       <table class="header-table">
         <tr>
-          <td>
-            <!-- ЛОГО ТУТ -->
+          <td rowspan="2">
+            <%= image_tag 'logo4.png', width: 392, height: 73 %>
           </td>
           <% if user_signed_in? %>
               <%= render partial: 'layouts/signed_in' %>
