@@ -2,10 +2,11 @@ function findList(obj) {
     var nameObj=obj.name;
     var valueObj=obj.value;
     var jsListId=obj.list.id;
-    $("#"+jsListId).empty();
-    var dataList = document.getElementById(jsListId);
+
     if (valueObj.length >= 3)
     {
+        $("#"+jsListId).empty();
+        var dataList = document.getElementById(jsListId);
         $.ajax({
             type: "POST",
             url: "/findList",

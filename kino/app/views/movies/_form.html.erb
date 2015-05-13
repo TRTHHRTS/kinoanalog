@@ -75,9 +75,10 @@
             <%= label_tag 'Актеры' %>
             <input id="star_url_select" type="text" class="form-control mb-5" placeholder="Введите ссылку на страницу актера">
             <div class="input-group">
-              <input id="star_select" type="text" class="form-control" placeholder="Введите полное имя актера">
+              <input id="star_select" type="text" class="form-control" placeholder="Введите полное имя актера" name="starName" list="js-starName" autocomplete="off" onkeyup="findList(this)" >
+              <datalist id='js-starName'></datalist>
               <span class="input-group-btn btn-group-border">
-                <button class="btn table-more-inf" type="button" onclick="addItemWithUrl('star')">Добавить</button>
+                <button class="btn table-more-inf" type="button" onclick="addItemWithUrl('star')" >Добавить</button>
               </span>
             </div>
             <ul id="selected_stars">
@@ -93,7 +94,8 @@
             <%= label_tag 'Режиссеры' %>
             <input id="director_url_select" type="text" class="form-control mb-5" placeholder="Введите ссылку на страницу режиссера">
             <div class="input-group">
-              <input id="director_select" type="text" class="form-control" placeholder="Введите полное имя режиссера">
+              <input id="director_select" type="text" class="form-control" placeholder="Введите полное имя режиссера" name="dirName" list="js-dirName" autocomplete="off" onkeyup="findList(this)" >
+              <datalist id='js-dirName'></datalist>
               <span class="input-group-btn btn-group-border">
                 <button class="btn table-more-inf" type="button" onclick="addItemWithUrl('director')">Добавить</button>
               </span>
@@ -111,7 +113,8 @@
             <%= label_tag 'Продюсеры' %>
             <input id="producer_url_select" type="text" class="form-control mb-5" placeholder="Введите ссылку на страницу продюсера">
             <div class="input-group">
-              <input id="producer_select" type="text" class="form-control" placeholder="Введите полное имя продюсера">
+              <input id="producer_select" type="text" class="form-control" placeholder="Введите полное имя продюсера" name="prodName" list="js-prodName" autocomplete="off" onkeyup="findList(this)" >
+              <datalist id='js-prodName'></datalist>
               <span class="input-group-btn btn-group-border">
                 <button class="btn table-more-inf" type="button" onclick="addItemWithUrl('producer')">Добавить</button>
               </span>
@@ -129,7 +132,8 @@
             <%= label_tag 'Сценаристы' %>
             <input id="writer_url_select" type="text" class="form-control mb-5" placeholder="Введите ссылку на страницу писателя">
             <div class="input-group">
-              <input id="writer_select" type="text" class="form-control" placeholder="Введите полное имя писателя">
+              <input id="writer_select" type="text" class="form-control" placeholder="Введите полное имя писателя" name="writerName" list="js-writerName" autocomplete="off" onkeyup="findList(this)" >
+              <datalist id='js-writerName'></datalist>
               <span class="input-group-btn btn-group-border">
                 <button class="btn table-more-inf" type="button" onclick="addItemWithUrl('writer')">Добавить</button>
               </span>
